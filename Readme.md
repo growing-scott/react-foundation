@@ -1,5 +1,9 @@
-H1 = React Foundation
+React Foundation
+================
 
-Date. 2016-08-17
+#### Release Note
+Ver 1.0 - Project Setup : 2016-08-17
 
-1.[가이드 문서] http://slides.com/jungyoungtai/deck
+- Guide
+- 문서
+	<http://slides.com/jungyoungtai/deck>
