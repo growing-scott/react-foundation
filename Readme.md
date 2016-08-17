@@ -30,8 +30,10 @@ React를 활용한 Front-End 프레임워크를 구축.
 #### 프로젝트 구성원
 - 연구4팀 - 이창은, 정영태, 정정윤
 - ITSM사업팀 - 김도원 
-
+ 
 
 Documents
 ---------
-##### [설치가이드](http://slides.com/jungyoungtai/react-foundation)
+##### [React 설치가이드](http://slides.com/jungyoungtai/react-foundation)
+##### [React 기초](http://slides.com/jungyoungtai/react-foundation-basic)
+##### 프로젝트 설치 가이드
