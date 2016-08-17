@@ -20,12 +20,12 @@ React를 활용한 Front-End 프레임워크를 구축.
 7. Sample Pages & APIs
 
 #### 프로젝트 Tools
-1. Eclipse IDE
-2. Node.js
-3. React.js
-4. 업무공유 - Trello
-5. 문서작성 - Slides
-6. 프로젝트 관리 - Git
+- Eclipse IDE
+- Node.js
+- React.js
+- 업무공유 - Trello
+- 문서작성 - Slides
+- 프로젝트 관리 - Git
 
 #### 프로젝트 구성원
 - 연구4팀 - 이창은, 정영태, 정정윤
@@ -38,8 +38,9 @@ Documents
 ##### [React 기초](http://slides.com/jungyoungtai/react-foundation-basic)
 ##### 프로젝트 설치 가이드
 - Git으로 프로젝트를 내려받는다.
+	- git clone https://github.com/jungyoungtai/react-foundation.git
 - 프로젝트 패키지 설치
 	- $ npm install
 - Examples 빌드 및 확인
 	- $ gulp examples
-	- examples/index.html 확인
+	- examples/index.html 확인(Hello World)
