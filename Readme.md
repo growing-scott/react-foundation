@@ -44,3 +44,7 @@ Documents
 - Examples 빌드 및 확인
 	- $ gulp examples
 	- examples/index.html 확인(Hello World)
+	
+참고자료
+-----
+##### [React 자료](https://github.com/enaqx/awesome-react)
