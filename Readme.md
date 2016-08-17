@@ -37,9 +37,9 @@ Documents
 ##### [React 설치가이드](http://slides.com/jungyoungtai/react-foundation)
 ##### [React 기초](http://slides.com/jungyoungtai/react-foundation-basic)
 ##### 프로젝트 설치 가이드
-- Git으로 프로젝트를 내려받는다.
+- 프로젝트 설치
 	- git clone https://github.com/jungyoungtai/react-foundation.git
-- 프로젝트 패키지 설치
+- 패키지 설치
 	- $ npm install
 - Examples 빌드 및 확인
 	- $ gulp examples
