@@ -34,4 +34,4 @@ React를 활용한 Front-End 프레임워크를 구축.
 
 Documents
 ---------
-##### [설치가이드](http://slides.com/jungyoungtai/deck)
+##### [설치가이드](http://slides.com/jungyoungtai/react-foundation)
