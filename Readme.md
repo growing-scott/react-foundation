@@ -19,4 +19,19 @@ React를 활용한 Front-End 프레임워크를 구축.
 6. 프레임워크 아키텍쳐 구성
 7. Sample Pages & APIs
 
-##### [Document](http://slides.com/jungyoungtai/deck)
+#### 프로젝트 Tools
+1. Eclipse IDE
+2. Node.js
+3. React.js
+4. 업무공유 - Trello
+5. 문서작성 - Slides
+6. 프로젝트 관리 - Git
+
+#### 프로젝트 구성원
+- 연구4팀 - 이창은, 정영태, 정정윤
+- ITSM사업팀 - 김도원 
+
+
+Documents
+---------
+##### [설치가이드](http://slides.com/jungyoungtai/deck)
