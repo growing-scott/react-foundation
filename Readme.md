@@ -6,4 +6,4 @@ Ver 1.0 - Project Setup : 2016-08-17
 
 - Guide
 - 문서
-	<http://slides.com/jungyoungtai/deck>
+	[Doc](http://slides.com/jungyoungtai/deck){:target="_blank"}
