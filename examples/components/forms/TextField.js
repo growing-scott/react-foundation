@@ -1,8 +1,7 @@
 import React, {Component, PropTypes} from 'react';
-import {Form, FormGroup, FormControl, ControlLabel, HelpBlock, Feedback} from 'react-bootstrap';
+import {Form, FormGroup, FormControl, ControlLabel, HelpBlock} from 'react-bootstrap';
 
 class TextField extends Component{
-
   constructor() {
     super(...arguments);
 		this.state = {
@@ -23,21 +22,17 @@ class TextField extends Component{
   }
 
   render(){
-
     return(
-      <form>
-        <FormGroup controlId={this.props.id}>
-          <ControlLabel>{this.props.label}</ControlLabel>
-          <FormControl
-            type="text"
-            value={this.state.value}
-            placeholder={this.props.placeholder}
-            onChange={this.handleChange.bind(this)}
-          />
-          <FormControl.Feedback />
-          <HelpBlock>Validation is based on string length.</HelpBlock>
-        </FormGroup>
-      </form>
+      <FormGroup controlId={this.props.id}>
+        <ControlLabel>{this.props.label}</ControlLabel>
+        <FormControl
+          type="text"
+          value={this.state.value}
+          placeholder={this.props.placeholder}
+          onChange={this.handleChange.bind(this)}
+        />
+        <HelpBlock>Validation is based on string length.</HelpBlock>
+      </FormGroup>
     )
   }
 }
