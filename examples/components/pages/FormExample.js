@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 
 import NForm from './forms/NForm';
 
-class App extends Component{
+class FormExample extends Component{
   constructor(){
     super(...arguments);
   }
@@ -11,19 +11,18 @@ class App extends Component{
   render(){
     return (
       <div>
-        컴포넌트 예제
         <NForm form={this.props.form} />
       </div>
     )
   }
 }
 
-App.propTypes = {
+FormExample.propTypes = {
   grid: Proptypes.object,
   form: PropTypes.object
 }
 
-App.defaultProps = {
+FormExample.defaultProps = {
   app: {
     layout: "top"
   },
@@ -70,8 +69,6 @@ App.defaultProps = {
       }
     ]
   }
-
-
 }
 
-ReactDom.render(<App/>, document.getElementById('app'));
+ReactDom.render(<FormExample/>, document.getElementById('app'));

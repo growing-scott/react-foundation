@@ -36,6 +36,7 @@ React를 활용한 Front-End 프레임워크를 구축.
 		- 자동완성(사용자 검색등등)
 		- Help Icon
 		- File Upload
+		- TextField + Label(단위 등)
 	- Grid[Kendo Grid]
 		- Sort
 		- Arrange

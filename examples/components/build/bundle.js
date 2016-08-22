@@ -56,9 +56,9 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _TextField = __webpack_require__(175);
+	var _FieldSet = __webpack_require__(175);
 
-	var _TextField2 = _interopRequireDefault(_TextField);
+	var _FieldSet2 = _interopRequireDefault(_FieldSet);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -74,32 +74,39 @@
 	  function App() {
 	    _classCallCheck(this, App);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
-
-	    _this.state = {
-	      textfields: [{ id: "user_nm", label: "사용자명", placeholder: "사용자명을 입력해주세요." }, { id: "pass_wd", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { id: "address", label: "집주소", placeholder: "집주소를 입력해주세요." }]
-	    };
-	    return _this;
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
 	  }
 
 	  _createClass(App, [{
 	    key: 'render',
 	    value: function render() {
-	      var textfields = this.state.textfields;
-
 	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        '컴포넌트 예제',
-	        textfields.map(function (textfield) {
-	          return _react2.default.createElement(_TextField2.default, { key: textfield.id, id: textfield.id, label: textfield.label, placeholder: textfield.placeholder, value: textfield.value });
-	        })
+	        _react2.default.createElement(_FieldSet2.default, { fieldList: this.props.form.fieldList })
 	      );
 	    }
 	  }]);
 
 	  return App;
 	}(_react.Component);
+
+	App.propTypes = {
+	  form: _react.PropTypes.object
+	};
+
+	App.defaultProps = {
+	  form: {
+	    name: "theForm",
+	    title: "Form Title",
+	    action: "/theForm.do",
+	    type: "editor", // 입력 또는 Search Form 또는 Readonly
+	    method: "post", // Default Post
+	    fieldList: [{ type: "text", id: "user_nm", label: "사용자명", placeholder: "사용자명을 입력해주세요." }, { type: "text", id: "position", label: "직위", placeholder: "직위를 입력해주세요." }, { type: "text", id: "pass_wd", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd1", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd2", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd3", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd4", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd5", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd6", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd7", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd8", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd9", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd10", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd11", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd12", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd13", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd14", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd15", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd16", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd17", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd18", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "textarea", id: "address", label: "집주소", placeholder: "집주소를 입력해주세요." }]
+	  }
+
+	};
 
 	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
 
@@ -21527,6 +21534,14 @@
 
 	var _reactBootstrap = __webpack_require__(176);
 
+	var _TextField = __webpack_require__(429);
+
+	var _TextField2 = _interopRequireDefault(_TextField);
+
+	var _TextArea = __webpack_require__(430);
+
+	var _TextArea2 = _interopRequireDefault(_TextArea);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21535,16 +21550,16 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var TextField = function (_Component) {
-	  _inherits(TextField, _Component);
+	var FieldSet = function (_Component) {
+	  _inherits(FieldSet, _Component);
 
-	  function TextField() {
-	    _classCallCheck(this, TextField);
+	  function FieldSet() {
+	    _classCallCheck(this, FieldSet);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TextField).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(FieldSet).apply(this, arguments));
 
 	    _this.state = {
-	      value: ""
+	      fieldList: []
 	    };
 	    return _this;
 	  }
@@ -21552,63 +21567,63 @@
 	  // Value값 변경에 따른 이벤트 처리
 
 
-	  _createClass(TextField, [{
+	  _createClass(FieldSet, [{
 	    key: 'handleChange',
 	    value: function handleChange(e) {
 	      this.setState({ value: e.target.value });
+	    }
+
+	    // Compoent Render 이전 이벤트
+
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      if (this.props.fieldList) {
+	        this.setState({ fieldList: this.props.fieldList });
+	      }
 	    }
 
 	    // Compoent Render 이후 이벤트
 
 	  }, {
 	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      if (this.props.value) {
-	        this.setState({ value: this.props.value });
-	      }
-	    }
+	    value: function componentDidMount() {}
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var fieldList = this.props.fieldList;
+	      var renderFields = fieldList.map(function (field) {
+	        var component = void 0;
+	        switch (field.type) {
+	          case "text":
+	            component = _react2.default.createElement(_TextField2.default, { key: field.id, id: field.id, label: field.label, placeholder: field.placeholder, value: field.value });
+	            break;
+	          case "textarea":
+	            component = _react2.default.createElement(_TextArea2.default, { key: field.id, id: field.id, label: field.label, placeholder: field.placeholder, value: field.value });
+	            break;
+	          default:
+	        }
+	        return component;
+	      });
 
 	      return _react2.default.createElement(
-	        'form',
+	        _reactBootstrap.Form,
 	        null,
-	        _react2.default.createElement(
-	          _reactBootstrap.FormGroup,
-	          { controlId: this.props.id },
-	          _react2.default.createElement(
-	            _reactBootstrap.ControlLabel,
-	            null,
-	            this.props.label
-	          ),
-	          _react2.default.createElement(_reactBootstrap.FormControl, {
-	            type: 'text',
-	            value: this.state.value,
-	            placeholder: this.props.placeholder,
-	            onChange: this.handleChange.bind(this)
-	          }),
-	          _react2.default.createElement(_reactBootstrap.FormControl.Feedback, null),
-	          _react2.default.createElement(
-	            _reactBootstrap.HelpBlock,
-	            null,
-	            'Validation is based on string length.'
-	          )
-	        )
+	        renderFields
 	      );
 	    }
 	  }]);
 
-	  return TextField;
+	  return FieldSet;
 	}(_react.Component);
 
-	TextField.propTypes = {
+	FieldSet.propTypes = {
 	  id: _react.PropTypes.string,
 	  label: _react.PropTypes.string,
 	  placeholder: _react.PropTypes.string
 	};
 
-	exports.default = TextField;
+	exports.default = FieldSet;
 
 /***/ },
 /* 176 */
@@ -40410,6 +40425,191 @@
 	exports.bootstrapUtils = _bootstrapUtils;
 	exports.createChainedFunction = _createChainedFunction3['default'];
 	exports.ValidComponentChildren = _ValidComponentChildren3['default'];
+
+/***/ },
+/* 429 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(176);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var TextField = function (_Component) {
+	  _inherits(TextField, _Component);
+
+	  function TextField() {
+	    _classCallCheck(this, TextField);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TextField).apply(this, arguments));
+
+	    _this.state = {
+	      value: ""
+	    };
+	    return _this;
+	  }
+
+	  // Value값 변경에 따른 이벤트 처리
+
+
+	  _createClass(TextField, [{
+	    key: 'handleChange',
+	    value: function handleChange(e) {
+	      this.setState({ value: e.target.value });
+	    }
+
+	    // Compoent Render 이후 이벤트
+
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      if (this.props.value) {
+	        this.setState({ value: this.props.value });
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        _reactBootstrap.FormGroup,
+	        { controlId: this.props.id },
+	        _react2.default.createElement(
+	          _reactBootstrap.ControlLabel,
+	          null,
+	          this.props.label
+	        ),
+	        _react2.default.createElement(_reactBootstrap.FormControl, {
+	          type: 'text',
+	          value: this.state.value,
+	          placeholder: this.props.placeholder,
+	          onChange: this.handleChange.bind(this)
+	        }),
+	        _react2.default.createElement(
+	          _reactBootstrap.HelpBlock,
+	          null,
+	          'Validation is based on string length.'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return TextField;
+	}(_react.Component);
+
+	TextField.propTypes = {
+	  id: _react.PropTypes.string,
+	  label: _react.PropTypes.string,
+	  placeholder: _react.PropTypes.string
+	};
+
+	exports.default = TextField;
+
+/***/ },
+/* 430 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(176);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var TextArea = function (_Component) {
+	  _inherits(TextArea, _Component);
+
+	  function TextArea() {
+	    _classCallCheck(this, TextArea);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TextArea).apply(this, arguments));
+
+	    _this.state = {
+	      value: ""
+	    };
+	    return _this;
+	  }
+
+	  // Value값 변경에 따른 이벤트 처리
+
+
+	  _createClass(TextArea, [{
+	    key: 'handleChange',
+	    value: function handleChange(e) {
+	      this.setState({ value: e.target.value });
+	    }
+
+	    // Compoent Render 이후 이벤트
+
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      if (this.props.value) {
+	        this.setState({ value: this.props.value });
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        _reactBootstrap.FormGroup,
+	        { controlId: this.props.id },
+	        _react2.default.createElement(
+	          _reactBootstrap.ControlLabel,
+	          null,
+	          this.props.label
+	        ),
+	        _react2.default.createElement(_reactBootstrap.FormControl, {
+	          componentClass: 'textarea',
+	          value: this.state.value,
+	          placeholder: this.props.placeholder,
+	          onChange: this.handleChange.bind(this)
+	        })
+	      );
+	    }
+	  }]);
+
+	  return TextArea;
+	}(_react.Component);
+
+	TextArea.propTypes = {
+	  id: _react.PropTypes.string,
+	  label: _react.PropTypes.string,
+	  placeholder: _react.PropTypes.string
+	};
+
+	exports.default = TextArea;
 
 /***/ }
 /******/ ]);
