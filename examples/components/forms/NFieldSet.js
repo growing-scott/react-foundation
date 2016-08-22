@@ -1,20 +1,15 @@
 import React, {Component, PropTypes} from 'react';
 import {Form, FormGroup, FormControl, ControlLabel, HelpBlock} from 'react-bootstrap';
 
-import TextField from './TextField';
-import TextArea from './TextArea';
+import NTextField from './NTextField';
+import NTextArea from './NTextArea';
 
-class FieldSet extends Component{
+class NFieldSet extends Component{
   constructor() {
     super(...arguments);
 		this.state = {
 			fieldList: []
     }
-  }
-
-  // Value값 변경에 따른 이벤트 처리
-  handleChange(e) {
-  	this.setState({ value: e.target.value });
   }
 
   // Compoent Render 이전 이벤트
@@ -26,7 +21,7 @@ class FieldSet extends Component{
 
   // Compoent Render 이후 이벤트
   componentDidMount() {
-  
+
   }
 
   render(){
@@ -35,10 +30,10 @@ class FieldSet extends Component{
       let component;
       switch (field.type) {
         case "text":
-          component = (<TextField key={field.id} id={field.id} label={field.label} placeholder={field.placeholder} value={field.value} />);
+          component = (<NTextField key={field.id} id={field.id} label={field.label} placeholder={field.placeholder} value={field.value} />);
           break;
         case "textarea":
-          component = (<TextArea key={field.id} id={field.id} label={field.label} placeholder={field.placeholder} value={field.value} />);
+          component = (<NTextArea key={field.id} id={field.id} label={field.label} placeholder={field.placeholder} value={field.value} />);
           break;
         default:
       }
@@ -46,17 +41,17 @@ class FieldSet extends Component{
     }));
 
     return(
-      <Form>
+      <div>
         {renderFields}
-      </Form>
+      </div>
     )
   }
 }
 
-FieldSet.propTypes = {
+NFieldSet.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string
 }
 
-export default FieldSet;
+export default NFieldSet;

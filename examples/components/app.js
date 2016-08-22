@@ -1,7 +1,12 @@
 import React, {Component, PropTypes} from 'react';
 import ReactDom from 'react-dom';
 
-import NForm from './forms/NForm';
+import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
+
+import Home from './pages/Home';
+import Abort from './pages/Abort';
+import LayoutAExample from './pages/LayoutAExample';
+import LayoutBExample from './pages/LayoutBExample';
 
 class App extends Component{
   constructor(){
@@ -11,67 +16,32 @@ class App extends Component{
   render(){
     return (
       <div>
-        컴포넌트 예제
-        <NForm form={this.props.form} />
+        <header>App</header>
+        <menu>
+          <li><Link to="/layoutA">Layout A</Link></li>
+          <li><Link to="/layoutB">Layout B</Link></li>
+          <li><Link to="/examples/components/pages/Abort">Abort</Link></li>
+          <li><Link to="/abort">Abort2</Link></li>
+        </menu>
+        {this.props.children}
       </div>
     )
   }
 }
 
 App.propTypes = {
-  grid: Proptypes.object,
-  form: PropTypes.object
 }
 
 App.defaultProps = {
-  app: {
-    layout: "top"
-  },
-  grid: {
-    url: "/searchGo.do",
-    resource: "i18n",
-    paging: false
-  },
-  form: {
-    name: "theForm",
-    title: "Form Title",
-    action: "/theForm.do",
-    type: "editor",   // 입력 또는 Search Form 또는 Readonly
-    method: "post",   // Default Post
-    position: "inline",   // Inline 또는 Modal
-    fieldSet : [
-      {
-        id: "editor_fields",
-        columns: 3,
-        fieldList: [
-          { type: "text", id: "user_nm", label: "사용자명", placeholder: "사용자명을 입력해주세요."},
-          { type: "text", id: "position", label: "직위", placeholder: "직위를 입력해주세요."},
-          { type: "text", id: "pass_wd", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd1", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd2", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd3", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd4", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd5", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd6", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd7", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd8", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd9", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd10", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd11", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd12", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd13", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd14", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd15", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd16", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd17", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd18", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "textarea", id: "address", label: "집주소", placeholder: "집주소를 입력해주세요."}
-        ]
-      }
-    ]
-  }
-
-
 }
 
-ReactDom.render(<App/>, document.getElementById('app'));
+ReactDom.render((
+  <Router history={browserHistory}>
+    <Route path="/examples/components" component={App}>
+      <IndexRoute component={Home} />
+      <Route path="/layoutA" component={LayoutAExample} />
+      <Route path="/layoutB" component={LayoutBExample} />
+      <Route path="/abort" component={Abort} />
+    </Route>
+  </Router>
+), document.getElementById('app'));

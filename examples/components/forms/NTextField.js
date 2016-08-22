@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
-import {FormGroup, FormControl, ControlLabel, HelpBlock} from 'react-bootstrap';
+import {Form, FormGroup, FormControl, ControlLabel, HelpBlock} from 'react-bootstrap';
 
-class TextArea extends Component{
+class NTextField extends Component{
   constructor() {
     super(...arguments);
 		this.state = {
@@ -26,20 +26,21 @@ class TextArea extends Component{
       <FormGroup controlId={this.props.id}>
         <ControlLabel>{this.props.label}</ControlLabel>
         <FormControl
-          componentClass="textarea"
+          type="text"
           value={this.state.value}
           placeholder={this.props.placeholder}
           onChange={this.handleChange.bind(this)}
         />
+        <HelpBlock>Validation is based on string length.</HelpBlock>
       </FormGroup>
     )
   }
 }
 
-TextArea.propTypes = {
+NTextField.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string
 }
 
-export default TextArea;
+export default NTextField;
