@@ -70,7 +70,7 @@
 
 	var _LayoutAExample2 = _interopRequireDefault(_LayoutAExample);
 
-	var _LayoutBExample = __webpack_require__(502);
+	var _LayoutBExample = __webpack_require__(503);
 
 	var _LayoutBExample2 = _interopRequireDefault(_LayoutBExample);
 
@@ -128,17 +128,8 @@
 	            null,
 	            _react2.default.createElement(
 	              _reactRouter.Link,
-	              { to: '/examples/components/pages/Abort' },
-	              'Abort'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            _react2.default.createElement(
-	              _reactRouter.Link,
 	              { to: '/abort' },
-	              'Abort2'
+	              'Abort'
 	            )
 	          )
 	        ),
@@ -27354,6 +27345,10 @@
 
 	var _NLayoutSet2 = _interopRequireDefault(_NLayoutSet);
 
+	var _NControls = __webpack_require__(502);
+
+	var _NControls2 = _interopRequireDefault(_NControls);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27368,10 +27363,60 @@
 	  function LayoutAExample() {
 	    _classCallCheck(this, LayoutAExample);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LayoutAExample).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LayoutAExample).apply(this, arguments));
+
+	    _this.state = {
+	      updateLayout: false
+	    };
+	    //this.handleNewBtn = handleNewBtn.bind(this)
+	    return _this;
 	  }
 
+	  // Compoent Render 이전 이벤트
+
+
 	  _createClass(LayoutAExample, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.eventHandler();
+	    }
+
+	    // Event Handler Mapping
+
+	  }, {
+	    key: 'eventHandler',
+	    value: function eventHandler() {
+	      // 버튼 Convert
+	      _NControls2.default.convertButton(this, this.props.form.topButtons, null);
+	      _NControls2.default.convertButton(this, this.props.form.buttomButtons, ["save_btn", "cancel_btn"]);
+	    }
+	  }, {
+	    key: 'handleNewBtn',
+	    value: function handleNewBtn() {
+	      console.info(this);
+	      alert("신규등록");
+
+	      // 또는 Ref로 접근하여 처리해도 될 듯 합니다.
+	      _NControls2.default.convertButton(this, this.props.form.topButtons, ["new_btn"]);
+	      _NControls2.default.convertButton(this, this.props.form.buttomButtons, null);
+	      this.setState({ updateLayout: true });
+	    }
+	  }, {
+	    key: 'handleExcelBtn',
+	    value: function handleExcelBtn() {
+	      alert("엑셀다운로드2");
+	    }
+	  }, {
+	    key: 'handleSaveBtn',
+	    value: function handleSaveBtn() {
+	      alert("저장");
+	    }
+	  }, {
+	    key: 'handleCancelBtn',
+	    value: function handleCancelBtn() {
+	      alert("취소");
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -27409,10 +27454,28 @@
 	    formType: "editor", // 입력 또는 Search Form 또는 Readonly
 	    method: "post", // Default Post
 	    position: "inline", // Inline 또는 Modal
+	    topButtons: [{
+	      id: "new_btn",
+	      label: "신규등록",
+	      onClickEvent: "handleNewBtn"
+	    }, {
+	      id: "excel_btn",
+	      label: "엑셀다운로드",
+	      onClickEvent: "handleExcelBtn"
+	    }],
+	    buttomButtons: [{
+	      id: "save_btn",
+	      label: "저장",
+	      onClickEvent: "handleSaveBtn"
+	    }, {
+	      id: "cancel_btn",
+	      label: "취소",
+	      onClickEvent: "handleCancelBtn"
+	    }],
 	    fieldSet: [{
 	      id: "editor_fields",
 	      columns: 3,
-	      fieldList: [{ type: "text", id: "user_nm", label: "사용자명", placeholder: "사용자명을 입력해주세요." }, { type: "text", id: "position", label: "직위", placeholder: "직위를 입력해주세요." }, { type: "text", id: "pass_wd", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd1", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd2", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd3", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd4", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd5", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd6", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd7", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd8", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd9", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd10", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd11", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd12", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd13", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd14", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd15", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd16", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd17", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd18", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "textarea", id: "address", label: "집주소", placeholder: "집주소를 입력해주세요." }]
+	      fieldList: [{ type: "text", id: "user_nm", label: "사용자명", placeholder: "사용자명을 입력해주세요." }, { type: "text", id: "position", label: "직위", placeholder: "직위를 입력해주세요." }, { type: "text", id: "pass_wd", label: "패스워드1", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd1", label: "패스워드2", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd2", label: "패스워드3", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "textarea", id: "address", label: "집주소", placeholder: "집주소를 입력해주세요." }]
 	    }]
 	  }
 	};
@@ -27548,7 +27611,7 @@
 	          firstComponent = _react2.default.createElement(_NGrid2.default, { url: first.url });
 	          break;
 	        case "form":
-	          firstComponent = _react2.default.createElement(_NForm2.default, { name: first.name, fieldSets: second.fieldSet });
+	          firstComponent = _react2.default.createElement(_NForm2.default, { name: first.name, fieldSets: first.fieldSet, topButtons: first.topButtons, buttomButtons: first.buttomButtons });
 	          break;
 	        default:
 	      }
@@ -27560,7 +27623,7 @@
 	          secondComponent = _react2.default.createElement(_NGrid2.default, { url: second.url });
 	          break;
 	        case "form":
-	          secondComponent = _react2.default.createElement(_NForm2.default, { name: second.name, fieldSets: second.fieldSet });
+	          secondComponent = _react2.default.createElement(_NForm2.default, { name: second.name, fieldSets: second.fieldSet, topButtons: second.topButtons, buttomButtons: second.buttomButtons });
 	          break;
 	        default:
 	      }
@@ -46493,8 +46556,8 @@
 
 
 	  _createClass(NForm, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {}
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {}
 
 	    // Compoent Render 이후 이벤트
 
@@ -46506,12 +46569,47 @@
 	    value: function render() {
 	      var fieldSets = this.props.fieldSets;
 
+	      // Top Button 생성
+	      var topComponent = void 0;
+	      if (this.props.topButtons) {
+	        var topButtons = this.props.topButtons;
+	        topComponent = topButtons.map(function (button) {
+	          console.info(button);
+	          if (button.visible) return _react2.default.createElement(
+	            _reactBootstrap.Button,
+	            { key: button.id, onClick: button.onClick },
+	            button.label
+	          );
+	        });
+	        /*
+	        topComponent = (topButtons.map(
+	          (button) => <Button key={button.id} onClick={button.onClick}>{button.label}</Button>
+	        ))
+	        */
+	      }
+
+	      // Bottom Button 생성
+	      var bottomComponent = void 0;
+	      if (this.props.buttomButtons) {
+	        var buttomButtons = this.props.buttomButtons;
+	        bottomComponent = buttomButtons.map(function (button) {
+	          console.info(button);
+	          if (button.visible) return _react2.default.createElement(
+	            _reactBootstrap.Button,
+	            { key: button.id, onClick: button.onClick },
+	            button.label
+	          );
+	        });
+	      }
+
 	      return _react2.default.createElement(
 	        _reactBootstrap.Form,
 	        null,
+	        topComponent,
 	        fieldSets.map(function (fieldSet) {
 	          return _react2.default.createElement(_NFieldSet2.default, { key: fieldSet.id, fieldList: fieldSet.fieldList });
-	        })
+	        }),
+	        bottomComponent
 	      );
 	    }
 	  }]);
@@ -46575,8 +46673,8 @@
 
 
 	  _createClass(NFieldSet, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
 	      if (this.props.fieldList) {
 	        this.setState({ fieldList: this.props.fieldList });
 	      }
@@ -46868,7 +46966,7 @@
 	          firstComponent = _react2.default.createElement(_NGrid2.default, { url: first.url });
 	          break;
 	        case "form":
-	          firstComponent = _react2.default.createElement(_NForm2.default, { name: first.name, fieldSets: second.fieldSet });
+	          firstComponent = _react2.default.createElement(_NForm2.default, { name: first.name, fieldSets: first.fieldSet, topButtons: first.topButtons, buttomButtons: first.buttomButtons });
 	          break;
 	        default:
 	      }
@@ -46880,7 +46978,7 @@
 	          secondComponent = _react2.default.createElement(_NGrid2.default, { url: second.url });
 	          break;
 	        case "form":
-	          secondComponent = _react2.default.createElement(_NForm2.default, { name: second.name, fieldSets: second.fieldSet });
+	          secondComponent = _react2.default.createElement(_NForm2.default, { name: second.name, fieldSets: second.fieldSet, topButtons: second.topButtons, buttomButtons: second.buttomButtons });
 	          break;
 	        default:
 	      }
@@ -46919,6 +47017,56 @@
 
 /***/ },
 /* 502 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var NControls = function () {
+	  function NControls() {
+	    _classCallCheck(this, NControls);
+	  }
+
+	  // Target(this), buttons[Array], hideButtons[Array]
+
+
+	  _createClass(NControls, null, [{
+	    key: "convertButton",
+	    value: function convertButton(target, buttons, hideButtons) {
+	      console.info("버튼매퍼");
+
+	      var _this = target;
+	      buttons.some(function (button) {
+	        if (button.onClickEvent) {
+	          button.onClick = _this[button.onClickEvent].bind(_this);
+	          button.visible = true;
+	        }
+
+	        if (hideButtons != null) {
+	          hideButtons.some(function (hidButton) {
+	            if (button.id == hidButton) {
+	              button.visible = false;
+	            }
+	          });
+	        }
+	      });
+	    }
+	  }]);
+
+	  return NControls;
+	}();
+
+	exports.default = NControls;
+
+/***/ },
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46956,11 +47104,25 @@
 	    _classCallCheck(this, LayoutBExample);
 
 	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LayoutBExample).apply(this, arguments));
+	    //this.handleNewBtn = this.handleNewBtn.bind(this);
 	  }
 
 	  _createClass(LayoutBExample, [{
+	    key: 'handleNewBtn',
+	    value: function handleNewBtn() {
+	      console.info(this);
+	      alert("신규등록2");
+	    }
+	  }, {
+	    key: 'handleExcelBtn',
+	    value: function handleExcelBtn() {
+	      console.info(this);
+	      alert("엑셀다운로드2");
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.info(this);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -46996,6 +47158,15 @@
 	    formType: "editor", // 입력 또는 Search Form 또는 Readonly
 	    method: "post", // Default Post
 	    position: "inline", // Inline 또는 Modal
+	    buttomButtons: [{
+	      id: "new_btn",
+	      label: "신규등록",
+	      onClick: LayoutBExample.prototype.handleNewBtn.bind(LayoutBExample.prototype)
+	    }, {
+	      id: "excel_btn",
+	      label: "엑셀다운로드",
+	      onClick: LayoutBExample.prototype.handleExcelBtn.bind(undefined)
+	    }],
 	    fieldSet: [{
 	      id: "editor_fields",
 	      columns: 3,

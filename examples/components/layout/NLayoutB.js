@@ -22,7 +22,7 @@ class NLayoutB extends Component{
         firstComponent = (<NGrid url={first.url} />);
         break;
       case "form":
-        firstComponent = (<NForm name={first.name} fieldSets={second.fieldSet} />);
+        firstComponent = (<NForm name={first.name} fieldSets={first.fieldSet} topButtons={first.topButtons} buttomButtons={first.buttomButtons} />);
         break;
       default:
     }
@@ -34,7 +34,7 @@ class NLayoutB extends Component{
         secondComponent = (<NGrid url={second.url} />);
         break;
       case "form":
-        secondComponent = (<NForm name={second.name} fieldSets={second.fieldSet}  />);
+        secondComponent = (<NForm name={second.name} fieldSets={second.fieldSet} topButtons={second.topButtons} buttomButtons={second.buttomButtons}  />);
         break;
       default:
     }

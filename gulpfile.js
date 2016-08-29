@@ -22,4 +22,8 @@ gulp.task('components', function() {
       .pipe(gulp.dest('./examples/components/build/'));
 });
 
+gulp.task('watch_components', ['components'], function () {
+    gulp.watch('./examples/components/**/*.js', ['components']);
+});
+
 gulp.task('default', ['build']);

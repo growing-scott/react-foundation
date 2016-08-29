@@ -13,7 +13,7 @@ class NFieldSet extends Component{
   }
 
   // Compoent Render 이전 이벤트
-  componentDidMount() {
+  componentWillMount() {
     if(this.props.fieldList){
       this.setState({ fieldList: this.props.fieldList });
     }

@@ -20,8 +20,7 @@ class App extends Component{
         <menu>
           <li><Link to="/layoutA">Layout A</Link></li>
           <li><Link to="/layoutB">Layout B</Link></li>
-          <li><Link to="/examples/components/pages/Abort">Abort</Link></li>
-          <li><Link to="/abort">Abort2</Link></li>
+          <li><Link to="/abort">Abort</Link></li>
         </menu>
         {this.props.children}
       </div>

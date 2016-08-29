@@ -6,9 +6,21 @@ import NLayoutSet from '../layout/NLayoutSet';
 class LayoutBExample extends Component{
   constructor(){
     super(...arguments);
+    //this.handleNewBtn = this.handleNewBtn.bind(this);
+  }
+
+  handleNewBtn(){
+    console.info(this);
+    alert("신규등록2")
+  }
+
+  handleExcelBtn(){
+    console.info(this);
+    alert("엑셀다운로드2")
   }
 
   render(){
+    console.info(this);
     return (
       <div>
         <NLayoutSet layout={this.props.layout} first={this.props.grid} second={this.props.form} />
@@ -41,6 +53,18 @@ LayoutBExample.defaultProps = {
     formType: "editor",   // 입력 또는 Search Form 또는 Readonly
     method: "post",   // Default Post
     position: "inline",   // Inline 또는 Modal
+    buttomButtons: [
+      {
+        id: "new_btn",
+        label: "신규등록",
+        onClick: LayoutBExample.prototype.handleNewBtn.bind(LayoutBExample.prototype)
+      },
+      {
+        id: "excel_btn",
+        label: "엑셀다운로드",
+        onClick: LayoutBExample.prototype.handleExcelBtn.bind(this)
+      }
+    ],
     fieldSet : [
       {
         id: "editor_fields",
