@@ -70,7 +70,7 @@
 
 	var _LayoutAExample2 = _interopRequireDefault(_LayoutAExample);
 
-	var _LayoutBExample = __webpack_require__(503);
+	var _LayoutBExample = __webpack_require__(508);
 
 	var _LayoutBExample2 = _interopRequireDefault(_LayoutBExample);
 
@@ -27345,7 +27345,7 @@
 
 	var _NLayoutSet2 = _interopRequireDefault(_NLayoutSet);
 
-	var _NControls = __webpack_require__(502);
+	var _NControls = __webpack_require__(507);
 
 	var _NControls2 = _interopRequireDefault(_NControls);
 
@@ -27393,7 +27393,6 @@
 	  }, {
 	    key: 'handleNewBtn',
 	    value: function handleNewBtn() {
-	      console.info(this);
 	      alert("신규등록");
 
 	      // 또는 Ref로 접근하여 처리해도 될 듯 합니다.
@@ -27475,7 +27474,7 @@
 	    fieldSet: [{
 	      id: "editor_fields",
 	      columns: 3,
-	      fieldList: [{ type: "text", id: "user_nm", label: "사용자명", placeholder: "사용자명을 입력해주세요." }, { type: "text", id: "position", label: "직위", placeholder: "직위를 입력해주세요." }, { type: "text", id: "pass_wd", label: "패스워드1", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd1", label: "패스워드2", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd2", label: "패스워드3", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "textarea", id: "address", label: "집주소", placeholder: "집주소를 입력해주세요." }]
+	      fieldList: [{ type: "text", id: "user_nm", label: "사용자명", placeholder: "사용자명을 입력해주세요." }, { type: "text", id: "position", label: "직위", placeholder: "직위를 입력해주세요." }, { type: "text", id: "pass_wd", label: "패스워드1", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "static", id: "pass_wd1", label: "패스워드 힌트(스태틱 Text)", value: "패스워드 힌트는 nkia" }, { type: "checkbox", id: "checkbox1", label: "체크박스(서버사이드)", code_grp_id: "REQ_TYPE" }, { type: "radio", id: "radio1", label: "라디오버튼(서버사이드)", code_grp_id: "REQ_TYPE" }, { type: "combo", id: "combo1", label: "콤보박스(사용자 정의 데이터)", placeholder: "콤보박스", options: [{ CODE_TEXT: "1", CODE_ID: "1" }, { CODE_TEXT: "2", CODE_ID: "2" }] }, { type: "combo", id: "combo2", label: "콤보박스(서버사이드)", placeholder: "콤보박스", code_grp_id: "REQ_TYPE" }, { type: "textarea", id: "address", label: "집주소", placeholder: "집주소를 입력해주세요." }]
 	    }]
 	  }
 	};
@@ -27502,7 +27501,7 @@
 
 	var _NLayoutA2 = _interopRequireDefault(_NLayoutA);
 
-	var _NLayoutB = __webpack_require__(501);
+	var _NLayoutB = __webpack_require__(506);
 
 	var _NLayoutB2 = _interopRequireDefault(_NLayoutB);
 
@@ -27627,9 +27626,6 @@
 	          break;
 	        default:
 	      }
-
-	      console.info(firstComponent);
-	      console.info(secondComponent);
 
 	      return _react2.default.createElement(
 	        _reactBootstrap.Grid,
@@ -46574,7 +46570,6 @@
 	      if (this.props.topButtons) {
 	        var topButtons = this.props.topButtons;
 	        topComponent = topButtons.map(function (button) {
-	          console.info(button);
 	          if (button.visible) return _react2.default.createElement(
 	            _reactBootstrap.Button,
 	            { key: button.id, onClick: button.onClick },
@@ -46593,7 +46588,6 @@
 	      if (this.props.buttomButtons) {
 	        var buttomButtons = this.props.buttomButtons;
 	        bottomComponent = buttomButtons.map(function (button) {
-	          console.info(button);
 	          if (button.visible) return _react2.default.createElement(
 	            _reactBootstrap.Button,
 	            { key: button.id, onClick: button.onClick },
@@ -46639,13 +46633,29 @@
 
 	var _reactBootstrap = __webpack_require__(243);
 
-	var _NTextField = __webpack_require__(499);
+	var _NStaticText = __webpack_require__(499);
+
+	var _NStaticText2 = _interopRequireDefault(_NStaticText);
+
+	var _NTextField = __webpack_require__(500);
 
 	var _NTextField2 = _interopRequireDefault(_NTextField);
 
-	var _NTextArea = __webpack_require__(500);
+	var _NTextArea = __webpack_require__(501);
 
 	var _NTextArea2 = _interopRequireDefault(_NTextArea);
+
+	var _NComboBox = __webpack_require__(502);
+
+	var _NComboBox2 = _interopRequireDefault(_NComboBox);
+
+	var _NCheckBox = __webpack_require__(504);
+
+	var _NCheckBox2 = _interopRequireDefault(_NCheckBox);
+
+	var _NRadio = __webpack_require__(505);
+
+	var _NRadio2 = _interopRequireDefault(_NRadio);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -46698,6 +46708,18 @@
 	          case "textarea":
 	            component = _react2.default.createElement(_NTextArea2.default, { key: field.id, id: field.id, label: field.label, placeholder: field.placeholder, value: field.value });
 	            break;
+	          case "combo":
+	            component = _react2.default.createElement(_NComboBox2.default, { key: field.id, id: field.id, label: field.label, placeholder: field.placeholder, value: field.value, code_grp_id: field.code_grp_id, options: field.options });
+	            break;
+	          case "checkbox":
+	            component = _react2.default.createElement(_NCheckBox2.default, { key: field.id, id: field.id, label: field.label, code_grp_id: field.code_grp_id });
+	            break;
+	          case "radio":
+	            component = _react2.default.createElement(_NRadio2.default, { key: field.id, id: field.id, label: field.label, code_grp_id: field.code_grp_id });
+	            break;
+	          case "static":
+	            component = _react2.default.createElement(_NStaticText2.default, { key: field.id, id: field.id, label: field.label, value: field.value });
+	            break;
 	          default:
 	        }
 	        return component;
@@ -46724,6 +46746,77 @@
 
 /***/ },
 /* 499 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(243);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var NStaticText = function (_Component) {
+	  _inherits(NStaticText, _Component);
+
+	  function NStaticText() {
+	    _classCallCheck(this, NStaticText);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(NStaticText).apply(this, arguments));
+
+	    _this.state = {
+	      dataList: []
+	    };
+	    return _this;
+	  }
+
+	  _createClass(NStaticText, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        _reactBootstrap.FormGroup,
+	        { controlId: this.props.id },
+	        _react2.default.createElement(
+	          _reactBootstrap.ControlLabel,
+	          null,
+	          this.props.label
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.FormControl.Static,
+	          null,
+	          this.props.value
+	        )
+	      );
+	    }
+	  }]);
+
+	  return NStaticText;
+	}(_react.Component);
+
+	NStaticText.propTypes = {
+	  id: _react.PropTypes.string,
+	  label: _react.PropTypes.string,
+	  value: _react.PropTypes.string
+	};
+
+	exports.default = NStaticText;
+
+/***/ },
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46818,7 +46911,7 @@
 	exports.default = NTextField;
 
 /***/ },
-/* 500 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46908,7 +47001,419 @@
 	exports.default = NTextArea;
 
 /***/ },
-/* 501 */
+/* 502 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(243);
+
+	var _NConstraint = __webpack_require__(503);
+
+	var _NConstraint2 = _interopRequireDefault(_NConstraint);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var NComboBox = function (_Component) {
+	  _inherits(NComboBox, _Component);
+
+	  function NComboBox() {
+	    _classCallCheck(this, NComboBox);
+
+	    var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(NComboBox).apply(this, arguments));
+
+	    _this2.state = {
+	      value: "",
+	      options: []
+	    };
+	    return _this2;
+	  }
+
+	  // Compoent Render 이전 이벤트
+
+
+	  _createClass(NComboBox, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var _this = this;
+
+	      if (this.props.code_grp_id) {
+	        // 콤보박스 Data 요청
+	        $.ajax({
+	          type: "POST",
+	          url: _NConstraint2.default.SERVER + '/itg/base/searchCodeDataList.do',
+	          contentType: "application/json",
+	          dataType: "json",
+	          async: true,
+	          data: JSON.stringify(this.props),
+	          success: function success(data) {
+	            if (data.success) {
+	              _this.setState({ options: data.gridVO.rows });
+	            } else {
+	              showMessage(data.resultMsg);
+	            }
+	          }
+	        });
+	      }
+
+	      if (this.props.options) {
+	        this.setState({ options: this.props.options });
+	      }
+	    }
+
+	    // Value값 변경에 따른 이벤트 처리
+
+	  }, {
+	    key: 'handleChange',
+	    value: function handleChange(e) {
+	      this.setState({ value: e.target.value });
+	    }
+
+	    // Compoent Render 이후 이벤트
+
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      if (this.props.value) {
+	        this.setState({ value: this.props.value });
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var options = this.state.options;
+	      var renderOptions = options.map(function (option) {
+	        if (_NConstraint2.default.PRODUCT === "ITSM") {
+	          return _react2.default.createElement(
+	            'option',
+	            { key: option.CODE_ID, value: option.CODE_ID },
+	            option.CODE_TEXT
+	          );
+	        } else {
+	          //return (<option key={option[NConstraint.DEFAULT_OPTION_VALUE]} value={option[NConstraint.DEFAULT_OPTION_VALUE]}>{option[NConstraint.DEFAULT_OPTION_NAME]}</option>);
+	        }
+	      });
+
+	      return _react2.default.createElement(
+	        _reactBootstrap.FormGroup,
+	        { controlId: this.props.id },
+	        _react2.default.createElement(
+	          _reactBootstrap.ControlLabel,
+	          null,
+	          this.props.label
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.FormControl,
+	          { componentClass: 'select',
+	            value: this.state.value,
+	            placeholder: this.props.placeholder,
+	            onChange: this.handleChange.bind(this)
+	          },
+	          renderOptions
+	        )
+	      );
+	    }
+	  }]);
+
+	  return NComboBox;
+	}(_react.Component);
+
+	NComboBox.propTypes = {
+	  id: _react.PropTypes.string,
+	  label: _react.PropTypes.string,
+	  placeholder: _react.PropTypes.string
+	};
+
+	exports.default = NComboBox;
+
+/***/ },
+/* 503 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var NConstraint = function () {
+	  function NConstraint() {
+	    _classCallCheck(this, NConstraint);
+	  }
+
+	  _createClass(NConstraint, null, [{
+	    key: "SERVER",
+	    get: function get() {
+	      return "http://localhost:8090";
+	    }
+	  }, {
+	    key: "PRODUCT",
+	    get: function get() {
+	      return "ITSM";
+	    }
+	  }, {
+	    key: "DEFAULT_OPTION_NAME",
+	    get: function get() {
+	      return "name";
+	    }
+	  }, {
+	    key: "DEFAULT_OPTION_VALUE",
+	    get: function get() {
+	      return "value";
+	    }
+	  }]);
+
+	  return NConstraint;
+	}();
+
+	exports.default = NConstraint;
+
+/***/ },
+/* 504 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(243);
+
+	var _NConstraint = __webpack_require__(503);
+
+	var _NConstraint2 = _interopRequireDefault(_NConstraint);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var NCheckBox = function (_Component) {
+	  _inherits(NCheckBox, _Component);
+
+	  function NCheckBox() {
+	    _classCallCheck(this, NCheckBox);
+
+	    var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(NCheckBox).apply(this, arguments));
+
+	    _this2.state = {
+	      dataList: []
+	    };
+	    return _this2;
+	  }
+
+	  // Compoent Render 이전 이벤트
+
+
+	  _createClass(NCheckBox, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var _this = this;
+
+	      if (this.props.code_grp_id) {
+	        // 공통코드 Data 요청
+	        $.ajax({
+	          type: "POST",
+	          url: _NConstraint2.default.SERVER + '/itg/base/searchCodeDataList.do',
+	          contentType: "application/json",
+	          dataType: "json",
+	          async: true,
+	          data: JSON.stringify(this.props),
+	          success: function success(data) {
+	            if (data.success) {
+	              _this.setState({ dataList: data.gridVO.rows });
+	            } else {
+	              showMessage(data.resultMsg);
+	            }
+	          }
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this3 = this;
+
+	      var dataList = this.state.dataList;
+	      var renderCheckBox = dataList.map(function (data) {
+	        if (_NConstraint2.default.PRODUCT === "ITSM") {
+	          return _react2.default.createElement(
+	            _reactBootstrap.Checkbox,
+	            { name: _this3.props.id, key: data.CODE_ID, value: data.CODE_ID },
+	            data.CODE_TEXT
+	          );
+	        } else {
+	          //return (<option key={option[NConstraint.DEFAULT_OPTION_VALUE]} value={option[NConstraint.DEFAULT_OPTION_VALUE]}>{option[NConstraint.DEFAULT_OPTION_NAME]}</option>);
+	        }
+	      });
+
+	      return _react2.default.createElement(
+	        _reactBootstrap.FormGroup,
+	        { controlId: this.props.id },
+	        _react2.default.createElement(
+	          _reactBootstrap.ControlLabel,
+	          null,
+	          this.props.label
+	        ),
+	        renderCheckBox
+	      );
+	    }
+	  }]);
+
+	  return NCheckBox;
+	}(_react.Component);
+
+	NCheckBox.propTypes = {
+	  id: _react.PropTypes.string,
+	  label: _react.PropTypes.string
+	};
+
+	exports.default = NCheckBox;
+
+/***/ },
+/* 505 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(243);
+
+	var _NConstraint = __webpack_require__(503);
+
+	var _NConstraint2 = _interopRequireDefault(_NConstraint);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var NRadio = function (_Component) {
+	  _inherits(NRadio, _Component);
+
+	  function NRadio() {
+	    _classCallCheck(this, NRadio);
+
+	    var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(NRadio).apply(this, arguments));
+
+	    _this2.state = {
+	      dataList: []
+	    };
+	    return _this2;
+	  }
+
+	  // Compoent Render 이전 이벤트
+
+
+	  _createClass(NRadio, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var _this = this;
+
+	      if (this.props.code_grp_id) {
+	        // 콤보박스 Data 요청
+	        $.ajax({
+	          type: "POST",
+	          url: _NConstraint2.default.SERVER + '/itg/base/searchCodeDataList.do',
+	          contentType: "application/json",
+	          dataType: "json",
+	          async: true,
+	          data: JSON.stringify(this.props),
+	          success: function success(data) {
+	            if (data.success) {
+	              _this.setState({ dataList: data.gridVO.rows });
+	            } else {
+	              showMessage(data.resultMsg);
+	            }
+	          }
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this3 = this;
+
+	      var dataList = this.state.dataList;
+	      var renderRadio = dataList.map(function (data) {
+	        if (_NConstraint2.default.PRODUCT === "ITSM") {
+	          return _react2.default.createElement(
+	            _reactBootstrap.Radio,
+	            { name: _this3.props.id, key: data.CODE_ID, value: data.CODE_ID },
+	            data.CODE_TEXT
+	          );
+	        } else {
+	          //return (<option key={option[NConstraint.DEFAULT_OPTION_VALUE]} value={option[NConstraint.DEFAULT_OPTION_VALUE]}>{option[NConstraint.DEFAULT_OPTION_NAME]}</option>);
+	        }
+	      });
+
+	      return _react2.default.createElement(
+	        _reactBootstrap.FormGroup,
+	        { controlId: this.props.id },
+	        _react2.default.createElement(
+	          _reactBootstrap.ControlLabel,
+	          null,
+	          this.props.label
+	        ),
+	        renderRadio
+	      );
+	    }
+	  }]);
+
+	  return NRadio;
+	}(_react.Component);
+
+	NRadio.propTypes = {
+	  id: _react.PropTypes.string,
+	  label: _react.PropTypes.string
+	};
+
+	exports.default = NRadio;
+
+/***/ },
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47016,7 +47521,7 @@
 	exports.default = NLayoutB;
 
 /***/ },
-/* 502 */
+/* 507 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -47040,15 +47545,13 @@
 	  _createClass(NControls, null, [{
 	    key: "convertButton",
 	    value: function convertButton(target, buttons, hideButtons) {
-	      console.info("버튼매퍼");
-
 	      var _this = target;
 	      buttons.some(function (button) {
 	        if (button.onClickEvent) {
 	          button.onClick = _this[button.onClickEvent].bind(_this);
 	          button.visible = true;
 	        }
-
+	        // Hide Button 제어
 	        if (hideButtons != null) {
 	          hideButtons.some(function (hidButton) {
 	            if (button.id == hidButton) {
@@ -47066,7 +47569,7 @@
 	exports.default = NControls;
 
 /***/ },
-/* 503 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

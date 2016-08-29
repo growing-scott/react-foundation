@@ -39,9 +39,6 @@ class NLayoutA extends Component{
       default:
     }
 
-    console.info(firstComponent);
-    console.info(secondComponent);
-
     return(
       <Grid>
           <Row className="show-grid">

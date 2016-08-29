@@ -1,8 +1,12 @@
 import React, {Component, PropTypes} from 'react';
 import {Form, FormGroup, FormControl, ControlLabel, HelpBlock} from 'react-bootstrap';
 
+import NStaticText from './NStaticText';
 import NTextField from './NTextField';
 import NTextArea from './NTextArea';
+import NComboBox from './NComboBox';
+import NCheckBox from './NCheckBox';
+import NRadio from './NRadio';
 
 class NFieldSet extends Component{
   constructor() {
@@ -35,6 +39,18 @@ class NFieldSet extends Component{
         case "textarea":
           component = (<NTextArea key={field.id} id={field.id} label={field.label} placeholder={field.placeholder} value={field.value} />);
           break;
+        case "combo":
+            component = (<NComboBox key={field.id} id={field.id} label={field.label} placeholder={field.placeholder} value={field.value} code_grp_id={field.code_grp_id} options={field.options} />);
+            break;
+        case "checkbox":
+            component = (<NCheckBox key={field.id} id={field.id} label={field.label} code_grp_id={field.code_grp_id} />);
+            break;
+        case "radio":
+            component = (<NRadio key={field.id} id={field.id} label={field.label} code_grp_id={field.code_grp_id} />);
+            break;
+        case "static":
+            component = (<NStaticText key={field.id} id={field.id} label={field.label} value={field.value} />);
+            break;
         default:
       }
       return component;

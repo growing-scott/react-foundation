@@ -27,7 +27,6 @@ class NForm extends Component{
       let topButtons = this.props.topButtons;
       topComponent = (topButtons.map(
         (button) => {
-          console.info(button);
           if(button.visible)
             return <Button key={button.id} onClick={button.onClick}>{button.label}</Button>
         }
@@ -45,7 +44,6 @@ class NForm extends Component{
       let buttomButtons = this.props.buttomButtons;
       bottomComponent = (buttomButtons.map(
         (button) => {
-          console.info(button);
           if(button.visible)
             return <Button key={button.id} onClick={button.onClick}>{button.label}</Button>
         }

@@ -27,7 +27,6 @@ class LayoutAExample extends Component{
   }
 
   handleNewBtn(){
-    console.info(this);
     alert("신규등록");
 
     // 또는 Ref로 접근하여 처리해도 될 듯 합니다.
@@ -113,8 +112,11 @@ LayoutAExample.defaultProps = {
           { type: "text", id: "user_nm", label: "사용자명", placeholder: "사용자명을 입력해주세요."},
           { type: "text", id: "position", label: "직위", placeholder: "직위를 입력해주세요."},
           { type: "text", id: "pass_wd", label: "패스워드1", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd1", label: "패스워드2", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd2", label: "패스워드3", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
+          { type: "static", id: "pass_wd1", label: "패스워드 힌트(스태틱 Text)", value: "패스워드 힌트는 nkia"},
+          { type: "checkbox", id: "checkbox1", label: "체크박스(서버사이드)", code_grp_id: "REQ_TYPE"},
+          { type: "radio", id: "radio1", label: "라디오버튼(서버사이드)", code_grp_id: "REQ_TYPE"},
+          { type: "combo", id: "combo1", label: "콤보박스(사용자 정의 데이터)", placeholder: "콤보박스", options:[{ CODE_TEXT: "1", CODE_ID: "1"},{ CODE_TEXT: "2", CODE_ID: "2"}]},
+          { type: "combo", id: "combo2", label: "콤보박스(서버사이드)", placeholder: "콤보박스", code_grp_id: "REQ_TYPE"},
           { type: "textarea", id: "address", label: "집주소", placeholder: "집주소를 입력해주세요."}
         ]
       }
