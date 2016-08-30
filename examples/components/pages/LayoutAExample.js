@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 
 import NLayoutSet from '../layout/NLayoutSet';
 
+import NConstraint from '../constraints/NConstraint';
 import NControls from '../utils/NControls';
 
 class LayoutAExample extends Component{
@@ -12,6 +13,7 @@ class LayoutAExample extends Component{
 			updateLayout: false
     }
     //this.handleNewBtn = handleNewBtn.bind(this)
+
   }
 
   // Compoent Render 이전 이벤트
@@ -48,6 +50,7 @@ class LayoutAExample extends Component{
   }
 
   render(){
+    console.info(this);
     return (
       <div>
         <NLayoutSet layout={this.props.layout} first={this.props.grid} second={this.props.form} />
@@ -109,8 +112,8 @@ LayoutAExample.defaultProps = {
         id: "editor_fields",
         columns: 3,
         fieldList: [
-          { type: "text", id: "user_nm", label: "사용자명", placeholder: "사용자명을 입력해주세요."},
-          { type: "text", id: "position", label: "직위", placeholder: "직위를 입력해주세요."},
+          { type: "text", id: "user_nm", label: NConstraint.MESSAGE('res.label.system.00015'), placeholder: "사용자명을 입력해주세요."},
+          { type: "text", id: "position", label: NConstraint.MESSAGE('res.label.system.00016'), placeholder: "직위를 입력해주세요."},
           { type: "text", id: "pass_wd", label: "패스워드1", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
           { type: "static", id: "pass_wd1", label: "패스워드 힌트(스태틱 Text)", value: "패스워드 힌트는 nkia"},
           { type: "checkbox", id: "checkbox1", label: "체크박스(서버사이드)", code_grp_id: "REQ_TYPE"},

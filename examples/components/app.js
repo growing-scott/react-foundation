@@ -8,6 +8,8 @@ import Abort from './pages/Abort';
 import LayoutAExample from './pages/LayoutAExample';
 import LayoutBExample from './pages/LayoutBExample';
 
+import NConstraint from './constraints/NConstraint';
+
 class App extends Component{
   constructor(){
     super(...arguments);
@@ -20,7 +22,8 @@ class App extends Component{
         <menu>
           <li><Link to="/layoutA">Layout A</Link></li>
           <li><Link to="/layoutB">Layout B</Link></li>
-          <li><Link to="/abort">Abort</Link></li>
+          <li><Link to="/layoutB">{NConstraint.MESSAGE('btn.common.apply')}</Link></li>
+          <li><Link to="/abort">{NConstraint.MESSAGE('Test')}</Link></li>
         </menu>
         {this.props.children}
       </div>

@@ -74,6 +74,10 @@
 
 	var _LayoutBExample2 = _interopRequireDefault(_LayoutBExample);
 
+	var _NConstraint = __webpack_require__(503);
+
+	var _NConstraint2 = _interopRequireDefault(_NConstraint);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -128,8 +132,17 @@
 	            null,
 	            _react2.default.createElement(
 	              _reactRouter.Link,
+	              { to: '/layoutB' },
+	              _NConstraint2.default.MESSAGE('btn.common.apply')
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
 	              { to: '/abort' },
-	              'Abort'
+	              _NConstraint2.default.MESSAGE('Test')
 	            )
 	          )
 	        ),
@@ -27345,6 +27358,10 @@
 
 	var _NLayoutSet2 = _interopRequireDefault(_NLayoutSet);
 
+	var _NConstraint = __webpack_require__(503);
+
+	var _NConstraint2 = _interopRequireDefault(_NConstraint);
+
 	var _NControls = __webpack_require__(507);
 
 	var _NControls2 = _interopRequireDefault(_NControls);
@@ -27369,6 +27386,7 @@
 	      updateLayout: false
 	    };
 	    //this.handleNewBtn = handleNewBtn.bind(this)
+
 	    return _this;
 	  }
 
@@ -27418,6 +27436,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.info(this);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -27474,7 +27493,7 @@
 	    fieldSet: [{
 	      id: "editor_fields",
 	      columns: 3,
-	      fieldList: [{ type: "text", id: "user_nm", label: "사용자명", placeholder: "사용자명을 입력해주세요." }, { type: "text", id: "position", label: "직위", placeholder: "직위를 입력해주세요." }, { type: "text", id: "pass_wd", label: "패스워드1", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "static", id: "pass_wd1", label: "패스워드 힌트(스태틱 Text)", value: "패스워드 힌트는 nkia" }, { type: "checkbox", id: "checkbox1", label: "체크박스(서버사이드)", code_grp_id: "REQ_TYPE" }, { type: "radio", id: "radio1", label: "라디오버튼(서버사이드)", code_grp_id: "REQ_TYPE" }, { type: "combo", id: "combo1", label: "콤보박스(사용자 정의 데이터)", placeholder: "콤보박스", options: [{ CODE_TEXT: "1", CODE_ID: "1" }, { CODE_TEXT: "2", CODE_ID: "2" }] }, { type: "combo", id: "combo2", label: "콤보박스(서버사이드)", placeholder: "콤보박스", code_grp_id: "REQ_TYPE" }, { type: "textarea", id: "address", label: "집주소", placeholder: "집주소를 입력해주세요." }]
+	      fieldList: [{ type: "text", id: "user_nm", label: _NConstraint2.default.MESSAGE('res.label.system.00015'), placeholder: "사용자명을 입력해주세요." }, { type: "text", id: "position", label: _NConstraint2.default.MESSAGE('res.label.system.00016'), placeholder: "직위를 입력해주세요." }, { type: "text", id: "pass_wd", label: "패스워드1", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "static", id: "pass_wd1", label: "패스워드 힌트(스태틱 Text)", value: "패스워드 힌트는 nkia" }, { type: "checkbox", id: "checkbox1", label: "체크박스(서버사이드)", code_grp_id: "REQ_TYPE" }, { type: "radio", id: "radio1", label: "라디오버튼(서버사이드)", code_grp_id: "REQ_TYPE" }, { type: "combo", id: "combo1", label: "콤보박스(사용자 정의 데이터)", placeholder: "콤보박스", options: [{ CODE_TEXT: "1", CODE_ID: "1" }, { CODE_TEXT: "2", CODE_ID: "2" }] }, { type: "combo", id: "combo2", label: "콤보박스(서버사이드)", placeholder: "콤보박스", code_grp_id: "REQ_TYPE" }, { type: "textarea", id: "address", label: "집주소", placeholder: "집주소를 입력해주세요." }]
 	    }]
 	  }
 	};
@@ -47162,6 +47181,37 @@
 	  }
 
 	  _createClass(NConstraint, null, [{
+	    key: "MESSAGE",
+	    value: function MESSAGE(key, args0, args1) {
+	      var message = void 0;
+	      if (localStorage[key] && typeof args0 == "undefined") {
+	        return localStorage[key];
+	      } else {
+	        var msgProp = {
+	          m_key: key
+	        };
+	        $.ajax({ type: "POST",
+	          url: NConstraint.SERVER + "/itg/base/getMessage.do",
+	          contentType: "application/json",
+	          dataType: "json",
+	          async: false,
+	          data: JSON.stringify(msgProp),
+	          success: function success(data) {
+	            message = data['returnMessage'];
+	            if (message != null && message != "") {
+	              if (message.indexOf("\\n") > -1) {
+	                message = message.split("\\n").join("\n");
+	              }
+	            }
+	            if (typeof args0 == "undefined") {
+	              localStorage[key] = message;
+	            }
+	          }
+	        });
+	      }
+	      return message;
+	    }
+	  }, {
 	    key: "SERVER",
 	    get: function get() {
 	      return "http://localhost:8090";
