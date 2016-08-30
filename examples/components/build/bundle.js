@@ -46563,7 +46563,6 @@
 	    _this2.state = {
 	      columns: []
 	    };
-	    _this2.onSelectRow = _this2.onSelectRow.bind(_this2);
 	    return _this2;
 	  }
 
@@ -46616,15 +46615,10 @@
 	      }
 	    }
 	  }, {
-	    key: 'onSelectRow',
-	    value: function onSelectRow(event) {
-	      alert("xx");
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      console.info(this.props.grid);
-	      return _react2.default.createElement(Puf.Grid, { url: this.props.grid.url, method: 'POST', columns: this.state.columns, onSelectRow: this.onSelectRow,
+	      return _react2.default.createElement(Puf.Grid, { url: this.props.grid.url, method: 'POST', columns: this.state.columns, onSelectRow: this.props.grid.onSelectRow,
 	        params: this.props.grid.params, pageable: this.props.grid.paging, filterable: true, listField: null });
 	    }
 	  }]);

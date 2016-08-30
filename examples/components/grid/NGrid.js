@@ -9,7 +9,6 @@ class NGrid extends Component{
     this.state = {
 			columns: []
     }
-    this.onSelectRow = this.onSelectRow.bind(this);
   }
 
   // Compoent Render 이전 이벤트
@@ -52,14 +51,10 @@ class NGrid extends Component{
     }
   }
 
-  onSelectRow(event){
-    alert("xx")
-  }
-
   render() {
     console.info(this.props.grid)
     return (
-      <Puf.Grid url={this.props.grid.url} method="POST" columns={this.state.columns} onSelectRow={this.onSelectRow}
+      <Puf.Grid url={this.props.grid.url} method="POST" columns={this.state.columns} onSelectRow={this.props.grid.onSelectRow}
         params={this.props.grid.params} pageable={this.props.grid.paging} filterable={true} listField={null} />
     );
   }
