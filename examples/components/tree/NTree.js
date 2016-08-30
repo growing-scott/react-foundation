@@ -6,7 +6,6 @@ import NConstraint from '../constraints/NConstraint';
 class NTree extends Component{
   constructor(){
     super(...arguments);
-
   }
 
   // Compoent Render 이전 이벤트
@@ -16,7 +15,7 @@ class NTree extends Component{
 
   render() {
     return (
-      <Puf.TreeView className="treeview-line" url={this.props.tree.url} method="POST" params={this.props.tree.params} onSelect={this.props.onSelect} />
+      <Puf.TreeView className="treeview-line" url={this.props.tree.url} method="POST" params={this.props.tree.params} onSelect={this.props.tree.onSelect} />
     );
   }
 }

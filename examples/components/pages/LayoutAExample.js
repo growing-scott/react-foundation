@@ -23,17 +23,20 @@ class LayoutAExample extends Component{
 
   // Event Handler Mapping
   eventHandler(){
-    // 버튼 Convert
-    NControls.convertButton(this, this.props.form.topButtons, null);
-    NControls.convertButton(this, this.props.form.buttomButtons, ["save_btn", "cancel_btn"]);
+    // 버튼 Event bind
+    NControls.bindButton(this, this.props.form.topButtons, null);
+    NControls.bindButton(this, this.props.form.buttomButtons, ["save_btn", "cancel_btn"]);
+
+    // Grid Event bind
+    NControls.bindEvent(this, this.props.grid, this.props.grid.onSelectRowEvent, "onSelectRow")
   }
 
   handleNewBtn(){
     alert("신규등록");
 
     // 또는 Ref로 접근하여 처리해도 될 듯 합니다.
-    NControls.convertButton(this, this.props.form.topButtons, ["new_btn"]);
-    NControls.convertButton(this, this.props.form.buttomButtons, null);
+    NControls.bindButton(this, this.props.form.topButtons, ["new_btn"]);
+    NControls.bindButton(this, this.props.form.buttomButtons, null);
     this.setState({ updateLayout: true });
   }
 
@@ -47,6 +50,10 @@ class LayoutAExample extends Component{
 
   handleCancelBtn(){
     alert("취소");
+  }
+
+  onSelectRowGrid(){
+    alert("Grid 선택")
   }
 
   render(){
@@ -71,6 +78,7 @@ LayoutAExample.defaultProps = {
   },
   grid: {
     type: "grid",
+    id: "deptGrid",
     url: NConstraint.SERVER + "/itg/system/dept/searchDeptOrderList.do",
     // Resource 또는 Columns 정의
     // Resource 로 설정한 경우에는 서버사이드로 요청해서 Resource를 받아온다.
@@ -82,7 +90,8 @@ LayoutAExample.defaultProps = {
       page: 1,
       limit: 20,
       up_cust_id: "1000000"
-    }
+    },
+    onSelectRowEvent: "onSelectRowGrid"
   },
   form: {
     type: "form",

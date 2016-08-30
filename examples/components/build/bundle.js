@@ -27410,9 +27410,12 @@
 	  }, {
 	    key: 'eventHandler',
 	    value: function eventHandler() {
-	      // 버튼 Convert
-	      _NControls2.default.convertButton(this, this.props.form.topButtons, null);
-	      _NControls2.default.convertButton(this, this.props.form.buttomButtons, ["save_btn", "cancel_btn"]);
+	      // 버튼 Event bind
+	      _NControls2.default.bindButton(this, this.props.form.topButtons, null);
+	      _NControls2.default.bindButton(this, this.props.form.buttomButtons, ["save_btn", "cancel_btn"]);
+
+	      // Grid Event bind
+	      _NControls2.default.bindEvent(this, this.props.grid, this.props.grid.onSelectRowEvent, "onSelectRow");
 	    }
 	  }, {
 	    key: 'handleNewBtn',
@@ -27420,8 +27423,8 @@
 	      alert("신규등록");
 
 	      // 또는 Ref로 접근하여 처리해도 될 듯 합니다.
-	      _NControls2.default.convertButton(this, this.props.form.topButtons, ["new_btn"]);
-	      _NControls2.default.convertButton(this, this.props.form.buttomButtons, null);
+	      _NControls2.default.bindButton(this, this.props.form.topButtons, ["new_btn"]);
+	      _NControls2.default.bindButton(this, this.props.form.buttomButtons, null);
 	      this.setState({ updateLayout: true });
 	    }
 	  }, {
@@ -27438,6 +27441,11 @@
 	    key: 'handleCancelBtn',
 	    value: function handleCancelBtn() {
 	      alert("취소");
+	    }
+	  }, {
+	    key: 'onSelectRowGrid',
+	    value: function onSelectRowGrid() {
+	      alert("Grid 선택");
 	    }
 	  }, {
 	    key: 'render',
@@ -27466,6 +27474,7 @@
 	  },
 	  grid: {
 	    type: "grid",
+	    id: "deptGrid",
 	    url: _NConstraint2.default.SERVER + "/itg/system/dept/searchDeptOrderList.do",
 	    // Resource 또는 Columns 정의
 	    // Resource 로 설정한 경우에는 서버사이드로 요청해서 Resource를 받아온다.
@@ -27477,7 +27486,8 @@
 	      page: 1,
 	      limit: 20,
 	      up_cust_id: "1000000"
-	    }
+	    },
+	    onSelectRowEvent: "onSelectRowGrid"
 	  },
 	  form: {
 	    type: "form",
@@ -46553,6 +46563,7 @@
 	    _this2.state = {
 	      columns: []
 	    };
+	    _this2.onSelectRow = _this2.onSelectRow.bind(_this2);
 	    return _this2;
 	  }
 
@@ -46605,8 +46616,14 @@
 	      }
 	    }
 	  }, {
+	    key: 'onSelectRow',
+	    value: function onSelectRow(event) {
+	      alert("xx");
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.info(this.props.grid);
 	      return _react2.default.createElement(Puf.Grid, { url: this.props.grid.url, method: 'POST', columns: this.state.columns, onSelectRow: this.onSelectRow,
 	        params: this.props.grid.params, pageable: this.props.grid.paging, filterable: true, listField: null });
 	    }
@@ -47888,7 +47905,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(Puf.TreeView, { className: 'treeview-line', url: this.props.tree.url, method: 'POST', params: this.props.tree.params, onSelect: this.props.onSelect });
+	      return _react2.default.createElement(Puf.TreeView, { className: 'treeview-line', url: this.props.tree.url, method: 'POST', params: this.props.tree.params, onSelect: this.props.tree.onSelect });
 	    }
 	  }]);
 
@@ -47920,8 +47937,8 @@
 
 
 	  _createClass(NControls, null, [{
-	    key: "convertButton",
-	    value: function convertButton(target, buttons, hideButtons) {
+	    key: "bindButton",
+	    value: function bindButton(target, buttons, hideButtons) {
 	      var _this = target;
 	      buttons.some(function (button) {
 	        if (button.onClickEvent) {
@@ -47937,6 +47954,13 @@
 	          });
 	        }
 	      });
+	    }
+	  }, {
+	    key: "bindEvent",
+	    value: function bindEvent(target, prop, funcName, eventName) {
+	      var _this = target;
+	      prop[eventName] = _this[funcName].bind(_this);
+	      console.info(prop);
 	    }
 	  }]);
 
@@ -48110,6 +48134,10 @@
 
 	var _NConstraint2 = _interopRequireDefault(_NConstraint);
 
+	var _NControls = __webpack_require__(509);
+
+	var _NControls2 = _interopRequireDefault(_NControls);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -48128,7 +48156,28 @@
 	    //this.handleNewBtn = this.handleNewBtn.bind(this);
 	  }
 
+	  // Compoent Render 이전 이벤트
+
+
 	  _createClass(LayoutCExample, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.eventHandler();
+	    }
+
+	    // Event Handler Mapping
+
+	  }, {
+	    key: 'eventHandler',
+	    value: function eventHandler() {
+	      _NControls2.default.bindEvent(this, this.props.tree, this.props.tree.onSelectEvent, "onSelect");
+	    }
+	  }, {
+	    key: 'onSelectTree',
+	    value: function onSelectTree() {
+	      alert("Tree 선택");
+	    }
+	  }, {
 	    key: 'handleNewBtn',
 	    value: function handleNewBtn() {
 	      console.info(this);
@@ -48168,7 +48217,8 @@
 	  tree: {
 	    type: "tree",
 	    url: _NConstraint2.default.SERVER + "/itg/system/dept/searchStaticAllDeptTree.do",
-	    params: { is_all_tree: "Y", expandLevel: 2, up_node_id: "root" }
+	    params: { is_all_tree: "Y", expandLevel: 2, up_node_id: "root" },
+	    onSelectEvent: "onSelectTree"
 	  },
 	  grid: {
 	    type: "grid",

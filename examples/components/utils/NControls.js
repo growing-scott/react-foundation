@@ -2,7 +2,7 @@ class NControls{
   constructor() {}
 
   // Target(this), buttons[Array], hideButtons[Array]
-  static convertButton(target, buttons, hideButtons) {
+  static bindButton(target, buttons, hideButtons) {
     let _this = target;
     buttons.some(function(button) {
       if(button.onClickEvent){
@@ -18,6 +18,12 @@ class NControls{
         });
       }
     });
+  }
+
+  static bindEvent(target, prop, funcName, eventName){
+    let _this = target;
+    prop[eventName] = _this[funcName].bind(_this);
+    console.info(prop);
   }
 }
 export default NControls;

@@ -4,11 +4,26 @@ import ReactDom from 'react-dom';
 import NLayoutSet from '../layout/NLayoutSet';
 
 import NConstraint from '../constraints/NConstraint';
+import NControls from '../utils/NControls';
 
 class LayoutCExample extends Component{
   constructor(){
     super(...arguments);
     //this.handleNewBtn = this.handleNewBtn.bind(this);
+  }
+
+  // Compoent Render 이전 이벤트
+  componentWillMount() {
+    this.eventHandler();
+  }
+
+  // Event Handler Mapping
+  eventHandler(){
+    NControls.bindEvent(this, this.props.tree, this.props.tree.onSelectEvent, "onSelect")
+  }
+
+  onSelectTree(){
+    alert("Tree 선택")
   }
 
   handleNewBtn(){
@@ -44,7 +59,8 @@ LayoutCExample.defaultProps = {
   tree: {
     type: "tree",
     url: NConstraint.SERVER + "/itg/system/dept/searchStaticAllDeptTree.do",
-    params: {is_all_tree : "Y", expandLevel: 2, up_node_id: "root"}
+    params: {is_all_tree : "Y", expandLevel: 2, up_node_id: "root"},
+    onSelectEvent: "onSelectTree"
   },
   grid: {
     type: "grid",
