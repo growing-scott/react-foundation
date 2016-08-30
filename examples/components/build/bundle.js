@@ -70,9 +70,13 @@
 
 	var _LayoutAExample2 = _interopRequireDefault(_LayoutAExample);
 
-	var _LayoutBExample = __webpack_require__(508);
+	var _LayoutBExample = __webpack_require__(510);
 
 	var _LayoutBExample2 = _interopRequireDefault(_LayoutBExample);
+
+	var _LayoutCExample = __webpack_require__(511);
+
+	var _LayoutCExample2 = _interopRequireDefault(_LayoutCExample);
 
 	var _NConstraint = __webpack_require__(497);
 
@@ -132,6 +136,15 @@
 	            null,
 	            _react2.default.createElement(
 	              _reactRouter.Link,
+	              { to: '/layoutC' },
+	              'Layout C'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
 	              { to: '/abort' },
 	              '메시지(리소스): ',
 	              _NConstraint2.default.MESSAGE('Test')
@@ -159,6 +172,7 @@
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '/layoutA', component: _LayoutAExample2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '/layoutB', component: _LayoutBExample2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/layoutC', component: _LayoutCExample2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '/abort', component: _Abort2.default })
 	  )
 	), document.getElementById('app'));
@@ -27354,7 +27368,7 @@
 
 	var _NConstraint2 = _interopRequireDefault(_NConstraint);
 
-	var _NControls = __webpack_require__(507);
+	var _NControls = __webpack_require__(509);
 
 	var _NControls2 = _interopRequireDefault(_NControls);
 
@@ -27525,6 +27539,10 @@
 
 	var _NLayoutB2 = _interopRequireDefault(_NLayoutB);
 
+	var _NLayoutC = __webpack_require__(507);
+
+	var _NLayoutC2 = _interopRequireDefault(_NLayoutC);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27553,6 +27571,9 @@
 	          break;
 	        case "B":
 	          component = _react2.default.createElement(_NLayoutB2.default, { firstArea: this.props.first, secondArea: this.props.second });
+	          break;
+	        case "C":
+	          component = _react2.default.createElement(_NLayoutC2.default, { firstArea: this.props.first, secondArea: this.props.second, thirdArea: this.props.third });
 	          break;
 	        default:
 	      }
@@ -27604,6 +27625,10 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/**
+	 * Layout A
+	 * 좌측|우측 2개의 Layer로 구성된 Layout 구조
+	 */
 	var NLayoutA = function (_Component) {
 	  _inherits(NLayoutA, _Component);
 
@@ -27655,11 +27680,21 @@
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
 	            { xs: 4, md: 4 },
+	            _react2.default.createElement(
+	              'h1',
+	              null,
+	              '1영역'
+	            ),
 	            firstComponent
 	          ),
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
 	            { xs: 8, md: 8 },
+	            _react2.default.createElement(
+	              'h1',
+	              null,
+	              '2영역'
+	            ),
 	            secondComponent
 	          )
 	        )
@@ -47550,6 +47585,10 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/**
+	 * Layout B
+	 * 상부|하부 2개의 Layer로 구성된 Layout 구조
+	 */
 	var NLayoutB = function (_Component) {
 	  _inherits(NLayoutB, _Component);
 
@@ -47601,6 +47640,11 @@
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
 	            { xs: 12, md: 12 },
+	            _react2.default.createElement(
+	              'h1',
+	              null,
+	              '1영역'
+	            ),
 	            firstComponent
 	          )
 	        ),
@@ -47610,6 +47654,11 @@
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
 	            { xs: 12, md: 12 },
+	            _react2.default.createElement(
+	              'h1',
+	              null,
+	              '2영역'
+	            ),
 	            secondComponent
 	          )
 	        )
@@ -47626,6 +47675,230 @@
 
 /***/ },
 /* 507 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(243);
+
+	var _NGrid = __webpack_require__(496);
+
+	var _NGrid2 = _interopRequireDefault(_NGrid);
+
+	var _NTree = __webpack_require__(508);
+
+	var _NTree2 = _interopRequireDefault(_NTree);
+
+	var _NForm = __webpack_require__(498);
+
+	var _NForm2 = _interopRequireDefault(_NForm);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/**
+	 * Layout C
+	 * 좌측|우측(상부|하부) 3개의 Layer로 구성된 Layout 구조
+	 */
+	var NLayoutC = function (_Component) {
+	  _inherits(NLayoutC, _Component);
+
+	  function NLayoutC() {
+	    _classCallCheck(this, NLayoutC);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(NLayoutC).apply(this, arguments));
+	  }
+
+	  // Compoent Render 이후 이벤트
+
+
+	  _createClass(NLayoutC, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var first = this.props.firstArea;
+	      var firstComponent = void 0;
+	      switch (first.type) {
+	        case "tree":
+	          firstComponent = _react2.default.createElement(_NTree2.default, { tree: first });
+	          break;
+	        case "grid":
+	          firstComponent = _react2.default.createElement(_NGrid2.default, { grid: first });
+	          break;
+	        case "form":
+	          firstComponent = _react2.default.createElement(_NForm2.default, { name: first.name, fieldSets: first.fieldSet, topButtons: first.topButtons, buttomButtons: first.buttomButtons });
+	          break;
+	        default:
+	      }
+
+	      var second = this.props.secondArea;
+	      var secondComponent = void 0;
+	      switch (second.type) {
+	        case "tree":
+	          secondComponent = _react2.default.createElement(_NTree2.default, { tree: second });
+	          break;
+	        case "grid":
+	          secondComponent = _react2.default.createElement(_NGrid2.default, { grid: second });
+	          break;
+	        case "form":
+	          secondComponent = _react2.default.createElement(_NForm2.default, { name: second.name, fieldSets: second.fieldSet, topButtons: second.topButtons, buttomButtons: second.buttomButtons });
+	          break;
+	        default:
+	      }
+
+	      var third = this.props.thirdArea;
+	      var thirdComponent = void 0;
+	      switch (third.type) {
+	        case "tree":
+	          thirdComponent = _react2.default.createElement(_NTree2.default, { tree: third });
+	          break;
+	        case "grid":
+	          thirdComponent = _react2.default.createElement(_NGrid2.default, { grid: third });
+	          break;
+	        case "form":
+	          thirdComponent = _react2.default.createElement(_NForm2.default, { name: third.name, fieldSets: third.fieldSet, topButtons: third.topButtons, buttomButtons: third.buttomButtons });
+	          break;
+	        default:
+	      }
+
+	      return _react2.default.createElement(
+	        _reactBootstrap.Grid,
+	        null,
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          { className: 'show-grid' },
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { xs: 4, md: 4 },
+	            _react2.default.createElement(
+	              'h1',
+	              null,
+	              '1영역'
+	            ),
+	            firstComponent
+	          ),
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { xs: 8, md: 8 },
+	            _react2.default.createElement(
+	              _reactBootstrap.Row,
+	              { className: 'show-grid' },
+	              _react2.default.createElement(
+	                _reactBootstrap.Col,
+	                { xs: 12, md: 12 },
+	                _react2.default.createElement(
+	                  'h1',
+	                  null,
+	                  '2영역'
+	                ),
+	                secondComponent
+	              )
+	            ),
+	            _react2.default.createElement(
+	              _reactBootstrap.Row,
+	              { className: 'show-grid' },
+	              _react2.default.createElement(
+	                _reactBootstrap.Col,
+	                { xs: 12, md: 12 },
+	                _react2.default.createElement(
+	                  'h1',
+	                  null,
+	                  '3영역'
+	                ),
+	                thirdComponent
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return NLayoutC;
+	}(_react.Component);
+
+	NLayoutC.propTypes = {};
+
+	exports.default = NLayoutC;
+
+/***/ },
+/* 508 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(35);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _NConstraint = __webpack_require__(497);
+
+	var _NConstraint2 = _interopRequireDefault(_NConstraint);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var NTree = function (_Component) {
+	  _inherits(NTree, _Component);
+
+	  function NTree() {
+	    _classCallCheck(this, NTree);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(NTree).apply(this, arguments));
+	  }
+
+	  // Compoent Render 이전 이벤트
+
+
+	  _createClass(NTree, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {}
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(Puf.TreeView, { className: 'treeview-line', url: this.props.tree.url, method: 'POST', params: this.props.tree.params, onSelect: this.props.onSelect });
+	    }
+	  }]);
+
+	  return NTree;
+	}(_react.Component);
+
+	exports.default = NTree;
+
+/***/ },
+/* 509 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -47673,7 +47946,7 @@
 	exports.default = NControls;
 
 /***/ },
-/* 508 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47808,6 +48081,148 @@
 	};
 
 	exports.default = LayoutBExample;
+
+/***/ },
+/* 511 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(35);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _NLayoutSet = __webpack_require__(241);
+
+	var _NLayoutSet2 = _interopRequireDefault(_NLayoutSet);
+
+	var _NConstraint = __webpack_require__(497);
+
+	var _NConstraint2 = _interopRequireDefault(_NConstraint);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var LayoutCExample = function (_Component) {
+	  _inherits(LayoutCExample, _Component);
+
+	  function LayoutCExample() {
+	    _classCallCheck(this, LayoutCExample);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LayoutCExample).apply(this, arguments));
+	    //this.handleNewBtn = this.handleNewBtn.bind(this);
+	  }
+
+	  _createClass(LayoutCExample, [{
+	    key: 'handleNewBtn',
+	    value: function handleNewBtn() {
+	      console.info(this);
+	      alert("신규등록2");
+	    }
+	  }, {
+	    key: 'handleExcelBtn',
+	    value: function handleExcelBtn() {
+	      console.info(this);
+	      alert("엑셀다운로드2");
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      console.info(this);
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_NLayoutSet2.default, { layout: this.props.layout, first: this.props.tree, second: this.props.form, third: this.props.grid })
+	      );
+	    }
+	  }]);
+
+	  return LayoutCExample;
+	}(_react.Component);
+
+	LayoutCExample.propTypes = {
+	  layout: _react.PropTypes.object,
+	  grid: _react.PropTypes.object,
+	  form: _react.PropTypes.object
+	};
+
+	LayoutCExample.defaultProps = {
+	  layout: {
+	    type: "C"
+	  },
+	  tree: {
+	    type: "tree",
+	    url: _NConstraint2.default.SERVER + "/itg/system/dept/searchStaticAllDeptTree.do",
+	    params: { is_all_tree: "Y", expandLevel: 2, up_node_id: "root" }
+	  },
+	  grid: {
+	    type: "grid",
+	    url: _NConstraint2.default.SERVER + "/itg/system/dept/searchDeptOrderList.do",
+	    // Resource 또는 Columns 정의
+	    // Resource 로 설정한 경우에는 서버사이드로 요청해서 Resource를 받아온다.
+	    // Columns로 정의된 경우에는 Column 정보를 직접 기술한다.
+	    columns: [{
+	      field: 'CUST_NM',
+	      title: '부서명',
+	      width: 120
+	    }, {
+	      field: 'USE_YN',
+	      title: '사용여부',
+	      width: 160
+	    }, {
+	      field: 'CUST_ID',
+	      width: 240,
+	      title: '부서ID'
+	    }],
+	    paging: true,
+	    params: {
+	      start: 1,
+	      page: 1,
+	      limit: 20,
+	      up_cust_id: "1000000"
+	    }
+	  },
+	  form: {
+	    type: "form",
+	    name: "theForm",
+	    title: "Form Title",
+	    action: "/theForm.do",
+	    formType: "editor", // 입력 또는 Search Form 또는 Readonly
+	    method: "post", // Default Post
+	    position: "inline", // Inline 또는 Modal
+	    buttomButtons: [{
+	      id: "new_btn",
+	      label: "신규등록",
+	      onClick: ""
+	    }, {
+	      id: "excel_btn",
+	      label: "엑셀다운로드",
+	      onClick: ""
+	    }],
+	    fieldSet: [{
+	      id: "editor_fields",
+	      columns: 3,
+	      fieldList: [{ type: "text", id: "user_nm", label: "사용자명", placeholder: "사용자명을 입력해주세요." }, { type: "text", id: "position", label: "직위", placeholder: "직위를 입력해주세요." }, { type: "text", id: "pass_wd", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd1", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }, { type: "text", id: "pass_wd2", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드" }]
+	    }]
+	  }
+	};
+
+	exports.default = LayoutCExample;
 
 /***/ }
 /******/ ]);

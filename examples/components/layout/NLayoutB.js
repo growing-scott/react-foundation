@@ -4,6 +4,10 @@ import {Grid, Row, Col, Clearfix} from 'react-bootstrap';
 import NGrid from '../grid/NGrid';
 import NForm from '../forms/NForm';
 
+/**
+ * Layout B
+ * 상부|하부 2개의 Layer로 구성된 Layout 구조
+ */
 class NLayoutB extends Component{
   constructor() {
     super(...arguments);
@@ -42,10 +46,10 @@ class NLayoutB extends Component{
     return(
       <Grid>
           <Row className="show-grid">
-            <Col xs={12} md={12}>{firstComponent}</Col>
+            <Col xs={12} md={12}><h1>1영역</h1>{firstComponent}</Col>
           </Row>
           <Row className="show-grid">
-            <Col xs={12} md={12}>{secondComponent}</Col>
+            <Col xs={12} md={12}><h1>2영역</h1>{secondComponent}</Col>
           </Row>
       </Grid>
     )

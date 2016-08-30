@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Abort from './pages/Abort';
 import LayoutAExample from './pages/LayoutAExample';
 import LayoutBExample from './pages/LayoutBExample';
+import LayoutCExample from './pages/LayoutCExample';
 
 import NConstraint from './constraints/NConstraint';
 
@@ -22,6 +23,7 @@ class App extends Component{
         <menu>
           <li><Link to="/layoutA">Layout A</Link></li>
           <li><Link to="/layoutB">Layout B</Link></li>
+          <li><Link to="/layoutC">Layout C</Link></li>
           <li><Link to="/abort">메시지(리소스): {NConstraint.MESSAGE('Test')}</Link></li>
         </menu>
         {this.props.children}
@@ -42,6 +44,7 @@ ReactDom.render((
       <IndexRoute component={Home} />
       <Route path="/layoutA" component={LayoutAExample} />
       <Route path="/layoutB" component={LayoutBExample} />
+      <Route path="/layoutC" component={LayoutCExample} />
       <Route path="/abort" component={Abort} />
     </Route>
   </Router>
