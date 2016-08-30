@@ -3,6 +3,8 @@ import ReactDom from 'react-dom';
 
 import NLayoutSet from '../layout/NLayoutSet';
 
+import NConstraint from '../constraints/NConstraint';
+
 class LayoutBExample extends Component{
   constructor(){
     super(...arguments);
@@ -41,9 +43,32 @@ LayoutBExample.defaultProps = {
   },
   grid: {
     type: "grid",
-    url: "/searchGo.do",
-    resource: "i18n",
-    paging: false
+    url: NConstraint.SERVER + "/itg/system/dept/searchDeptOrderList.do",
+    // Resource 또는 Columns 정의
+    // Resource 로 설정한 경우에는 서버사이드로 요청해서 Resource를 받아온다.
+    // Columns로 정의된 경우에는 Column 정보를 직접 기술한다.
+    columns: [
+      {
+        field: 'CUST_NM',
+        title: '부서명',
+        width: 120
+      },{
+        field: 'USE_YN',
+        title: '사용여부',
+        width: 160
+      },{
+        field: 'CUST_ID',
+        width: 240,
+        title: '부서ID'
+      }
+    ],
+    paging: true,
+    params: {
+      start: 1,
+      page: 1,
+      limit: 20,
+      up_cust_id: "1000000"
+    }
   },
   form: {
     type: "form",
@@ -57,12 +82,12 @@ LayoutBExample.defaultProps = {
       {
         id: "new_btn",
         label: "신규등록",
-        onClick: LayoutBExample.prototype.handleNewBtn.bind(LayoutBExample.prototype)
+        onClick: ""
       },
       {
         id: "excel_btn",
         label: "엑셀다운로드",
-        onClick: LayoutBExample.prototype.handleExcelBtn.bind(this)
+        onClick: ""
       }
     ],
     fieldSet : [

@@ -19,7 +19,7 @@ class NLayoutA extends Component{
     let firstComponent;
     switch (first.type) {
       case "grid":
-        firstComponent = (<NGrid url={first.url} />);
+        firstComponent = (<NGrid grid={first} />);
         break;
       case "form":
         firstComponent = (<NForm name={first.name} fieldSets={first.fieldSet} topButtons={first.topButtons} buttomButtons={first.buttomButtons} />);
@@ -31,7 +31,7 @@ class NLayoutA extends Component{
     let secondComponent;
     switch (second.type) {
       case "grid":
-        secondComponent = (<NGrid url={second.url} />);
+        secondComponent = (<NGrid grid={second} />);
         break;
       case "form":
         secondComponent = (<NForm name={second.name} fieldSets={second.fieldSet} topButtons={second.topButtons} buttomButtons={second.buttomButtons}  />);

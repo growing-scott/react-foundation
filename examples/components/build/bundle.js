@@ -74,7 +74,7 @@
 
 	var _LayoutBExample2 = _interopRequireDefault(_LayoutBExample);
 
-	var _NConstraint = __webpack_require__(503);
+	var _NConstraint = __webpack_require__(497);
 
 	var _NConstraint2 = _interopRequireDefault(_NConstraint);
 
@@ -132,16 +132,8 @@
 	            null,
 	            _react2.default.createElement(
 	              _reactRouter.Link,
-	              { to: '/layoutB' },
-	              _NConstraint2.default.MESSAGE('btn.common.apply')
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            _react2.default.createElement(
-	              _reactRouter.Link,
 	              { to: '/abort' },
+	              '메시지(리소스): ',
 	              _NConstraint2.default.MESSAGE('Test')
 	            )
 	          )
@@ -27358,7 +27350,7 @@
 
 	var _NLayoutSet2 = _interopRequireDefault(_NLayoutSet);
 
-	var _NConstraint = __webpack_require__(503);
+	var _NConstraint = __webpack_require__(497);
 
 	var _NConstraint2 = _interopRequireDefault(_NConstraint);
 
@@ -27460,9 +27452,18 @@
 	  },
 	  grid: {
 	    type: "grid",
-	    url: "/searchGo.do",
-	    resource: "i18n",
-	    paging: false
+	    url: _NConstraint2.default.SERVER + "/itg/system/dept/searchDeptOrderList.do",
+	    // Resource 또는 Columns 정의
+	    // Resource 로 설정한 경우에는 서버사이드로 요청해서 Resource를 받아온다.
+	    resource: "grid.system.dept",
+	    // Columns로 정의된 경우에는 Column 정보를 직접 기술한다.
+	    paging: false,
+	    params: {
+	      start: 1,
+	      page: 1,
+	      limit: 20,
+	      up_cust_id: "1000000"
+	    }
 	  },
 	  form: {
 	    type: "form",
@@ -27592,7 +27593,7 @@
 
 	var _NGrid2 = _interopRequireDefault(_NGrid);
 
-	var _NForm = __webpack_require__(497);
+	var _NForm = __webpack_require__(498);
 
 	var _NForm2 = _interopRequireDefault(_NForm);
 
@@ -27626,7 +27627,7 @@
 	      var firstComponent = void 0;
 	      switch (first.type) {
 	        case "grid":
-	          firstComponent = _react2.default.createElement(_NGrid2.default, { url: first.url });
+	          firstComponent = _react2.default.createElement(_NGrid2.default, { grid: first });
 	          break;
 	        case "form":
 	          firstComponent = _react2.default.createElement(_NForm2.default, { name: first.name, fieldSets: first.fieldSet, topButtons: first.topButtons, buttomButtons: first.buttomButtons });
@@ -27638,7 +27639,7 @@
 	      var secondComponent = void 0;
 	      switch (second.type) {
 	        case "grid":
-	          secondComponent = _react2.default.createElement(_NGrid2.default, { url: second.url });
+	          secondComponent = _react2.default.createElement(_NGrid2.default, { grid: second });
 	          break;
 	        case "form":
 	          secondComponent = _react2.default.createElement(_NForm2.default, { name: second.name, fieldSets: second.fieldSet, topButtons: second.topButtons, buttomButtons: second.buttomButtons });
@@ -46482,7 +46483,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -46495,6 +46496,10 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _NConstraint = __webpack_require__(497);
+
+	var _NConstraint2 = _interopRequireDefault(_NConstraint);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -46504,32 +46509,159 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var NGrid = function (_Component) {
-	    _inherits(NGrid, _Component);
+	  _inherits(NGrid, _Component);
 
-	    function NGrid() {
-	        _classCallCheck(this, NGrid);
+	  function NGrid() {
+	    _classCallCheck(this, NGrid);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(NGrid).apply(this, arguments));
+	    var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(NGrid).apply(this, arguments));
+
+	    _this2.state = {
+	      columns: []
+	    };
+	    return _this2;
+	  }
+
+	  // Compoent Render 이전 이벤트
+
+
+	  _createClass(NGrid, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var _this3 = this;
+
+	      // Columns 처리
+	      if (this.props.grid.columns) {
+	        this.setState({ columns: this.props.grid.columns });
+	      }
+	      // Resource 처리
+	      if (this.props.grid.resource) {
+	        (function () {
+	          console.info("resource");
+	          var _this = _this3;
+	          $.ajax({ type: "POST",
+	            url: _NConstraint2.default.SERVER + "/itg/base/getGridMsgSource.do",
+	            contentType: "application/json",
+	            dataType: "json",
+	            async: false,
+	            data: JSON.stringify({ resource_prefix: _this3.props.grid.resource }),
+	            success: function success(data) {
+	              if (data.gridText != null) {
+	                var gridText = data.gridText.split(",");
+	                var gridHeader = data.gridHeader.split(",");
+	                var gridWidth = data.gridWidth.split(",");
+	                var gridAlign = data.gridAlign.split(",");
+
+	                var i = void 0,
+	                    len = void 0;
+	                var columns = [];
+	                for (i = 0, len = gridText.length; i < len; i++) {
+	                  var column = {
+	                    field: gridHeader[i],
+	                    title: gridText[i],
+	                    width: gridWidth[i]
+	                  };
+	                  columns.push(column);
+	                }
+	                _this.setState({ columns: columns });
+	              }
+	            }
+	          });
+	        })();
+	      }
 	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(Puf.Grid, { url: this.props.grid.url, method: 'POST', columns: this.state.columns, onSelectRow: this.onSelectRow,
+	        params: this.props.grid.params, pageable: this.props.grid.paging, filterable: true, listField: null });
+	    }
+	  }]);
 
-	    _createClass(NGrid, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'h2',
-	                null,
-	                'Grid'
-	            );
-	        }
-	    }]);
-
-	    return NGrid;
+	  return NGrid;
 	}(_react.Component);
 
 	exports.default = NGrid;
 
 /***/ },
 /* 497 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var NConstraint = function () {
+	  function NConstraint() {
+	    _classCallCheck(this, NConstraint);
+	  }
+
+	  _createClass(NConstraint, null, [{
+	    key: "MESSAGE",
+	    value: function MESSAGE(key, args0, args1) {
+	      var message = void 0;
+	      if (localStorage[key] && typeof args0 == "undefined") {
+	        return localStorage[key];
+	      } else {
+	        var msgProp = {
+	          m_key: key
+	        };
+	        $.ajax({ type: "POST",
+	          url: NConstraint.SERVER + "/itg/base/getMessage.do",
+	          contentType: "application/json",
+	          dataType: "json",
+	          async: false,
+	          data: JSON.stringify(msgProp),
+	          success: function success(data) {
+	            message = data['returnMessage'];
+	            if (message != null && message != "") {
+	              if (message.indexOf("\\n") > -1) {
+	                message = message.split("\\n").join("\n");
+	              }
+	            }
+	            if (typeof args0 == "undefined") {
+	              localStorage[key] = message;
+	            }
+	          }
+	        });
+	      }
+	      return message;
+	    }
+	  }, {
+	    key: "SERVER",
+	    get: function get() {
+	      return "http://localhost:8090";
+	    }
+	  }, {
+	    key: "PRODUCT",
+	    get: function get() {
+	      return "ITSM";
+	    }
+	  }, {
+	    key: "DEFAULT_OPTION_NAME",
+	    get: function get() {
+	      return "name";
+	    }
+	  }, {
+	    key: "DEFAULT_OPTION_VALUE",
+	    get: function get() {
+	      return "value";
+	    }
+	  }]);
+
+	  return NConstraint;
+	}();
+
+	exports.default = NConstraint;
+
+/***/ },
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46546,7 +46678,7 @@
 
 	var _reactBootstrap = __webpack_require__(243);
 
-	var _NFieldSet = __webpack_require__(498);
+	var _NFieldSet = __webpack_require__(499);
 
 	var _NFieldSet2 = _interopRequireDefault(_NFieldSet);
 
@@ -46635,7 +46767,7 @@
 	exports.default = NForm;
 
 /***/ },
-/* 498 */
+/* 499 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46652,19 +46784,19 @@
 
 	var _reactBootstrap = __webpack_require__(243);
 
-	var _NStaticText = __webpack_require__(499);
+	var _NStaticText = __webpack_require__(500);
 
 	var _NStaticText2 = _interopRequireDefault(_NStaticText);
 
-	var _NTextField = __webpack_require__(500);
+	var _NTextField = __webpack_require__(501);
 
 	var _NTextField2 = _interopRequireDefault(_NTextField);
 
-	var _NTextArea = __webpack_require__(501);
+	var _NTextArea = __webpack_require__(502);
 
 	var _NTextArea2 = _interopRequireDefault(_NTextArea);
 
-	var _NComboBox = __webpack_require__(502);
+	var _NComboBox = __webpack_require__(503);
 
 	var _NComboBox2 = _interopRequireDefault(_NComboBox);
 
@@ -46764,7 +46896,7 @@
 	exports.default = NFieldSet;
 
 /***/ },
-/* 499 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46835,7 +46967,7 @@
 	exports.default = NStaticText;
 
 /***/ },
-/* 500 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46930,7 +47062,7 @@
 	exports.default = NTextField;
 
 /***/ },
-/* 501 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47020,7 +47152,7 @@
 	exports.default = NTextArea;
 
 /***/ },
-/* 502 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47037,7 +47169,7 @@
 
 	var _reactBootstrap = __webpack_require__(243);
 
-	var _NConstraint = __webpack_require__(503);
+	var _NConstraint = __webpack_require__(497);
 
 	var _NConstraint2 = _interopRequireDefault(_NConstraint);
 
@@ -47162,83 +47294,6 @@
 	exports.default = NComboBox;
 
 /***/ },
-/* 503 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var NConstraint = function () {
-	  function NConstraint() {
-	    _classCallCheck(this, NConstraint);
-	  }
-
-	  _createClass(NConstraint, null, [{
-	    key: "MESSAGE",
-	    value: function MESSAGE(key, args0, args1) {
-	      var message = void 0;
-	      if (localStorage[key] && typeof args0 == "undefined") {
-	        return localStorage[key];
-	      } else {
-	        var msgProp = {
-	          m_key: key
-	        };
-	        $.ajax({ type: "POST",
-	          url: NConstraint.SERVER + "/itg/base/getMessage.do",
-	          contentType: "application/json",
-	          dataType: "json",
-	          async: false,
-	          data: JSON.stringify(msgProp),
-	          success: function success(data) {
-	            message = data['returnMessage'];
-	            if (message != null && message != "") {
-	              if (message.indexOf("\\n") > -1) {
-	                message = message.split("\\n").join("\n");
-	              }
-	            }
-	            if (typeof args0 == "undefined") {
-	              localStorage[key] = message;
-	            }
-	          }
-	        });
-	      }
-	      return message;
-	    }
-	  }, {
-	    key: "SERVER",
-	    get: function get() {
-	      return "http://localhost:8090";
-	    }
-	  }, {
-	    key: "PRODUCT",
-	    get: function get() {
-	      return "ITSM";
-	    }
-	  }, {
-	    key: "DEFAULT_OPTION_NAME",
-	    get: function get() {
-	      return "name";
-	    }
-	  }, {
-	    key: "DEFAULT_OPTION_VALUE",
-	    get: function get() {
-	      return "value";
-	    }
-	  }]);
-
-	  return NConstraint;
-	}();
-
-	exports.default = NConstraint;
-
-/***/ },
 /* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -47256,7 +47311,7 @@
 
 	var _reactBootstrap = __webpack_require__(243);
 
-	var _NConstraint = __webpack_require__(503);
+	var _NConstraint = __webpack_require__(497);
 
 	var _NConstraint2 = _interopRequireDefault(_NConstraint);
 
@@ -47368,7 +47423,7 @@
 
 	var _reactBootstrap = __webpack_require__(243);
 
-	var _NConstraint = __webpack_require__(503);
+	var _NConstraint = __webpack_require__(497);
 
 	var _NConstraint2 = _interopRequireDefault(_NConstraint);
 
@@ -47484,7 +47539,7 @@
 
 	var _NGrid2 = _interopRequireDefault(_NGrid);
 
-	var _NForm = __webpack_require__(497);
+	var _NForm = __webpack_require__(498);
 
 	var _NForm2 = _interopRequireDefault(_NForm);
 
@@ -47518,7 +47573,7 @@
 	      var firstComponent = void 0;
 	      switch (first.type) {
 	        case "grid":
-	          firstComponent = _react2.default.createElement(_NGrid2.default, { url: first.url });
+	          firstComponent = _react2.default.createElement(_NGrid2.default, { grid: first });
 	          break;
 	        case "form":
 	          firstComponent = _react2.default.createElement(_NForm2.default, { name: first.name, fieldSets: first.fieldSet, topButtons: first.topButtons, buttomButtons: first.buttomButtons });
@@ -47530,7 +47585,7 @@
 	      var secondComponent = void 0;
 	      switch (second.type) {
 	        case "grid":
-	          secondComponent = _react2.default.createElement(_NGrid2.default, { url: second.url });
+	          secondComponent = _react2.default.createElement(_NGrid2.default, { grid: second });
 	          break;
 	        case "form":
 	          secondComponent = _react2.default.createElement(_NForm2.default, { name: second.name, fieldSets: second.fieldSet, topButtons: second.topButtons, buttomButtons: second.buttomButtons });
@@ -47642,6 +47697,10 @@
 
 	var _NLayoutSet2 = _interopRequireDefault(_NLayoutSet);
 
+	var _NConstraint = __webpack_require__(497);
+
+	var _NConstraint2 = _interopRequireDefault(_NConstraint);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -47699,9 +47758,30 @@
 	  },
 	  grid: {
 	    type: "grid",
-	    url: "/searchGo.do",
-	    resource: "i18n",
-	    paging: false
+	    url: _NConstraint2.default.SERVER + "/itg/system/dept/searchDeptOrderList.do",
+	    // Resource 또는 Columns 정의
+	    // Resource 로 설정한 경우에는 서버사이드로 요청해서 Resource를 받아온다.
+	    // Columns로 정의된 경우에는 Column 정보를 직접 기술한다.
+	    columns: [{
+	      field: 'CUST_NM',
+	      title: '부서명',
+	      width: 120
+	    }, {
+	      field: 'USE_YN',
+	      title: '사용여부',
+	      width: 160
+	    }, {
+	      field: 'CUST_ID',
+	      width: 240,
+	      title: '부서ID'
+	    }],
+	    paging: true,
+	    params: {
+	      start: 1,
+	      page: 1,
+	      limit: 20,
+	      up_cust_id: "1000000"
+	    }
 	  },
 	  form: {
 	    type: "form",
@@ -47714,11 +47794,11 @@
 	    buttomButtons: [{
 	      id: "new_btn",
 	      label: "신규등록",
-	      onClick: LayoutBExample.prototype.handleNewBtn.bind(LayoutBExample.prototype)
+	      onClick: ""
 	    }, {
 	      id: "excel_btn",
 	      label: "엑셀다운로드",
-	      onClick: LayoutBExample.prototype.handleExcelBtn.bind(undefined)
+	      onClick: ""
 	    }],
 	    fieldSet: [{
 	      id: "editor_fields",
