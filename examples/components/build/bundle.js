@@ -147,7 +147,7 @@
 	              _reactRouter.Link,
 	              { to: '/abort' },
 	              '메시지(리소스): ',
-	              _NConstraint2.default.MESSAGE('Test')
+	              _NConstraint2.default.MESSAGE('res.common.list')
 	            )
 	          )
 	        ),

@@ -24,7 +24,7 @@ class App extends Component{
           <li><Link to="/layoutA">Layout A</Link></li>
           <li><Link to="/layoutB">Layout B</Link></li>
           <li><Link to="/layoutC">Layout C</Link></li>
-          <li><Link to="/abort">메시지(리소스): {NConstraint.MESSAGE('Test')}</Link></li>
+          <li><Link to="/abort">메시지(리소스): {NConstraint.MESSAGE('res.common.list')}</Link></li>
         </menu>
         {this.props.children}
       </div>
