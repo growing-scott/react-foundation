@@ -27560,7 +27560,6 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        '컴포넌트',
 	        component
 	      );
 	    }

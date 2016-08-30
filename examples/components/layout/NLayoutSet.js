@@ -23,7 +23,6 @@ class NLayoutSet extends Component{
     console.info(component);
     return(
       <div>
-        컴포넌트
         {component}
       </div>
 
