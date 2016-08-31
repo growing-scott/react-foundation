@@ -11,6 +11,11 @@ class NGrid extends Component{
     };
   }
 
+  // State, Props 변경에 따른 Rendering에 대한 제어.
+  shouldComponentUpdate(){
+    return false;
+  }
+
   // Compoent Render 이전 이벤트
   componentWillMount() {
     // Columns 처리
@@ -19,7 +24,6 @@ class NGrid extends Component{
     }
     // Resource 처리
     if(this.props.grid.resource){
-      console.info("resource");
       let _this = this;
       $.ajax({ type:"POST",
         url: NConstraint.SERVER + "/itg/base/getGridMsgSource.do",

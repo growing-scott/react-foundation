@@ -24,7 +24,6 @@ class NLayoutSet extends Component{
         break;
       default:
     }
-    console.info(component);
     return(
       <div>
         {component}
