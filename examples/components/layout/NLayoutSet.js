@@ -14,7 +14,7 @@ class NLayoutSet extends Component{
     let component;
     switch (layout.type) {
       case "A":
-        component = (<NLayoutA firstArea={this.props.first} secondArea={this.props.second} />);
+        component = (<NLayoutA ref="Test" firstArea={this.props.first} secondArea={this.props.second} />);
         break;
       case "B":
         component = (<NLayoutB firstArea={this.props.first} secondArea={this.props.second} />);

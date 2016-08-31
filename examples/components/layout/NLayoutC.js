@@ -74,7 +74,7 @@ class NLayoutC extends Component{
                   <Col xs={12} md={12}><h1>2영역</h1>{secondComponent}</Col>
               </Row>
               <Row className="show-grid">
-                  <Col xs={12} md={12}><h1>3영역</h1>{thirdComponent}</Col>
+                  <Col xs={12} md={12}><h1>3영역!</h1>{thirdComponent}</Col>
               </Row>
             </Col>
           </Row>

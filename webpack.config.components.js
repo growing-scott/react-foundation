@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
     entry: './examples/components/app.js',
 
@@ -5,7 +7,15 @@ module.exports = {
         path: __dirname + '/examples/components/build',
         filename: 'bundle.js'
     },
- 
+
+    devServer: {
+        hot: true,
+        inline: true,
+        host: '0.0.0.0',
+        port: 4000,
+        contentBase: __dirname,
+    },
+
     module: {
         loaders: [
             {
@@ -18,5 +28,21 @@ module.exports = {
                 }
             }
         ]
-    }
-}
+        /* React Hot Loader
+        loaders: [
+            {
+              test: /\.js$/,
+              loaders: ['react-hot', 'babel?' + JSON.stringify({
+                  cacheDirectory: true,
+                  presets: ['es2015', 'react']
+              })],
+              exclude: /node_modules/
+            }
+        ]
+        */
+    },
+
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ]
+};

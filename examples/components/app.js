@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import ReactDom from 'react-dom';
 
-import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, Link, IndexRoute, browserHistory, hashHistory } from 'react-router';
 
 import Home from './pages/Home';
 import Abort from './pages/Abort';
@@ -21,7 +21,7 @@ class App extends Component{
       <div>
         <h2>App</h2>
         <div>
-          <li><Link to="/layoutA">Layout A</Link></li>
+          <li><Link to="/layoutA">Layout A!!!</Link></li>
           <li><Link to="/layoutB">Layout B</Link></li>
           <li><Link to="/layoutC">Layout C</Link></li>
           <li><Link to="/abort">메시지(리소스): {NConstraint.MESSAGE('res.common.list')}</Link></li>
@@ -39,8 +39,8 @@ App.defaultProps = {
 };
 
 ReactDom.render((
-  <Router history={browserHistory}>
-    <Route path="/examples/components" component={App}>
+  <Router history={hashHistory}>
+    <Route path="/" component={App}>
       <IndexRoute component={Home} />
       <Route path="/layoutA" component={LayoutAExample} />
       <Route path="/layoutB" component={LayoutBExample} />

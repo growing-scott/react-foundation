@@ -11,7 +11,7 @@ class LayoutAExample extends Component{
     super(...arguments);
     this.state = {
 			updateLayout: false
-    }
+    };
     //this.handleNewBtn = handleNewBtn.bind(this)
 
   }
@@ -28,15 +28,21 @@ class LayoutAExample extends Component{
     NControls.bindButton(this, this.props.form.buttomButtons, ["save_btn", "cancel_btn"]);
 
     // Grid Event bind
-    NControls.bindEvent(this, this.props.grid, this.props.grid.onSelectRowEvent, "onSelectRow")
+    NControls.bindEvent(this, this.props.grid, this.props.grid.onSelectRowEvent, "onSelectRow");
   }
 
   handleNewBtn(){
     alert("신규등록");
 
+    console.info(this.props.form.fieldSet[0]);
+
+    this.props.form.fieldSet[0].fieldList[1].visible = false;
+    this.props.form.fieldSet[0].fieldList[2].visible = true;
+
     // 또는 Ref로 접근하여 처리해도 될 듯 합니다.
-    NControls.bindButton(this, this.props.form.topButtons, ["new_btn"]);
-    NControls.bindButton(this, this.props.form.buttomButtons, null);
+    //NControls.bindButton(this, this.props.form.topButtons, ["new_btn"]);
+    //NControls.bindButton(this, this.props.form.buttomButtons, null);
+
     this.setState({ updateLayout: true });
   }
 
@@ -57,10 +63,9 @@ class LayoutAExample extends Component{
   }
 
   render(){
-    console.info(this);
     return (
       <div>
-        <NLayoutSet layout={this.props.layout} first={this.props.grid} second={this.props.form} />
+        <NLayoutSet ref="test2" layout={this.props.layout} first={this.props.grid} second={this.props.form} />
       </div>
     );
   }
@@ -132,8 +137,9 @@ LayoutAExample.defaultProps = {
         fieldList: [
           { type: "text", id: "user_nm", label: NConstraint.MESSAGE('res.label.system.00015'), placeholder: "사용자명을 입력해주세요."},
           { type: "text", id: "position", label: NConstraint.MESSAGE('res.label.system.00016'), placeholder: "직위를 입력해주세요."},
-          { type: "text", id: "pass_wd", label: "패스워드1", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "static", id: "pass_wd1", label: "패스워드 힌트(스태틱 Text)", value: "패스워드 힌트는 nkia"},
+          { type: "text", id: "pass_wd", label: "패스워드1", placeholder: "패스워드를 입력해주세요.", value: "패스워드", visible: false},
+          { type: "addonicontextfield", id: "addon1", label: "아이콘텍스트", placeholder: "아이콘텍스트", value: "아이콘", readonly: true},
+          { type: "static", id: "pass_wd1", label: "패스워드 힌트(스태틱 Text)", value: "패스워드 힌트는 nkia", visible: false},
           { type: "checkbox", id: "checkbox1", label: "체크박스(서버사이드)", code_grp_id: "REQ_TYPE"},
           { type: "radio", id: "radio1", label: "라디오버튼(서버사이드)", code_grp_id: "REQ_TYPE"},
           { type: "combo", id: "combo1", label: "콤보박스(사용자 정의 데이터)", placeholder: "콤보박스", options:[{ CODE_TEXT: "1", CODE_ID: "1"},{ CODE_TEXT: "2", CODE_ID: "2"}]},

@@ -119,7 +119,7 @@ LayoutCExample.defaultProps = {
           { type: "text", id: "user_nm", label: "사용자명", placeholder: "사용자명을 입력해주세요."},
           { type: "text", id: "position", label: "직위", placeholder: "직위를 입력해주세요."},
           { type: "text", id: "pass_wd", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
-          { type: "text", id: "pass_wd1", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
+          { type: "text", id: "pass_wd1", label: "핫모듈", placeholder: "패스워드를 입력해주세요.", value: "패스워드"},
           { type: "text", id: "pass_wd2", label: "패스워드", placeholder: "패스워드를 입력해주세요.", value: "패스워드"}
         ]
       }

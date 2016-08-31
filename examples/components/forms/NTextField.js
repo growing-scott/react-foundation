@@ -5,8 +5,14 @@ class NTextField extends Component{
   constructor() {
     super(...arguments);
 		this.state = {
-			value: ""
+			value: "",
+      visible: true
     };
+  }
+
+  // Compoent Render 이전 이벤트
+  componentWillMount() {
+    this.setState({ visible: this.props.visible });
   }
 
   // Value값 변경에 따른 이벤트 처리
@@ -21,9 +27,17 @@ class NTextField extends Component{
     }
   }
 
+  // Props 변경 이벤트
+  componentWillReceiveProps(nextProps){
+    // Props 변경으로 Visible 제어(true|false)
+    if(this.props.visible !== nextProps.visible){
+        this.setState({ visible: nextProps.visible });
+    }
+  }
+
   render(){
     return(
-      <FormGroup controlId={this.props.id}>
+      <FormGroup ref={this.props.id} controlId={this.props.id} className={this.state.visible ? 'block' : 'hidden'}>
         <ControlLabel>{this.props.label}</ControlLabel>
         <FormControl
           type="text"

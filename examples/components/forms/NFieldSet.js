@@ -7,6 +7,7 @@ import NTextArea from './NTextArea';
 import NComboBox from './NComboBox';
 import NCheckBox from './NCheckBox';
 import NRadio from './NRadio';
+import NAddOnIconTextField from './NAddOnIconTextField';
 
 class NFieldSet extends Component{
   constructor() {
@@ -34,7 +35,7 @@ class NFieldSet extends Component{
       let component;
       switch (field.type) {
         case "text":
-          component = (<NTextField key={field.id} id={field.id} label={field.label} placeholder={field.placeholder} value={field.value} />);
+          component = (<NTextField key={field.id} id={field.id} label={field.label} placeholder={field.placeholder} value={field.value} visible={( "visible" in field ) ? field.visible : true} />);
           break;
         case "textarea":
           component = (<NTextArea key={field.id} id={field.id} label={field.label} placeholder={field.placeholder} value={field.value} />);
@@ -50,6 +51,9 @@ class NFieldSet extends Component{
             break;
         case "static":
             component = (<NStaticText key={field.id} id={field.id} label={field.label} value={field.value} />);
+            break;
+        case "addonicontextfield":
+            component = (<NAddOnIconTextField key={field.id} id={field.id} label={field.label} placeholder={field.placeholder} value={field.value} />);
             break;
         default:
       }
