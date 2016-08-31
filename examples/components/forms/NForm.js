@@ -28,9 +28,9 @@ class NForm extends Component{
       topComponent = (topButtons.map(
         (button) => {
           if(button.visible)
-            return <Button key={button.id} onClick={button.onClick}>{button.label}</Button>
+            return <Button key={button.id} onClick={button.onClick}>{button.label}</Button>;
         }
-      ))
+      ));
       /*
       topComponent = (topButtons.map(
         (button) => <Button key={button.id} onClick={button.onClick}>{button.label}</Button>
@@ -45,9 +45,9 @@ class NForm extends Component{
       bottomComponent = (buttomButtons.map(
         (button) => {
           if(button.visible)
-            return <Button key={button.id} onClick={button.onClick}>{button.label}</Button>
+            return <Button key={button.id} onClick={button.onClick}>{button.label}</Button>;
         }
-      ))
+      ));
     }
 
     return(
@@ -58,12 +58,12 @@ class NForm extends Component{
   			)}
         {bottomComponent}
       </Form>
-    )
+    );
   }
 }
 
 NForm.propTypes = {
 
-}
+};
 
 export default NForm;

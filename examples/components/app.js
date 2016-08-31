@@ -19,24 +19,24 @@ class App extends Component{
   render(){
     return (
       <div>
-        <header>App</header>
-        <menu>
+        <h2>App</h2>
+        <div>
           <li><Link to="/layoutA">Layout A</Link></li>
           <li><Link to="/layoutB">Layout B</Link></li>
           <li><Link to="/layoutC">Layout C</Link></li>
           <li><Link to="/abort">메시지(리소스): {NConstraint.MESSAGE('res.common.list')}</Link></li>
-        </menu>
+        </div>
         {this.props.children}
       </div>
-    )
+    );
   }
 }
 
 App.propTypes = {
-}
+};
 
 App.defaultProps = {
-}
+};
 
 ReactDom.render((
   <Router history={browserHistory}>

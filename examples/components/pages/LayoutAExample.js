@@ -53,7 +53,7 @@ class LayoutAExample extends Component{
   }
 
   onSelectRowGrid(){
-    alert("Grid 선택")
+    alert("Grid 선택");
   }
 
   render(){
@@ -62,7 +62,7 @@ class LayoutAExample extends Component{
       <div>
         <NLayoutSet layout={this.props.layout} first={this.props.grid} second={this.props.form} />
       </div>
-    )
+    );
   }
 }
 
@@ -70,7 +70,7 @@ LayoutAExample.propTypes = {
   layout: PropTypes.object,
   grid: PropTypes.object,
   form: PropTypes.object
-}
+};
 
 LayoutAExample.defaultProps = {
   layout: {
@@ -143,6 +143,6 @@ LayoutAExample.defaultProps = {
       }
     ]
   }
-}
+};
 
 export default LayoutAExample;

@@ -13,7 +13,7 @@ class NFieldSet extends Component{
     super(...arguments);
 		this.state = {
 			fieldList: []
-    }
+    };
   }
 
   // Compoent Render 이전 이벤트
@@ -60,7 +60,7 @@ class NFieldSet extends Component{
       <div>
         {renderFields}
       </div>
-    )
+    );
   }
 }
 
@@ -68,6 +68,6 @@ NFieldSet.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string
-}
+};
 
 export default NFieldSet;

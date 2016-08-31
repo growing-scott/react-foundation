@@ -13,12 +13,12 @@ class LayoutBExample extends Component{
 
   handleNewBtn(){
     console.info(this);
-    alert("신규등록2")
+    alert("신규등록2");
   }
 
   handleExcelBtn(){
     console.info(this);
-    alert("엑셀다운로드2")
+    alert("엑셀다운로드2");
   }
 
   render(){
@@ -27,7 +27,7 @@ class LayoutBExample extends Component{
       <div>
         <NLayoutSet layout={this.props.layout} first={this.props.grid} second={this.props.form} />
       </div>
-    )
+    );
   }
 }
 
@@ -35,7 +35,7 @@ LayoutBExample.propTypes = {
   layout: PropTypes.object,
   grid: PropTypes.object,
   form: PropTypes.object
-}
+};
 
 LayoutBExample.defaultProps = {
   layout: {
@@ -104,6 +104,6 @@ LayoutBExample.defaultProps = {
       }
     ]
   }
-}
+};
 
 export default LayoutBExample;

@@ -10,7 +10,7 @@ class NControls{
           button.visible = true;
       }
       // Hide Button 제어
-      if(hideButtons != null){
+      if(hideButtons !== null){
         hideButtons.some(function(hidButton) {
           if(button.id == hidButton){
             button.visible = false;

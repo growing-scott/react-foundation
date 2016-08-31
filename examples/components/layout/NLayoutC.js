@@ -79,12 +79,12 @@ class NLayoutC extends Component{
             </Col>
           </Row>
       </Grid>
-    )
+    );
   }
 }
 
 NLayoutC.propTypes = {
 
-}
+};
 
 export default NLayoutC;

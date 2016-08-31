@@ -8,7 +8,7 @@ class NGrid extends Component{
     super(...arguments);
     this.state = {
 			columns: []
-    }
+    };
   }
 
   // Compoent Render 이전 이벤트
@@ -28,7 +28,7 @@ class NGrid extends Component{
         async: false,
         data : JSON.stringify({resource_prefix : this.props.grid.resource}),
         success:function(data){
-  				if(data.gridText != null) {
+  				if(data.gridText !== null) {
   					let gridText = data.gridText.split(",");
   					let gridHeader = data.gridHeader.split(",");
   					let gridWidth = data.gridWidth.split(",");
@@ -41,7 +41,7 @@ class NGrid extends Component{
                 field: gridHeader[i],
                 title: gridText[i],
                 width: gridWidth[i]
-              }
+              };
               columns.push(column);
             }
             _this.setState({ columns: columns });
@@ -52,7 +52,6 @@ class NGrid extends Component{
   }
 
   render() {
-    console.info(this.props.grid)
     return (
       <Puf.Grid url={this.props.grid.url} method="POST" columns={this.state.columns} onSelectRow={this.props.grid.onSelectRow}
         params={this.props.grid.params} pageable={this.props.grid.paging} filterable={true} listField={null} />

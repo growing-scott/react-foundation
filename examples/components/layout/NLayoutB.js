@@ -52,12 +52,12 @@ class NLayoutB extends Component{
             <Col xs={12} md={12}><h1>2영역</h1>{secondComponent}</Col>
           </Row>
       </Grid>
-    )
+    );
   }
 }
 
 NLayoutB.propTypes = {
 
-}
+};
 
 export default NLayoutB;

@@ -6,7 +6,7 @@ class NTextField extends Component{
     super(...arguments);
 		this.state = {
 			value: ""
-    }
+    };
   }
 
   // Value값 변경에 따른 이벤트 처리
@@ -33,7 +33,7 @@ class NTextField extends Component{
         />
         <HelpBlock>Validation is based on string length.</HelpBlock>
       </FormGroup>
-    )
+    );
   }
 }
 
@@ -41,6 +41,6 @@ NTextField.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string
-}
+};
 
 export default NTextField;

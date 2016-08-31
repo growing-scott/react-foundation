@@ -8,7 +8,7 @@ class NRadio extends Component{
     super(...arguments);
 		this.state = {
 			dataList: []
-    }
+    };
   }
 
   // Compoent Render 이전 이벤트
@@ -52,13 +52,13 @@ class NRadio extends Component{
         <ControlLabel>{this.props.label}</ControlLabel>
         {renderRadio}
       </FormGroup>
-    )
+    );
   }
 }
 
 NRadio.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string
-}
+};
 
 export default NRadio;

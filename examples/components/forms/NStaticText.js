@@ -6,7 +6,7 @@ class NStaticText extends Component{
     super(...arguments);
 		this.state = {
 			dataList: []
-    }
+    };
   }
 
   render(){
@@ -17,7 +17,7 @@ class NStaticText extends Component{
           {this.props.value}
         </FormControl.Static>
       </FormGroup>
-    )
+    );
   }
 }
 
@@ -25,6 +25,6 @@ NStaticText.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
   value: PropTypes.string
-}
+};
 
 export default NStaticText;

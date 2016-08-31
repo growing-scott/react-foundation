@@ -9,7 +9,7 @@ class NComboBox extends Component{
 		this.state = {
 			value: "",
       options: []
-    }
+    };
   }
 
   // Compoent Render 이전 이벤트
@@ -75,7 +75,7 @@ class NComboBox extends Component{
         {renderOptions}
         </FormControl>
       </FormGroup>
-    )
+    );
   }
 }
 
@@ -83,6 +83,6 @@ NComboBox.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string
-}
+};
 
 export default NComboBox;

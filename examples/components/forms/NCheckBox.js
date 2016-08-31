@@ -8,7 +8,7 @@ class NCheckBox extends Component{
     super(...arguments);
 		this.state = {
 			dataList: []
-    }
+    };
   }
 
   // Compoent Render 이전 이벤트
@@ -52,13 +52,13 @@ class NCheckBox extends Component{
         <ControlLabel>{this.props.label}</ControlLabel>
         {renderCheckBox}
       </FormGroup>
-    )
+    );
   }
 }
 
 NCheckBox.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string
-}
+};
 
 export default NCheckBox;

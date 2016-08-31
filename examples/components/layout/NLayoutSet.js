@@ -30,7 +30,7 @@ class NLayoutSet extends Component{
         {component}
       </div>
 
-    )
+    );
   }
 }
 

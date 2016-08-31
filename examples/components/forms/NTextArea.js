@@ -6,7 +6,7 @@ class NTextArea extends Component{
     super(...arguments);
 		this.state = {
 			value: ""
-    }
+    };
   }
 
   // Value값 변경에 따른 이벤트 처리
@@ -32,7 +32,7 @@ class NTextArea extends Component{
           onChange={this.handleChange.bind(this)}
         />
       </FormGroup>
-    )
+    );
   }
 }
 
@@ -40,6 +40,6 @@ NTextArea.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string
-}
+};
 
 export default NTextArea;

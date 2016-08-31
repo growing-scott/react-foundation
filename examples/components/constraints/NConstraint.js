@@ -32,8 +32,8 @@ class NConstraint{
         async: false,
         data : JSON.stringify(msgProp),
         success:function(data){
-  				message = data['returnMessage'];
-        	if(message != null && message != "") {
+  				message = data.returnMessage;
+        	if(message !== null && message !== "") {
   					if(message.indexOf("\\n") > -1) {
   						message = ( message.split("\\n").join("\n") );
   					}

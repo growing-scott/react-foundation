@@ -19,21 +19,21 @@ class LayoutCExample extends Component{
 
   // Event Handler Mapping
   eventHandler(){
-    NControls.bindEvent(this, this.props.tree, this.props.tree.onSelectEvent, "onSelect")
+    NControls.bindEvent(this, this.props.tree, this.props.tree.onSelectEvent, "onSelect");
   }
 
   onSelectTree(){
-    alert("Tree 선택")
+    alert("Tree 선택");
   }
 
   handleNewBtn(){
     console.info(this);
-    alert("신규등록2")
+    alert("신규등록2");
   }
 
   handleExcelBtn(){
     console.info(this);
-    alert("엑셀다운로드2")
+    alert("엑셀다운로드2");
   }
 
   render(){
@@ -42,7 +42,7 @@ class LayoutCExample extends Component{
       <div>
         <NLayoutSet layout={this.props.layout} first={this.props.tree} second={this.props.form} third={this.props.grid} />
       </div>
-    )
+    );
   }
 }
 
@@ -50,7 +50,7 @@ LayoutCExample.propTypes = {
   layout: PropTypes.object,
   grid: PropTypes.object,
   form: PropTypes.object
-}
+};
 
 LayoutCExample.defaultProps = {
   layout: {
@@ -125,6 +125,6 @@ LayoutCExample.defaultProps = {
       }
     ]
   }
-}
+};
 
 export default LayoutCExample;

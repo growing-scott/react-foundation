@@ -13,14 +13,14 @@ class FormExample extends Component{
       <div>
         <NForm form={this.props.form} />
       </div>
-    )
+    );
   }
 }
 
 FormExample.propTypes = {
   grid: Proptypes.object,
   form: PropTypes.object
-}
+};
 
 FormExample.defaultProps = {
   app: {
@@ -69,6 +69,6 @@ FormExample.defaultProps = {
       }
     ]
   }
-}
+};
 
 ReactDom.render(<FormExample/>, document.getElementById('app'));
