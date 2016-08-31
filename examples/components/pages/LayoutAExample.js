@@ -34,15 +34,22 @@ class LayoutAExample extends Component{
   handleNewBtn(){
     alert("신규등록");
 
-    console.info(this.props.form.fieldSet[0]);
+    // 또는 Ref로 접근하여 처리해도 될 듯 합니다.
+    NControls.bindButton(this, this.props.form.topButtons, ["new_btn"]);
+    NControls.bindButton(this, this.props.form.buttomButtons, null);
 
+    this.setState({ updateLayout: true });
+  }
+
+  handleHideBtn(){
     this.props.form.fieldSet[0].fieldList[1].visible = false;
     this.props.form.fieldSet[0].fieldList[2].visible = true;
+    this.setState({ updateLayout: true });
+  }
 
-    // 또는 Ref로 접근하여 처리해도 될 듯 합니다.
-    //NControls.bindButton(this, this.props.form.topButtons, ["new_btn"]);
-    //NControls.bindButton(this, this.props.form.buttomButtons, null);
-
+  handleShowBtn(){
+    this.props.form.fieldSet[0].fieldList[1].visible = true;
+    this.props.form.fieldSet[0].fieldList[2].visible = false;
     this.setState({ updateLayout: true });
   }
 
@@ -116,6 +123,16 @@ LayoutAExample.defaultProps = {
         id: "excel_btn",
         label: "엑셀다운로드",
         onClickEvent: "handleExcelBtn"
+      },
+      {
+        id: "hide_btn",
+        label: "필드숨김",
+        onClickEvent: "handleHideBtn"
+      },
+      {
+        id: "show_btn",
+        label: "필드보기",
+        onClickEvent: "handleShowBtn"
       }
     ],
     buttomButtons: [
