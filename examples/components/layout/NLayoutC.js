@@ -5,7 +5,7 @@ import NLayoutUtils from '../utils/NLayoutUtils';
 
 /**
  * Layout C
- * 좌측|우측(상부|하부) 3개의 Layer로 구성된 Layout 구조
+ * 상부|하부 2개의 Layer로 구성된 Layout 구조
  */
 class NLayoutC extends Component {
     constructor() {
@@ -16,7 +16,7 @@ class NLayoutC extends Component {
     componentDidMount() {}
 
     render() {
-        const {firstArea, secondArea, thirdArea} = this.props;
+        const {firstArea, secondArea} = this.props;
 
         // First Component
         let firstComponent = NLayoutUtils.ComponentRender(firstArea);
@@ -35,42 +35,22 @@ class NLayoutC extends Component {
 
         // Bottom Button 생성
         let secondBottomComponent = NLayoutUtils.ButtonRender(secondArea.buttomButtons);
-
-        // Third Component
-        let thirdComponent = NLayoutUtils.ComponentRender(thirdArea);
-
-        // Top Button 생성
-        let thirdTopComponent = NLayoutUtils.ButtonRender(thirdArea.topButtons);
-
-        // Bottom Button 생성
-        let thirdBottomComponent = NLayoutUtils.ButtonRender(thirdArea.buttomButtons);
-
         return (
             <Grid>
                 <Row className="show-grid">
-                    <Col xs={4} md={4}>
+                    <Col xs={12} md={12}>
                         <h1>1영역</h1>
                         {firstTopComponent}
                         {firstComponent}
                         {firstBottomComponent}
                     </Col>
-                    <Col xs={8} md={8}>
-                        <Row className="show-grid">
-                            <Col xs={12} md={12}>
-                                <h1>2영역</h1>
-                                {secondTopComponent}
-                                {secondComponent}
-                                {secondBottomComponent}
-                            </Col>
-                        </Row>
-                        <Row className="show-grid">
-                            <Col xs={12} md={12}>
-                                <h1>3영역!</h1>
-                                {thirdTopComponent}
-                                {thirdComponent}
-                                {thirdBottomComponent}
-                            </Col>
-                        </Row>
+                </Row>
+                <Row className="show-grid">
+                    <Col xs={12} md={12}>
+                        <h1>2영역</h1>
+                        {secondTopComponent}
+                        {secondComponent}
+                        {secondBottomComponent}
                     </Col>
                 </Row>
             </Grid>

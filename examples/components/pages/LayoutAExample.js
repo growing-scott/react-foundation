@@ -24,8 +24,8 @@ class LayoutAExample extends Component {
     // Event Handler Mapping
     eventHandler() {
         // 버튼 Event bind
-        NControlUtils.bindButtonEvent(this, this.props.form.topButtons, null);
-        NControlUtils.bindButtonEvent(this, this.props.form.buttomButtons, ["save_btn", "cancel_btn"]);
+        NControlUtils.bindButtonEvent(this, this.props.form.topButtons);
+        NControlUtils.bindButtonEvent(this, this.props.form.buttomButtons);
 
         // Grid Event bind
         NControlUtils.bindEvent(this, this.props.grid, this.props.grid.onSelectRowEvent, "onSelectRow");
@@ -35,23 +35,21 @@ class LayoutAExample extends Component {
         alert("신규등록");
 
         // 또는 Ref로 접근하여 처리해도 될 듯 합니다.
-        NControlUtils.bindButtonEvent(this, this.props.form.topButtons, ["new_btn"]);
-        NControlUtils.bindButtonEvent(this, this.props.form.buttomButtons, null);
+        NControlUtils.bindButtonEvent(this, this.props.form.topButtons);
+        NControlUtils.bindButtonEvent(this, this.props.form.buttomButtons);
 
         this.updateLayout();
     }
 
     handleHideBtn() {
-        NControlUtils.setVisible(this.props.form.fieldSet[0].fieldList, [
-            "user_nm", "position"
-        ], false);
+        NControlUtils.setVisible(this.props.form.fieldSet[0].fieldList, ["user_nm", "position"], false);
+
         this.updateLayout();
     }
 
     handleShowBtn() {
-        NControlUtils.setVisible(this.props.form.fieldSet[0].fieldList, [
-            "user_nm", "position"
-        ], true);
+        NControlUtils.setVisible(this.props.form.fieldSet[0].fieldList, ["user_nm", "position"], true);
+
         this.updateLayout();
     }
 

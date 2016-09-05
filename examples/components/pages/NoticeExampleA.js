@@ -1,12 +1,13 @@
 import React, {Component, PropTypes} from 'react';
 import ReactDom from 'react-dom';
+import { hashHistory } from 'react-router';
 
 import NLayoutSet from '../layout/NLayoutSet';
 
 import NConstraint from '../constraints/NConstraint';
 import NControlUtils from '../utils/NControlUtils';
 
-class NoticeExample extends Component {
+class NoticeExampleA extends Component {
     constructor() {
         super(...arguments);
 
@@ -33,9 +34,6 @@ class NoticeExample extends Component {
             case "form":
                 ref = this.refs.n.refs.notice.refs.theForm;
                 break;
-            case "grid":
-                ref = this.refs.n.refs.notice.refs.theGrid;
-                break;
             default:
         }
         return ref;
@@ -43,11 +41,10 @@ class NoticeExample extends Component {
 
     // 렌더 초기화 핸들러
     initRender() {
-        const {grid, form} = this.props;
+        const {grid} = this.props;
 
         // 버튼 Event bind
         NControlUtils.bindButtonEvent(this, grid.topButtons);
-        NControlUtils.bindButtonEvent(this, form.buttomButtons);
 
         // Grid Event bind
         NControlUtils.bindEvent(this, grid, grid.onSelectRowEvent, "onSelectRow");
@@ -58,25 +55,11 @@ class NoticeExample extends Component {
 
     // Grid 선택 이벤트
     onSelectRowGrid(dataSet) {
-        const {grid, form} = this.props;
+        const {grid} = this.props;
 
-        let _this = this;
-        $.ajax({
-            type: "POST",
-            url: NConstraint.HOST + "/itg/system/board/selectNoticeBoardInfo.do",
-            contentType: "application/json",
-            dataType: "json",
-            async: false,
-            data: JSON.stringify({no_id: dataSet.data.NO_ID, flag: true}),
-            success: function(data) {
-                // Form Data Set
-                //let form = _this.getRefs("form");
-                _this.getRefs("form").setFormValuesByMap(data.resultMap);
-
-                NControlUtils.setVisible(form.buttomButtons, ["save_btn", "delete_btn"], true);
-
-                _this.updateLayout();
-            }
+        hashHistory.push({
+            pathname: '/noticeFormExampleA/' + dataSet.data.NO_ID,
+            state: { no_id: dataSet.data.NO_ID }
         });
     }
 
@@ -89,6 +72,8 @@ class NoticeExample extends Component {
         NControlUtils.setVisible(form.buttomButtons, ["delete_btn"], false);
 
         this.updateLayout();
+
+
     }
 
     // 엑셀다운로드
@@ -159,22 +144,21 @@ class NoticeExample extends Component {
     render() {
         return (
             <div>
-                <NLayoutSet ref="n" layout={this.props.layout} first={this.props.grid} second={this.props.form}/>
+                <NLayoutSet ref="n" layout={this.props.layout} first={this.props.grid} />
             </div>
         );
     }
 }
 
-NoticeExample.propTypes = {
+NoticeExampleA.propTypes = {
     layout: PropTypes.object,
-    grid: PropTypes.object,
-    form: PropTypes.object
+    grid: PropTypes.object
 };
 
-NoticeExample.defaultProps = {
+NoticeExampleA.defaultProps = {
     layout: {
         id: "notice",
-        type: "C"
+        type: "A"
     },
     grid: {
         type: "grid",
@@ -201,62 +185,7 @@ NoticeExample.defaultProps = {
                 onClickEvent: "doExcelDownload"
             }
         ]
-    },
-    form: {
-        type: "form",
-        id: "theForm",
-        title: "Form Title",
-        formType: "editor", // 입력 또는 Search Form 또는 Readonly
-        buttomButtons: [
-            {
-                id: "save_btn",
-                label: "저장",
-                onClickEvent: "doSave",
-                visible: false
-            }, {
-                id: "delete_btn",
-                label: "삭제",
-                onClickEvent: "doDelete",
-                visible: false
-            }, {
-                id: "cancel_btn",
-                label: "취소",
-                onClickEvent: "doCancel",
-                visible: false
-            }
-        ],
-        fieldSet: [
-            {
-                id: "editor_fields",
-                columns: 3,
-                fieldList: [
-                    {
-                        type: "static",
-                        id: "no_id",
-                        label: "번호"
-                    }, {
-                        type: "text",
-                        id: "ins_user_nm",
-                        label: "작성자",
-                        required: true,
-                        readonly: true
-                    }, {
-                        type: "text",
-                        id: "title",
-                        label: "제목",
-                        placeholder: "제목을 입력해주세요.",
-                        required: true
-                    }, {
-                        type: "textarea",
-                        id: "content",
-                        label: "내용",
-                        placeholder: "내용을 작성해주세요.",
-                        required: true
-                    }
-                ]
-            }
-        ]
     }
 };
 
-export default NoticeExample;
+export default NoticeExampleA;

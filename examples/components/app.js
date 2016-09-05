@@ -9,7 +9,10 @@ import Abort from './pages/Abort';
 import LayoutAExample from './pages/LayoutAExample';
 import LayoutBExample from './pages/LayoutBExample';
 import LayoutCExample from './pages/LayoutCExample';
+import LayoutDExample from './pages/LayoutDExample';
 import NoticeExample from './pages/NoticeExample';
+import NoticeExampleA from './pages/NoticeExampleA';
+import NoticeFormExampleA from './pages/NoticeFormExampleA';
 
 import NConstraint from './constraints/NConstraint';
 
@@ -34,7 +37,16 @@ class App extends Component {
                                 <Link to="/layoutC">Layout C</Link>
                             </li>
                             <li>
-                                <Link to="/notice">공지사항(B타입)</Link>
+                                <Link to="/layoutD">Layout D</Link>
+                            </li>
+                            <li>
+                                <Link to="/notice">공지사항(C타입-현재)</Link>
+                            </li>
+                            <li>
+                                <Link to="/noticeA">공지사항(A타입-디테일)</Link>
+                            </li>
+                            <li>
+                                <Link to="/noticeB">공지사항(A타입-팝업)</Link>
                             </li>
                             <li>
                                 <Link to="/abort">메시지(리소스): {NConstraint.MESSAGE('res.common.list')}</Link>
@@ -61,7 +73,10 @@ ReactDom.render((
             <Route path="/layoutA" component={LayoutAExample}/>
             <Route path="/layoutB" component={LayoutBExample}/>
             <Route path="/layoutC" component={LayoutCExample}/>
+            <Route path="/layoutD" component={LayoutDExample}/>
             <Route path="/notice" component={NoticeExample}/>
+            <Route path="/noticeA" component={NoticeExampleA}/>
+            <Route path="/noticeFormExampleA/:no_id" component={NoticeFormExampleA}/>
             <Route path="/abort" component={Abort}/>
         </Route>
     </Router>

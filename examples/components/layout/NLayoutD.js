@@ -4,10 +4,10 @@ import {Grid, Row, Col, Clearfix} from 'react-bootstrap';
 import NLayoutUtils from '../utils/NLayoutUtils';
 
 /**
- * Layout B
- * 좌측|우측 2개의 Layer로 구성된 Layout 구조
+ * Layout D
+ * 좌측|우측(상부|하부) 3개의 Layer로 구성된 Layout 구조
  */
-class NLayoutB extends Component {
+class NLayoutD extends Component {
     constructor() {
         super(...arguments);
     }
@@ -16,9 +16,9 @@ class NLayoutB extends Component {
     componentDidMount() {}
 
     render() {
-        const {firstArea, secondArea} = this.props;
+        const {firstArea, secondArea, thirdArea} = this.props;
 
-        // First Componenscvt
+        // First Component
         let firstComponent = NLayoutUtils.ComponentRender(firstArea);
 
         // Top Button 생성
@@ -36,6 +36,15 @@ class NLayoutB extends Component {
         // Bottom Button 생성
         let secondBottomComponent = NLayoutUtils.ButtonRender(secondArea.buttomButtons);
 
+        // Third Component
+        let thirdComponent = NLayoutUtils.ComponentRender(thirdArea);
+
+        // Top Button 생성
+        let thirdTopComponent = NLayoutUtils.ButtonRender(thirdArea.topButtons);
+
+        // Bottom Button 생성
+        let thirdBottomComponent = NLayoutUtils.ButtonRender(thirdArea.buttomButtons);
+
         return (
             <Grid>
                 <Row className="show-grid">
@@ -46,10 +55,22 @@ class NLayoutB extends Component {
                         {firstBottomComponent}
                     </Col>
                     <Col xs={8} md={8}>
-                        <h1>2영역</h1>
-                        {secondTopComponent}
-                        {secondComponent}
-                        {secondBottomComponent}
+                        <Row className="show-grid">
+                            <Col xs={12} md={12}>
+                                <h1>2영역</h1>
+                                {secondTopComponent}
+                                {secondComponent}
+                                {secondBottomComponent}
+                            </Col>
+                        </Row>
+                        <Row className="show-grid">
+                            <Col xs={12} md={12}>
+                                <h1>3영역!</h1>
+                                {thirdTopComponent}
+                                {thirdComponent}
+                                {thirdBottomComponent}
+                            </Col>
+                        </Row>
                     </Col>
                 </Row>
             </Grid>
@@ -57,6 +78,6 @@ class NLayoutB extends Component {
     }
 }
 
-NLayoutB.propTypes = {};
+NLayoutD.propTypes = {};
 
-export default NLayoutB;
+export default NLayoutD;

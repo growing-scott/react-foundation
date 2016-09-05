@@ -1,6 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import {FormGroup, FormControl, ControlLabel, HelpBlock} from 'react-bootstrap';
 
+import NConstraint from '../constraints/NConstraint';
+
 class NTextArea extends Component {
     constructor() {
         super(...arguments);
@@ -31,7 +33,12 @@ class NTextArea extends Component {
         return (
             <FormGroup ref={this.props.id} controlId={this.props.id}>
                 <ControlLabel>{this.props.label}</ControlLabel>
-                <FormControl componentClass="textarea" name={this.props.id} value={this.state.value} placeholder={this.props.placeholder} onChange={this.handleChange.bind(this)}/>
+                <FormControl componentClass="textarea"
+                    name={this.props.id}
+                    value={this.state.value}
+                    placeholder={this.props.placeholder}
+                    onChange={this.handleChange.bind(this)}
+                    rows={NConstraint.DEFAULT_TEXTAREA_ROWS} />
             </FormGroup>
         );
     }

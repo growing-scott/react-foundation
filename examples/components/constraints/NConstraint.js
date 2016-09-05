@@ -18,6 +18,14 @@ class NConstraint {
         return "CODE_ID";
     }
 
+    static get DEFAULT_GRID_HEIGHT() {
+        return 200;
+    }
+
+    static get DEFAULT_TEXTAREA_ROWS() {
+        return "8";
+    }
+
     static MESSAGE(key, args0, args1) {
         let message;
         if (localStorage[key] && typeof args0 == "undefined") {

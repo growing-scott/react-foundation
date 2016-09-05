@@ -21,7 +21,10 @@ class NControlUtils {
             targetIds.forEach(targetId => {
                 props.some(prop => {
                     if (targetId === prop.id) {
-                        prop.visible = isVisible;
+                        if(prop.visible != isVisible){
+                            prop.visible = isVisible;
+                            return true;
+                        }
                     }
                 });
             });

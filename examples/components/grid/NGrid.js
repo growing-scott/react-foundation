@@ -66,7 +66,17 @@ class NGrid extends Component {
     }
 
     render() {
-        return (<Puf.Grid url={this.props.grid.url} method="POST" columns={this.state.columns} onChange={this.props.grid.onSelectRow} host={NConstraint.HOST} data={this.props.grid.params} pageable={this.props.grid.paging} filterable={true} listField={NConstraint.GRID_LIST_FIELD} selectMode={this.props.grid.selectable}/>);
+        return (<Puf.Grid url={this.props.grid.url}
+            method="POST"
+            columns={this.state.columns}
+            //{/* height={NConstraint.DEFAULT_GRID_HEIGHT}*/}
+            onChange={this.props.grid.onSelectRow}
+            host={NConstraint.HOST}
+            data={this.props.grid.params}
+            pageable={this.props.grid.paging}
+            filterable={true}
+            listField={NConstraint.GRID_LIST_FIELD}
+            selectMode={this.props.grid.selectable}/>);
     }
 }
 
