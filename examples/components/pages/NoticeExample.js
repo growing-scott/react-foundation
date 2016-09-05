@@ -4,7 +4,7 @@ import ReactDom from 'react-dom';
 import NLayoutSet from '../layout/NLayoutSet';
 
 import NConstraint from '../constraints/NConstraint';
-import NControls from '../utils/NControls';
+import NControlUtils from '../utils/NControlUtils';
 
 class NoticeExample extends Component {
     constructor() {
@@ -42,11 +42,11 @@ class NoticeExample extends Component {
     // Event Handler Mapping
     eventHandler() {
         // 버튼 Event bind
-        NControls.bindButton(this, this.props.grid.topButtons, null);
-        NControls.bindButton(this, this.props.form.buttomButtons, ["save_btn", "cancel_btn"]);
+        NControlUtils.bindButtonEvent(this, this.props.grid.topButtons, null);
+        NControlUtils.bindButtonEvent(this, this.props.form.buttomButtons, ["save_btn", "cancel_btn"]);
 
         // Grid Event bind
-        NControls.bindEvent(this, this.props.grid, this.props.grid.onSelectRowEvent, "onSelectRow");
+        NControlUtils.bindEvent(this, this.props.grid, this.props.grid.onSelectRowEvent, "onSelectRow");
     }
 
     // Grid 선택 이벤트
@@ -63,16 +63,15 @@ class NoticeExample extends Component {
                 // Form Data Set
                 let form = _this.getRefs("form");
                 form.setFormValuesByMap(data.resultMap);
-                let grid = _this.getRefs("grid");
-                grid.refresh();
+
             }
         });
     }
 
     // 신규등록
     doNew() {
-        NControls.bindButton(this, this.props.grid.topButtons, ["new_btn"]);
-        NControls.bindButton(this, this.props.form.buttomButtons, null);
+        NControlUtils.bindButtonEvent(this, this.props.grid.topButtons, ["new_btn"]);
+        NControlUtils.bindButtonEvent(this, this.props.form.buttomButtons, null);
 
         this.updateLayout();
     }
@@ -96,6 +95,7 @@ class NoticeExample extends Component {
                 data: JSON.stringify(params),
                 success: function(data) {
                     alert("저장되었습니다.");
+                    _this.getRefs("grid").refresh();
                     _this.updateLayout();
                 }
             });
@@ -103,8 +103,8 @@ class NoticeExample extends Component {
     }
 
     doCancel() {
-        NControls.bindButton(this, this.props.grid.topButtons, null);
-        NControls.bindButton(this, this.props.form.buttomButtons, ["save_btn", "cancel_btn"]);
+        NControlUtils.bindButton(this, this.props.grid.topButtons, null);
+        NControlUtils.bindButton(this, this.props.form.buttomButtons, ["save_btn", "cancel_btn"]);
 
         this.updateLayout();
     }

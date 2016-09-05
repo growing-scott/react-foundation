@@ -43,10 +43,8 @@ class NGrid extends Component {
                         let gridWidth = data.gridWidth.split(",");
                         let gridAlign = data.gridAlign.split(",");
 
-                        let i,
-                            len;
-                        let columns = [];
-                        for (i = 0, len = gridText.length; i < len; i++) {
+                        let i = 0, len = gridText.length, columns = [];
+                        for (i; i < len; i++) {
                             let column = {
                                 field: gridHeader[i],
                                 title: gridText[i],
@@ -62,12 +60,9 @@ class NGrid extends Component {
     }
 
     refresh() {
-        console.info("refresh");
-        /*
         this.setState({
             refresh: true
         });
-        */
     }
 
     render() {

@@ -4,7 +4,7 @@ import ReactDom from 'react-dom';
 import NLayoutSet from '../layout/NLayoutSet';
 
 import NConstraint from '../constraints/NConstraint';
-import NControls from '../utils/NControls';
+import NControlUtils from '../utils/NControlUtils';
 
 class LayoutAExample extends Component {
     constructor() {
@@ -24,32 +24,32 @@ class LayoutAExample extends Component {
     // Event Handler Mapping
     eventHandler() {
         // 버튼 Event bind
-        NControls.bindButton(this, this.props.form.topButtons, null);
-        NControls.bindButton(this, this.props.form.buttomButtons, ["save_btn", "cancel_btn"]);
+        NControlUtils.bindButtonEvent(this, this.props.form.topButtons, null);
+        NControlUtils.bindButtonEvent(this, this.props.form.buttomButtons, ["save_btn", "cancel_btn"]);
 
         // Grid Event bind
-        NControls.bindEvent(this, this.props.grid, this.props.grid.onSelectRowEvent, "onSelectRow");
+        NControlUtils.bindEvent(this, this.props.grid, this.props.grid.onSelectRowEvent, "onSelectRow");
     }
 
     handleNewBtn() {
         alert("신규등록");
 
         // 또는 Ref로 접근하여 처리해도 될 듯 합니다.
-        NControls.bindButton(this, this.props.form.topButtons, ["new_btn"]);
-        NControls.bindButton(this, this.props.form.buttomButtons, null);
+        NControlUtils.bindButtonEvent(this, this.props.form.topButtons, ["new_btn"]);
+        NControlUtils.bindButtonEvent(this, this.props.form.buttomButtons, null);
 
         this.updateLayout();
     }
 
     handleHideBtn() {
-        NControls.setVisible(this.props.form.fieldSet[0].fieldList, [
+        NControlUtils.setVisible(this.props.form.fieldSet[0].fieldList, [
             "user_nm", "position"
         ], false);
         this.updateLayout();
     }
 
     handleShowBtn() {
-        NControls.setVisible(this.props.form.fieldSet[0].fieldList, [
+        NControlUtils.setVisible(this.props.form.fieldSet[0].fieldList, [
             "user_nm", "position"
         ], true);
         this.updateLayout();

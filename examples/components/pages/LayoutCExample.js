@@ -4,7 +4,7 @@ import ReactDom from 'react-dom';
 import NLayoutSet from '../layout/NLayoutSet';
 
 import NConstraint from '../constraints/NConstraint';
-import NControls from '../utils/NControls';
+import NControlUtils from '../utils/NControlUtils';
 
 class LayoutCExample extends Component {
     constructor() {
@@ -19,7 +19,7 @@ class LayoutCExample extends Component {
 
     // Event Handler Mapping
     eventHandler() {
-        NControls.bindEvent(this, this.props.tree, this.props.tree.onSelectEvent, "onSelect");
+        NControlUtils.bindEvent(this, this.props.tree, this.props.tree.onSelectEvent, "onSelect");
     }
 
     onSelectTree() {

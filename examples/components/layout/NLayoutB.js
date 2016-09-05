@@ -1,8 +1,7 @@
 import React, {Component, PropTypes} from 'react';
-import {Grid, Row, Col, Clearfix, ButtonToolbar, Button} from 'react-bootstrap';
+import {Grid, Row, Col, Clearfix} from 'react-bootstrap';
 
-import NGrid from '../grid/NGrid';
-import NForm from '../forms/NForm';
+import NLayoutUtils from '../utils/NLayoutUtils';
 
 /**
  * Layout B
@@ -16,53 +15,26 @@ class NLayoutB extends Component {
     // Compoent Render 이후 이벤트
     componentDidMount() {}
 
-    componentRender(component) {
-        let render;
-        switch (component.type) {
-            case "grid":
-                render = (<NGrid ref={component.id} grid={component}/>);
-                break;
-            case "form":
-                render = (<NForm ref={component.id} id={component.id} fieldSets={component.fieldSet}/>);
-                break;
-            default:
-        }
-        return render;
-    }
-
-    buttonRender(buttons) {
-        let render;
-        if (buttons) {
-            render = (buttons.map((button) => {
-                if (button.visible)
-                    return <Button key={button.id} onClick={button.onClick}>{button.label}</Button>;
-                }
-            ));
-        }
-        return render;
-    }
-
     render() {
         const {firstArea, secondArea} = this.props;
 
         // First Component
-        let firstComponent = this.componentRender(firstArea);
+        let firstComponent = NLayoutUtils.ComponentRender(firstArea);
 
         // Top Button 생성
-        let firstTopComponent = this.buttonRender(firstArea.topButtons);
+        let firstTopComponent = NLayoutUtils.ButtonRender(firstArea.topButtons);
 
         // Bottom Button 생성
-        let firstBottomComponent = this.buttonRender(firstArea.buttomButtons);
+        let firstBottomComponent = NLayoutUtils.ButtonRender(firstArea.buttomButtons);
 
         // Second Component
-        let secondComponent = this.componentRender(secondArea);
+        let secondComponent = NLayoutUtils.ComponentRender(secondArea);
 
         // Top Button 생성
-        let secondTopComponent = this.buttonRender(secondArea.topButtons);
+        let secondTopComponent = NLayoutUtils.ButtonRender(secondArea.topButtons);
 
         // Bottom Button 생성
-        let secondBottomComponent = this.buttonRender(secondArea.buttomButtons);
-
+        let secondBottomComponent = NLayoutUtils.ButtonRender(secondArea.buttomButtons);
         return (
             <Grid>
                 <Row className="show-grid">

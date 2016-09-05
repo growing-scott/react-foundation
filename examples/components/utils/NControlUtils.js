@@ -1,21 +1,12 @@
-class NControls {
+class NControlUtils {
     constructor() {}
 
     // Target(this), buttons[Array], hideButtons[Array]
-    static bindButton(target, buttons, hideButtons) {
+    static bindButtonEvent(target, buttons) {
         let _this = target;
         buttons.forEach(function(button) {
             if (button.onClickEvent) {
                 button.onClick = _this[button.onClickEvent].bind(_this);
-                button.visible = true;
-            }
-            // Hide Button 제어
-            if (hideButtons !== null) {
-                hideButtons.some(function(hidButton) {
-                    if (button.id == hidButton) {
-                        button.visible = false;
-                    }
-                });
             }
         });
     }
@@ -37,4 +28,4 @@ class NControls {
         }
     }
 }
-export default NControls;
+export default NControlUtils;
