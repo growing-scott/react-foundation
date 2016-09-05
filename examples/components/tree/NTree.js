@@ -3,20 +3,16 @@ import ReactDom from 'react-dom';
 
 import NConstraint from '../constraints/NConstraint';
 
-class NTree extends Component{
-  constructor(){
-    super(...arguments);
-  }
+class NTree extends Component {
+    constructor() {
+        super(...arguments);
+    }
 
-  // Compoent Render 이전 이벤트
-  componentWillMount() {
+    // Compoent Render 이전 이벤트
+    componentWillMount() {}
 
-  }
-
-  render() {
-    return (
-      <Puf.TreeView className="treeview-line" url={this.props.tree.url} method="POST" params={this.props.tree.params} onSelect={this.props.tree.onSelect} />
-    );
-  }
+    render() {
+        return (<Puf.TreeView className="treeview-line" host={NConstraint.HOST} url={this.props.tree.url} method="POST" params={this.props.tree.params} onSelect={this.props.tree.onSelect}/>);
+    }
 }
 export default NTree;

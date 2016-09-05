@@ -9,82 +9,106 @@ import NForm from '../forms/NForm';
  * Layout C
  * 좌측|우측(상부|하부) 3개의 Layer로 구성된 Layout 구조
  */
-class NLayoutC extends Component{
-  constructor() {
-    super(...arguments);
-  }
-
-  // Compoent Render 이후 이벤트
-  componentDidMount() {
-
-  }
-
-  render(){
-    let first = this.props.firstArea;
-    let firstComponent;
-    switch (first.type) {
-      case "tree":
-        firstComponent = (<NTree tree={first} />);
-        break;
-      case "grid":
-        firstComponent = (<NGrid grid={first} />);
-        break;
-      case "form":
-        firstComponent = (<NForm name={first.name} fieldSets={first.fieldSet} topButtons={first.topButtons} buttomButtons={first.buttomButtons} />);
-        break;
-      default:
+class NLayoutC extends Component {
+    constructor() {
+        super(...arguments);
     }
 
-    let second = this.props.secondArea;
-    let secondComponent;
-    switch (second.type) {
-      case "tree":
-        secondComponent = (<NTree tree={second} />);
-        break;
-      case "grid":
-        secondComponent = (<NGrid grid={second} />);
-        break;
-      case "form":
-        secondComponent = (<NForm name={second.name} fieldSets={second.fieldSet} topButtons={second.topButtons} buttomButtons={second.buttomButtons}  />);
-        break;
-      default:
+    // Compoent Render 이후 이벤트
+    componentDidMount() {}
+
+    componentRender(component) {
+        let render;
+        switch (component.type) {
+            case "grid":
+                render = (<NGrid ref={component.id} grid={component}/>);
+                break;
+            case "tree":
+                render = (<NTree ref={component.id} tree={component}/>);
+                break;
+            case "form":
+                render = (<NForm ref={component.id} id={component.id} fieldSets={component.fieldSet}/>);
+                break;
+            default:
+        }
+        return render;
     }
 
-    let third = this.props.thirdArea;
-    let thirdComponent;
-    switch (third.type) {
-      case "tree":
-        thirdComponent = (<NTree tree={third} />);
-        break;
-      case "grid":
-        thirdComponent = (<NGrid grid={third} />);
-        break;
-      case "form":
-        thirdComponent = (<NForm name={third.name} fieldSets={third.fieldSet} topButtons={third.topButtons} buttomButtons={third.buttomButtons}  />);
-        break;
-      default:
+    buttonRender(buttons) {
+        let render;
+        if (buttons) {
+            render = (buttons.map((button) => {
+                if (button.visible)
+                    return <Button key={button.id} onClick={button.onClick}>{button.label}</Button>;
+                }
+            ));
+        }
+        return render;
     }
 
-    return(
-      <Grid>
-          <Row className="show-grid">
-            <Col xs={4} md={4}><h1>1영역</h1>{firstComponent}</Col>
-            <Col xs={8} md={8}>
-              <Row className="show-grid">
-                  <Col xs={12} md={12}><h1>2영역</h1>{secondComponent}</Col>
-              </Row>
-              <Row className="show-grid">
-                  <Col xs={12} md={12}><h1>3영역!</h1>{thirdComponent}</Col>
-              </Row>
-            </Col>
-          </Row>
-      </Grid>
-    );
-  }
+    render() {
+        const {firstArea, secondArea, thirdArea} = this.props;
+
+        // First Component
+        let firstComponent = this.componentRender(firstArea);
+
+        // Top Button 생성
+        let firstTopComponent = this.buttonRender(firstArea.topButtons);
+
+        // Bottom Button 생성
+        let firstBottomComponent = this.buttonRender(firstArea.buttomButtons);
+
+        // Second Component
+        let secondComponent = this.componentRender(secondArea);
+
+        // Top Button 생성
+        let secondTopComponent = this.buttonRender(secondArea.topButtons);
+
+        // Bottom Button 생성
+        let secondBottomComponent = this.buttonRender(secondArea.buttomButtons);
+
+        // Third Component
+        let thirdComponent = this.componentRender(thirdArea);
+
+        // Top Button 생성
+        let thirdTopComponent = this.buttonRender(thirdArea.topButtons);
+
+        // Bottom Button 생성
+        let thirdBottomComponent = this.buttonRender(thirdArea.buttomButtons);
+
+        return (
+            <Grid>
+                <Row className="show-grid">
+                    <Col xs={4} md={4}>
+                        <h1>1영역</h1>
+                        {firstTopComponent}
+                        {firstComponent}
+                        {firstBottomComponent}
+                    </Col>
+                    <Col xs={8} md={8}>
+                        <Row className="show-grid">
+                            <Col xs={12} md={12}>
+                                <h1>2영역</h1>
+                                {secondTopComponent}
+                                {secondComponent}
+                                {secondBottomComponent}
+                            </Col>
+                        </Row>
+                        <Row className="show-grid">
+                            <Col xs={12} md={12}>
+                                <h1>3영역!</h1>
+                                {thirdTopComponent}
+                                {thirdComponent}
+                                {thirdBottomComponent}
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+            </Grid>
+        );
+    }
 }
 
-NLayoutC.propTypes = {
-
-};
+NLayoutC.propTypes = {};
 
 export default NLayoutC;
