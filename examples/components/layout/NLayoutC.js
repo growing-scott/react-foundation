@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {Grid, Row, Col, Clearfix} from 'react-bootstrap';
+import {Grid, Row, Col, Clearfix, ButtonToolbar, Button} from 'react-bootstrap';
 
 import NGrid from '../grid/NGrid';
 import NTree from '../tree/NTree';

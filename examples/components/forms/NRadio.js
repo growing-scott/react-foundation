@@ -36,15 +36,14 @@ class NRadio extends Component {
     }
 
     render() {
+        let text = NConstraint.DEFAULT_OPTION_NAME;
+        let value = NConstraint.DEFAULT_OPTION_VALUE;
+
         let dataList = this.state.dataList;
         let renderRadio = (dataList.map((data) => {
-            if (NConstraint.PRODUCT === "ITSM") {
-                return (
-                    <Radio name={this.props.id} key={data.CODE_ID} value={data.CODE_ID}>{data.CODE_TEXT}</Radio>
-                );
-            } else {
-                //return (<option key={option[NConstraint.DEFAULT_OPTION_VALUE]} value={option[NConstraint.DEFAULT_OPTION_VALUE]}>{option[NConstraint.DEFAULT_OPTION_NAME]}</option>);
-            }
+            return (
+                <Radio name={this.props.id} key={data[value]} value={data[value]}>{data[text]}</Radio>
+            );
         }));
 
         return (

@@ -11,11 +11,11 @@ class NConstraint {
     }
 
     static get DEFAULT_OPTION_NAME() {
-        return "name";
+        return "CODE_TEXT";
     }
 
     static get DEFAULT_OPTION_VALUE() {
-        return "value";
+        return "CODE_ID";
     }
 
     static MESSAGE(key, args0, args1) {

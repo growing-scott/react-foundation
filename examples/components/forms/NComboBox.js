@@ -53,15 +53,14 @@ class NComboBox extends Component {
     }
 
     render() {
+        let text = NConstraint.DEFAULT_OPTION_NAME;
+        let value = NConstraint.DEFAULT_OPTION_VALUE;
+
         let options = this.state.options;
         let renderOptions = (options.map((option) => {
-            if (NConstraint.PRODUCT === "ITSM") {
-                return (
-                    <option key={option.CODE_ID} value={option.CODE_ID}>{option.CODE_TEXT}</option>
-                );
-            } else {
-                //return (<option key={option[NConstraint.DEFAULT_OPTION_VALUE]} value={option[NConstraint.DEFAULT_OPTION_VALUE]}>{option[NConstraint.DEFAULT_OPTION_NAME]}</option>);
-            }
+            return (
+                <option key={option[value]} value={option[value]}>{option[text]}</option>
+            );
         }));
 
         return (
