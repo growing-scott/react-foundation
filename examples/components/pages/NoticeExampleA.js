@@ -7,6 +7,8 @@ import NLayoutSet from '../layout/NLayoutSet';
 import NConstraint from '../constraints/NConstraint';
 import NControlUtils from '../utils/NControlUtils';
 
+import NLayoutUtils from '../utils/NLayoutUtils';
+
 class NoticeExampleA extends Component {
     constructor() {
         super(...arguments);
@@ -25,7 +27,11 @@ class NoticeExampleA extends Component {
     }
 
     // Compoent Render 이후 이벤트
-    componentDidMount() {}
+    componentDidMount() {
+        if(this.context.notification === null || this.context.notification == 'null'){
+            this.context.notification = NLayoutUtils.Notification("notification");
+        }
+    }
 
     // Refs 정의
     getRefs(type) {
@@ -51,6 +57,8 @@ class NoticeExampleA extends Component {
 
         // visible 제어
         //NControlUtils.setVisible(form.buttomButtons, ["save_btn", "cancel_btn"], false);
+
+
     }
 
     // Grid 선택 이벤트
@@ -58,27 +66,28 @@ class NoticeExampleA extends Component {
         const {grid} = this.props;
 
         hashHistory.push({
-            pathname: '/noticeFormExampleA/' + dataSet.data.NO_ID,
-            state: { no_id: dataSet.data.NO_ID }
+            pathname: '/noticeFormExampleA',
+            query: { no_id: dataSet.data.NO_ID, flag: false }
         });
     }
 
     // 신규등록
     doNew() {
-        const {grid, form} = this.props;
-
-        NControlUtils.setVisible(grid.topButtons, ["new_btn"], false);
-        NControlUtils.setVisible(form.buttomButtons, ["save_btn", "cancel_btn"], true);
-        NControlUtils.setVisible(form.buttomButtons, ["delete_btn"], false);
-
-        this.updateLayout();
-
-
+        hashHistory.push({
+            pathname: '/noticeFormExampleA'
+        });
     }
 
     // 엑셀다운로드
     doExcelDownload() {
-        alert("엑셀다운로드 구현예정");
+        //alert("엑셀다운로드 구현예정");
+        var d = new Date();
+        console.info(this);
+
+        this.context.notification.show({
+            title: "준비중",
+            message: "엑셀다운로드는 구현 예정에 있습니다. 잠시만 기다려주세요."
+        }, "error");
     }
 
     // 저장
@@ -153,6 +162,10 @@ class NoticeExampleA extends Component {
 NoticeExampleA.propTypes = {
     layout: PropTypes.object,
     grid: PropTypes.object
+};
+
+NoticeExampleA.contextTypes = {
+    notification: React.PropTypes.object
 };
 
 NoticeExampleA.defaultProps = {

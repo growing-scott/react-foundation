@@ -7,6 +7,8 @@ import NLayoutSet from '../layout/NLayoutSet';
 import NConstraint from '../constraints/NConstraint';
 import NControlUtils from '../utils/NControlUtils';
 
+import NLayoutUtils from '../utils/NLayoutUtils';
+
 class NoticeFormExampleA extends Component {
     constructor() {
         super(...arguments);
@@ -26,24 +28,28 @@ class NoticeFormExampleA extends Component {
 
     // Compoent Render 이후 이벤트
     componentDidMount() {
-        console.info(this);
+        if(this.context.notification === null || this.context.notification == 'null'){
+            this.context.notification = NLayoutUtils.Notification("notification");
+        }
 
-        const {state} = this.props.location;
+        const {query} = this.props.location;
 
-        let _this = this;
-        $.ajax({
-            type: "POST",
-            url: NConstraint.HOST + "/itg/system/board/selectNoticeBoardInfo.do",
-            contentType: "application/json",
-            dataType: "json",
-            async: false,
-            data: JSON.stringify({no_id: state.no_id, flag: true}),
-            success: function(data) {
-                // Form Data Set
-                //let form = _this.getRefs("form");
-                _this.getRefs("form").setFormValuesByMap(data.resultMap);
-            }
-        });
+        if(Object.keys(query).length > 0){
+            let _this = this;
+            $.ajax({
+                type: "POST",
+                url: NConstraint.HOST + "/itg/system/board/selectNoticeBoardInfo.do",
+                contentType: "application/json",
+                dataType: "json",
+                async: false,
+                data: JSON.stringify(query),
+                success: function(data) {
+                    // Form Data Set
+                    //let form = _this.getRefs("form");
+                    _this.getRefs("form").setFormValuesByMap(data.resultMap);
+                }
+            });
+        }
     }
 
     // Refs 정의
@@ -72,24 +78,43 @@ class NoticeFormExampleA extends Component {
         let form = this.getRefs("form");
 
         if (form.getValidation().validate()) {
+            if(!confirm('저장하시겠습니까?')){
+                return false;
+            }
+            const {query} = this.props.location;
             let params = _this.getRefs("form").getFormValuesForMap();
+
+            let url, resultMessage;
+            if(Object.keys(query).length > 0){
+                url = "/itg/system/board/updateNoticeBoardInfo.do";
+                resultMessage = "공지사항 [" + params.title + "]  수정되었습니다.";
+            }else{
+                url = "/itg/system/board/insertNoticeBoardInfo.do";
+                resultMessage = "공지사항 [" + params.title + "]  등록되었습니다.";
+            }
+
             $.ajax({
                 type: "POST",
-                url: NConstraint.HOST + "/itg/system/board/insertNoticeBoardInfo.do",
+                url: NConstraint.HOST + url,
                 contentType: "application/json",
                 dataType: "json",
                 async: false,
                 data: JSON.stringify(params),
                 success: function(data) {
-                    alert("저장되었습니다.");
-                    _this.getRefs("grid").refresh();
-                    _this.updateLayout();
+                    _this.context.notification.show({
+                        message: resultMessage
+                    }, "upload-success");
+                    _this.goList();
                 }
             });
         }
     }
 
     doCancel() {
+        this.goList();
+    }
+
+    goList(){
         hashHistory.push({
             pathname: '/noticeA'
         });
@@ -113,6 +138,10 @@ NoticeFormExampleA.propTypes = {
     layout: PropTypes.object,
     grid: PropTypes.object,
     form: PropTypes.object
+};
+
+NoticeFormExampleA.contextTypes = {
+    notification: React.PropTypes.object
 };
 
 NoticeFormExampleA.defaultProps = {
@@ -142,10 +171,16 @@ NoticeFormExampleA.defaultProps = {
                 columns: 3,
                 fieldList: [
                     {
+                        type: "hidden",
+                        id: "no_id"
+                    },
+                    /*
+                    {
                         type: "static",
                         id: "no_id",
                         label: "번호"
-                    }, {
+                    },
+                    */{
                         type: "text",
                         id: "ins_user_nm",
                         label: "작성자",

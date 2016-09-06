@@ -40,5 +40,29 @@ class NLayoutUtils {
         }
         return render;
     }
+
+    // 알림창 생성
+    static Notification(id) {
+        let notification = $("#"+id).kendoNotification({
+            position: {
+                pinned: true,
+                top: 30,
+                right: 30
+            },
+            //autoHideAfter: 0,
+            stacking: "down",
+            templates: [{
+                type: "info",
+                template: $("#emailTemplate").html()
+            }, {
+                type: "error",
+                template: $("#errorTemplate").html()
+            }, {
+                type: "upload-success",
+                template: $("#successTemplate").html()
+            }]
+        }).data("kendoNotification");
+        return notification;
+    }
 }
 export default NLayoutUtils;

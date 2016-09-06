@@ -16,9 +16,28 @@ import NoticeFormExampleA from './pages/NoticeFormExampleA';
 
 import NConstraint from './constraints/NConstraint';
 
+import NLayoutUtils from './utils/NLayoutUtils';
+
 class App extends Component {
-    constructor() {
+    constructor(props, context) {
         super(...arguments);
+    }
+
+    getChildContext(){
+        return {
+            notification: this.props.app.notification
+        };
+    }
+
+    // Compoent Render 이전 이벤트
+    componentWillMount() {
+
+    }
+
+    // Compoent Render 이후 이벤트
+    componentDidMount() {
+        // Notification 설정
+        this.props.app.notification = NLayoutUtils.Notification("notification");
     }
 
     render() {
@@ -57,14 +76,25 @@ class App extends Component {
                         </Col>
                     </Row>
                 </Grid>
+                <span id="notification"></span>
             </div>
         );
     }
 }
 
-App.propTypes = {};
+App.propTypes = {
+    app: PropTypes.object
+};
 
-App.defaultProps = {};
+App.defaultProps = {
+    app: {
+        notification: null
+    }
+};
+
+App.childContextTypes = {
+    notification: React.PropTypes.object
+};
 
 ReactDom.render((
     <Router history={hashHistory}>
@@ -76,7 +106,7 @@ ReactDom.render((
             <Route path="/layoutD" component={LayoutDExample}/>
             <Route path="/notice" component={NoticeExample}/>
             <Route path="/noticeA" component={NoticeExampleA}/>
-            <Route path="/noticeFormExampleA/:no_id" component={NoticeFormExampleA}/>
+            <Route path="/noticeFormExampleA" component={NoticeFormExampleA}/>
             <Route path="/abort" component={Abort}/>
         </Route>
     </Router>

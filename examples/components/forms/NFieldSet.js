@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {Form, FormGroup, FormControl, ControlLabel, HelpBlock} from 'react-bootstrap';
 
+import NHiddenField from './NHiddenField';
 import NStaticText from './NStaticText';
 import NTextField from './NTextField';
 import NTextArea from './NTextArea';
@@ -32,6 +33,9 @@ class NFieldSet extends Component {
         let renderFields = (fieldList.map((field) => {
             let component;
             switch (field.type) {
+                case "hidden":
+                    component = (<NHiddenField ref={field.id} key={field.id} id={field.id} value={field.value} />);
+                    break;
                 case "text":
                     component = (<NTextField ref={field.id} key={field.id} id={field.id} label={field.label} placeholder={field.placeholder} value={field.value} required={field.required} visible={("visible" in field) ? field.visible : true}/>);
                     break;
