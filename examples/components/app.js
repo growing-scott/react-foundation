@@ -13,6 +13,7 @@ import LayoutDExample from './pages/LayoutDExample';
 import NoticeExample from './pages/NoticeExample';
 import NoticeExampleA from './pages/NoticeExampleA';
 import NoticeFormExampleA from './pages/NoticeFormExampleA';
+import NoticeExampleB from './pages/NoticeExampleB';
 
 import NConstraint from './constraints/NConstraint';
 
@@ -107,6 +108,7 @@ ReactDom.render((
             <Route path="/notice" component={NoticeExample}/>
             <Route path="/noticeA" component={NoticeExampleA}/>
             <Route path="/noticeFormExampleA" component={NoticeFormExampleA}/>
+            <Route path="/noticeB" component={NoticeExampleB}/>
             <Route path="/abort" component={Abort}/>
         </Route>
     </Router>

@@ -3,25 +3,38 @@ import ReactDom from 'react-dom';
 import { hashHistory } from 'react-router';
 
 import NLayoutSet from '../layout/NLayoutSet';
+import NModal from '../layout/NModal';
 
 import NConstraint from '../constraints/NConstraint';
-
-import NLayoutUtils from '../utils/NLayoutUtils';
 import NControlUtils from '../utils/NControlUtils';
 
-class NoticeFormExampleA extends Component {
+import NLayoutUtils from '../utils/NLayoutUtils';
+
+class NoticeExampleB extends Component {
     constructor() {
         super(...arguments);
 
+        this.state = {
+            updateLayout: false
+        };
         this.getRefs = this.getRefs.bind(this);
+        this.updateLayout = this.updateLayout.bind(this);
+
+        this.action = null;
     }
 
     // Refs 정의
     getRefs(type) {
         let ref;
         switch (type) {
+            case "grid":
+                ref = this.refs.n.refs.notice.refs.theGrid;
+                break;
             case "form":
-                ref = this.refs.n.refs.notice.refs.theForm;
+                ref = this.refs.m.refs.modal.refs.theForm;
+                break;
+            case "modal":
+                ref = this.refs.m;
                 break;
             default:
         }
@@ -34,44 +47,80 @@ class NoticeFormExampleA extends Component {
         this.initRender();
     }
 
-    // 렌더 초기화(버튼 바인딩, 이벤트 바인딩 수행)
+    // 렌더 초기화 핸들러
     initRender() {
-        const {form} = this.props;
+        const {grid, form} = this.props;
+
+        // 버튼 Event bind
+        NControlUtils.bindButtonEvent(this, grid.topButtons);
+
+        // Grid Event bind
+        NControlUtils.bindEvent(this, grid, grid.onSelectRowEvent, "onSelectRow");
 
         // 버튼 Event bind
         NControlUtils.bindButtonEvent(this, form.buttomButtons);
+
+        // visible 제어
+        //NControlUtils.setVisible(form.buttomButtons, ["save_btn", "cancel_btn"], false);
+
+        console.info(this);
     }
 
     // Compoent Render 이후 이벤트
     componentDidMount() {
-        // Notification 이 없을 경우 생성.
         if(this.context.notification === null || this.context.notification == 'null'){
             this.context.notification = NLayoutUtils.Notification("notification");
         }
-
-        // query에 데이터가 있는 경우 서버로 부터 데이터를 가져온다.
-        const {query} = this.props.location;
-        if(Object.keys(query).length > 0){
-            let _this = this;
-            $.ajax({
-                type: "POST",
-                url: NConstraint.HOST + "/itg/system/board/selectNoticeBoardInfo.do",
-                contentType: "application/json",
-                dataType: "json",
-                async: false,
-                data: JSON.stringify(query),
-                success: function(data) {
-                    // Form Data Set
-                    //let form = _this.getRefs("form");
-                    _this.getRefs("form").setFormValuesByMap(data.resultMap);
-                }
-            });
-        }
     }
 
+    // Grid 선택 이벤트
+    onSelectRowGrid(dataSet) {
+        let params = { no_id: dataSet.data.NO_ID, flag: false };
 
+        let modal = this.getRefs("modal");
+        modal.open();
 
-    // 신규 등록 또는 수정
+        this.action = "update";
+
+        // query에 데이터가 있는 경우 서버로 부터 데이터를 가져온다.
+        let _this = this;
+        $.ajax({
+            type: "POST",
+            url: NConstraint.HOST + "/itg/system/board/selectNoticeBoardInfo.do",
+            contentType: "application/json",
+            dataType: "json",
+            async: false,
+            data: JSON.stringify(params),
+            success: function(data) {
+                // Form Data Set
+                //let form = _this.getRefs("form");
+                _this.getRefs("form").setFormValuesByMap(data.resultMap);
+            }
+        });
+    }
+
+    // 신규등록
+    doNew() {
+        let modal = this.getRefs("modal");
+        modal.open();
+
+        this.action = "insert";
+    }
+
+    // 엑셀다운로드
+    doExcelDownload() {
+        let modal = this.getRefs("modal");
+        modal.open();
+        console.info(this);
+        /*
+        this.context.notification.show({
+            title: "준비중",
+            message: "엑셀다운로드는 구현 예정에 있습니다. 잠시만 기다려주세요."
+        }, "error");
+        */
+    }
+
+    // 저장
     doSave() {
         let _this = this;
         let form = this.getRefs("form");
@@ -80,11 +129,10 @@ class NoticeFormExampleA extends Component {
             if(!confirm('저장하시겠습니까?')){
                 return false;
             }
-            const {query} = this.props.location;
             let params = _this.getRefs("form").getFormValuesForMap();
 
             let url, resultMessage;
-            if(Object.keys(query).length > 0){
+            if(this.action == "update"){
                 url = "/itg/system/board/updateNoticeBoardInfo.do";
                 resultMessage = "공지사항 [" + params.title + "]  수정되었습니다.";
             }else{
@@ -103,62 +151,87 @@ class NoticeFormExampleA extends Component {
                     _this.context.notification.show({
                         message: resultMessage
                     }, "upload-success");
-                    _this.goList();
+
+                    _this.getRefs("modal").close();
+                    _this.getRefs("grid").refresh();
                 }
             });
         }
     }
 
-    // 취소 이벤트(목록으로 돌아가기)
-    doCancel() {
-        this.goList();
-    }
-
-    // 목록으로 돌아가기
-    goList(){
-        hashHistory.push({
-            pathname: '/noticeA'
-        });
+    // Layout Update
+    updateLayout() {
+        this.setState({updateLayout: true});
     }
 
     render() {
         return (
             <div>
-                <NLayoutSet ref="n" layout={this.props.layout} first={this.props.form} />
+                <NLayoutSet ref="n" layout={this.props.layout} first={this.props.grid} />
+                <NModal ref="m" layout={this.props.modal} first={this.props.form} />
             </div>
         );
     }
 }
 
-NoticeFormExampleA.propTypes = {
+NoticeExampleB.propTypes = {
     layout: PropTypes.object,
     grid: PropTypes.object,
+    modal: PropTypes.object,
     form: PropTypes.object
 };
 
-NoticeFormExampleA.contextTypes = {
+NoticeExampleB.contextTypes = {
     notification: React.PropTypes.object
 };
 
-NoticeFormExampleA.defaultProps = {
+NoticeExampleB.defaultProps = {
     layout: {
         id: "notice",
         type: "A"
+    },
+    modal: {
+        id: "modal",
+        type: "A",
+        title: "공지사항"
+    },
+    grid: {
+        type: "grid",
+        id: "theGrid",
+        title: "공지사항 목록",
+        url: "/itg/system/board/searchNoticeBoardList.do",
+        resource: "grid.board.notice",
+        paging: true,
+        selectable: "row",
+        params: {
+            start: 1,
+            page: 1,
+            limit: 20
+        },
+        onSelectRowEvent: "onSelectRowGrid",
+        topButtons: [
+            {
+                id: "new_btn",
+                label: "신규등록",
+                onClickEvent: "doNew"
+            }, {
+                id: "excel_btn",
+                label: "엑셀다운로드",
+                onClickEvent: "doExcelDownload"
+            }
+        ]
     },
     form: {
         type: "form",
         id: "theForm",
         title: "Form Title",
         formType: "editor", // 입력 또는 Search Form 또는 Readonly
+        modal: true,
         buttomButtons: [
             {
                 id: "save_btn",
                 label: "저장",
                 onClickEvent: "doSave"
-            },{
-                id: "cancel_btn",
-                label: "취소",
-                onClickEvent: "doCancel"
             }
         ],
         fieldSet: [
@@ -201,4 +274,4 @@ NoticeFormExampleA.defaultProps = {
     }
 };
 
-export default NoticeFormExampleA;
+export default NoticeExampleB;

@@ -13,7 +13,6 @@ class NTextArea extends Component {
 
     // Value값 변경에 따른 이벤트 처리
     handleChange(e) {
-        console.info(e.target.value);
         this.setState({value: e.target.value});
     }
 

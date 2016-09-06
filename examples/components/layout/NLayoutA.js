@@ -28,16 +28,14 @@ class NLayoutA extends Component {
         let firstBottomComponent = NLayoutUtils.ButtonRender(firstArea.buttomButtons);
 
         return (
-            <Grid>
-                <Row className="show-grid">
-                    <Col xs={12} md={12}>
-                        <h1>1영역</h1>
-                        {firstTopComponent}
-                        {firstComponent}
-                        {firstBottomComponent}
-                    </Col>
-                </Row>
-            </Grid>
+            <Row className="show-grid">
+                <Col xs={12} md={12}>
+                    <h1>1영역</h1>
+                    {firstTopComponent}
+                    {firstComponent}
+                    {firstBottomComponent}
+                </Col>
+            </Row>
         );
     }
 }
