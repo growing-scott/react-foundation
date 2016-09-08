@@ -40,7 +40,7 @@ class LayoutCExample extends Component {
         console.info(this);
         return (
             <div>
-                <NLayoutSet layout={this.props.layout} first={this.props.tree} second={this.props.form} third={this.props.grid}/>
+                <NLayoutSet layout={this.props.layout} first={this.props.grid} second={this.props.form} />
             </div>
         );
     }

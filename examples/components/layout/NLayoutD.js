@@ -46,15 +46,15 @@ class NLayoutD extends Component {
         let thirdBottomComponent = NLayoutUtils.ButtonRender(thirdArea.buttomButtons);
 
         return (
-            <Grid>
+            <div>
                 <Row className="show-grid">
-                    <Col xs={4} md={4}>
+                    <Col xs={2} md={2}>
                         <h1>1영역</h1>
                         {firstTopComponent}
                         {firstComponent}
                         {firstBottomComponent}
                     </Col>
-                    <Col xs={8} md={8}>
+                    <Col xs={10} md={10}>
                         <Row className="show-grid">
                             <Col xs={12} md={12}>
                                 <h1>2영역</h1>
@@ -73,7 +73,7 @@ class NLayoutD extends Component {
                         </Row>
                     </Col>
                 </Row>
-            </Grid>
+            </div>
         );
     }
 }

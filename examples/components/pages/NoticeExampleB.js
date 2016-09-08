@@ -109,15 +109,10 @@ class NoticeExampleB extends Component {
 
     // 엑셀다운로드
     doExcelDownload() {
-        let modal = this.getRefs("modal");
-        modal.open();
-        console.info(this);
-        /*
         this.context.notification.show({
             title: "준비중",
             message: "엑셀다운로드는 구현 예정에 있습니다. 잠시만 기다려주세요."
         }, "error");
-        */
     }
 
     // 저장

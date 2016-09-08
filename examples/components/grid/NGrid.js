@@ -16,7 +16,7 @@ class NGrid extends Component {
     // State, Props 변경에 따른 Rendering에 대한 제어. Grid Reload를 제어해야하는데
     // 버튼이랑 분리해서 필요할 듯 합니다.
     shouldComponentUpdate(nextProps, nextState) {
-        console.info(nextState);
+        //console.info(nextState);
         return nextState.refresh;
     }
 

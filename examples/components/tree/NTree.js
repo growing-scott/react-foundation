@@ -12,7 +12,7 @@ class NTree extends Component {
     componentWillMount() {}
 
     render() {
-        return (<Puf.TreeView className="treeview-line" host={NConstraint.HOST} url={this.props.tree.url} method="POST" params={this.props.tree.params} onSelect={this.props.tree.onSelect}/>);
+        return (<Puf.TreeView className="treeview-line" host={NConstraint.HOST} url={this.props.tree.url} method="POST" data={this.props.tree.params} onSelect={this.props.tree.onSelect} childrenField="children" />);
     }
 }
 export default NTree;

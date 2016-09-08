@@ -3,7 +3,7 @@ class NConstraint {
 
     // 서버 HOST 파일
     static get HOST() {
-        return "http://192.168.233.22:8082";
+        return "http://192.168.233.22:9082";
     }
 
     static get GRID_LIST_FIELD() {

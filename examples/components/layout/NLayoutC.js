@@ -36,7 +36,7 @@ class NLayoutC extends Component {
         // Bottom Button 생성
         let secondBottomComponent = NLayoutUtils.ButtonRender(secondArea.buttomButtons);
         return (
-            <Grid>
+            <div>
                 <Row className="show-grid">
                     <Col xs={12} md={12}>
                         <h1>1영역</h1>
@@ -53,7 +53,7 @@ class NLayoutC extends Component {
                         {secondBottomComponent}
                     </Col>
                 </Row>
-            </Grid>
+            </div>
         );
     }
 }

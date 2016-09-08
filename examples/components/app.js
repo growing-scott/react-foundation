@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import ReactDom from 'react-dom';
-import {Grid, Row, Col, Clearfix} from 'react-bootstrap';
+import {Grid, Row, Col, Clearfix, Tabs, Tab} from 'react-bootstrap';
 
 import { Router, Route, Link, IndexRoute, browserHistory, hashHistory } from 'react-router';
 
@@ -14,6 +14,7 @@ import NoticeExample from './pages/NoticeExample';
 import NoticeExampleA from './pages/NoticeExampleA';
 import NoticeFormExampleA from './pages/NoticeFormExampleA';
 import NoticeExampleB from './pages/NoticeExampleB';
+import TabsExample from './pages/TabsExample';
 
 import NConstraint from './constraints/NConstraint';
 
@@ -37,8 +38,16 @@ class App extends Component {
 
     // Compoent Render 이후 이벤트
     componentDidMount() {
+        //window.onhashchange = this.handleHashChange;
+
         // Notification 설정
         this.props.app.notification = NLayoutUtils.Notification("notification");
+
+        //console.info(this.context);
+        //console.info(this);
+        //this.context.router.push("/layoutA");
+
+
     }
 
     render() {
@@ -71,6 +80,9 @@ class App extends Component {
                             <li>
                                 <Link to="/abort">메시지(리소스): {NConstraint.MESSAGE('res.common.list')}</Link>
                             </li>
+                            <li>
+                                <Link to={{ pathname: '/tabs', query: { id: "Asset", title: "운영자산관리", component: "Asset" } }}>Tab 예제(자산)</Link>
+                            </li>
                         </Col>
                         <Col xs={10} md={10}>
                             {this.props.children}
@@ -84,7 +96,8 @@ class App extends Component {
 }
 
 App.propTypes = {
-    app: PropTypes.object
+    app: PropTypes.object,
+    children: PropTypes.any
 };
 
 App.defaultProps = {
@@ -94,6 +107,7 @@ App.defaultProps = {
 };
 
 App.childContextTypes = {
+    children: PropTypes.any,
     notification: React.PropTypes.object
 };
 
@@ -101,7 +115,7 @@ ReactDom.render((
     <Router history={hashHistory}>
         <Route path="/" component={App}>
             <IndexRoute component={Home}/>
-            <Route path="/layoutA" component={LayoutAExample}/>
+            <Route path="/layoutA" component={LayoutAExample} />
             <Route path="/layoutB" component={LayoutBExample}/>
             <Route path="/layoutC" component={LayoutCExample}/>
             <Route path="/layoutD" component={LayoutDExample}/>
@@ -109,7 +123,7 @@ ReactDom.render((
             <Route path="/noticeA" component={NoticeExampleA}/>
             <Route path="/noticeFormExampleA" component={NoticeFormExampleA}/>
             <Route path="/noticeB" component={NoticeExampleB}/>
-            <Route path="/abort" component={Abort}/>
+            <Route path="/tabs" component={TabsExample}/>
         </Route>
     </Router>
 ), document.getElementById('app'));
