@@ -10,6 +10,14 @@ class NConstraint {
         return "gridVO.rows";
     }
 
+    static get GRID_TOTAL_FIELD() {
+        return "gridVO.totalCount";
+    }
+
+    static get GRID_PARAMTER_MAP_FIELD() {
+        return {skip: "start", take: "limit", field:"property", dir: "direction", convertSort: true, filterPrefix: "search_", filtersToJson: true, filterFieldToLowerCase: true};
+    }
+
     static get DEFAULT_OPTION_NAME() {
         return "CODE_TEXT";
     }

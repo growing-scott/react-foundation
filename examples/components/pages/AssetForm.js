@@ -50,8 +50,8 @@ AssetForm.defaultProps = {
     },
     form: {
         type: "form",
-        id: "theForm",
-        title: "검색 조건",
+        id: "AssetForm",
+        title: "자산정보",
         formType: "editor", // 입력 또는 Search Form 또는 Readonly
         buttomButtons: [
             {

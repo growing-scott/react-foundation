@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-import {Grid, Row, Col, Clearfix} from 'react-bootstrap';
 
 import NLayoutUtils from '../utils/NLayoutUtils';
 
@@ -27,15 +26,32 @@ class NLayoutA extends Component {
         // Bottom Button 생성
         let firstBottomComponent = NLayoutUtils.ButtonRender(firstArea.buttomButtons);
 
+        let firstHrefId = "#"+ firstArea.id;
+
         return (
-            <Row className="show-grid">
-                <Col xs={12} md={12}>
-                    <h1>1영역</h1>
-                    {firstTopComponent}
-                    {firstComponent}
-                    {firstBottomComponent}
-                </Col>
-            </Row>
+            <div className="row">
+    			<div className="col-sm-12 col-lg-12">
+            		<div className="panel panel-default">
+                        <div className="panel-heading">
+							<a data-toggle="collapse" href={firstHrefId}>▶ {firstArea.title}</a>
+						</div>
+                        <div id={firstArea.id} className="panel-body collapse in">
+							<div className="row">
+								<div className="col-sm-12 col-lg-12">
+									<h3><b>{firstArea.title}</b></h3>
+									<div className="text-right">
+										{firstTopComponent}
+									</div>
+                                    {firstComponent}
+                                    <div className="text-right">
+                                        {firstBottomComponent}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         );
     }
 }

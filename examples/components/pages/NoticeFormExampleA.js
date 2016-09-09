@@ -153,6 +153,7 @@ NoticeFormExampleA.defaultProps = {
         buttomButtons: [
             {
                 id: "save_btn",
+                type: "primary",
                 label: "저장",
                 onClickEvent: "doSave"
             },{

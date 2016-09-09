@@ -43,6 +43,8 @@ LayoutBExample.defaultProps = {
     },
     grid: {
         type: "grid",
+        id: "deptGrid",
+        title: "부서목록",
         url: "/itg/system/dept/searchDeptOrderList.do",
         // Resource 또는 Columns 정의
         // Resource 로 설정한 경우에는 서버사이드로 요청해서 Resource를 받아온다.
@@ -64,16 +66,14 @@ LayoutBExample.defaultProps = {
         ],
         paging: true,
         params: {
-            start: 1,
-            page: 1,
-            limit: 20,
             up_cust_id: "1000000"
         }
     },
     form: {
         type: "form",
+        id: "theForm",
         name: "theForm",
-        title: "Form Title",
+        title: "사용자 등록",
         action: "/theForm.do",
         formType: "editor", // 입력 또는 Search Form 또는 Readonly
         method: "post", // Default Post

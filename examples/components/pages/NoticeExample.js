@@ -184,15 +184,11 @@ NoticeExample.defaultProps = {
         resource: "grid.board.notice",
         paging: true,
         selectable: "row",
-        params: {
-            start: 1,
-            page: 1,
-            limit: 20
-        },
         onSelectRowEvent: "onSelectRowGrid",
         topButtons: [
             {
                 id: "new_btn",
+                type: "primary",
                 label: "신규등록",
                 onClickEvent: "doNew"
             }, {
@@ -205,21 +201,24 @@ NoticeExample.defaultProps = {
     form: {
         type: "form",
         id: "theForm",
-        title: "Form Title",
+        title: "공지사항",
         formType: "editor", // 입력 또는 Search Form 또는 Readonly
         buttomButtons: [
             {
                 id: "save_btn",
+                type: "primary",
                 label: "저장",
                 onClickEvent: "doSave",
                 visible: false
             }, {
                 id: "delete_btn",
+                type: "info",
                 label: "삭제",
                 onClickEvent: "doDelete",
                 visible: false
             }, {
                 id: "cancel_btn",
+                type: "info",
                 label: "취소",
                 onClickEvent: "doCancel",
                 visible: false

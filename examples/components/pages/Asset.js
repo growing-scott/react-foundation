@@ -75,6 +75,7 @@ Asset.defaultProps = {
     },
     tree: {
         id: "classTree",
+        title: "분류체계",
         type: "tree",
         url: "/itg/itam/statistics/searchClassTree.do",
         params: {
@@ -86,15 +87,15 @@ Asset.defaultProps = {
     },
     grid: {
         type: "grid",
+        id: "theGrid",
         title: "자산목록",
         url: "/itg/itam/statistics/searchAssetList.do",
         resource: "grid.itam.statistics.AMROOT",
+        //pageSize: 30,
         paging: true,
+        scrollable: true,
         selectable: "row",
         params: {
-            start: 1,
-            page: 1,
-            limit: 20,
             class_type: "ROOT",
             class_mng_type: "AM",
             asset_state : 'ACTIVE',

@@ -181,19 +181,16 @@ NoticeExampleA.defaultProps = {
         resource: "grid.board.notice",
         paging: true,
         selectable: "row",
-        params: {
-            start: 1,
-            page: 1,
-            limit: 20
-        },
         onSelectRowEvent: "onSelectRowGrid",
         topButtons: [
             {
                 id: "new_btn",
+                type: "primary",
                 label: "신규등록",
                 onClickEvent: "doNew"
             }, {
                 id: "excel_btn",
+                type: "info",
                 label: "엑셀다운로드",
                 onClickEvent: "doExcelDownload"
             }

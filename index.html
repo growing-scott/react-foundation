@@ -5,11 +5,26 @@
    	<title>Components</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="/common-libs/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/common-libs/css/tab.css">
 	<link rel="stylesheet" href="/common-libs/puf/libs/styles/kendo/kendo.common.min.css" />
 	<link rel="stylesheet" href="/common-libs/puf/libs/styles/kendo/kendo.bootstrap.min.css" />
- 
+
+	<!-- Custom Css -->
+	<link rel="stylesheet" href="/common-libs/css/sb-admin-2.min.css" />
+
 	<style>
+		#custom_page-wrapper {
+		  padding: 0 0px;
+		  min-height: 568px;
+		  background-color: #f8f8f8;
+		}
+		@media (min-width: 768px) {
+		  #custom_page-wrapper {
+			position: inherit;
+			margin: 0 15px 0 15px;
+			padding: 0 0px;
+		  }
+		}
+
         .k-notification {
             border: 0;
         }
@@ -86,6 +101,8 @@
 	<div id="app"></div>
 	<script type="text/javascript" src="/common-libs/js/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript" src="/common-libs/js/jquery-migrate.min.js"></script>
+	<script type="text/javascript" src="/common-libs/js/bootstrap.min.js"></script>
+
 
 	<script type="text/javascript" src="/common-libs/puf/libs/kendo.all.min.js"></script>
 	<script type="text/javascript" src="/common-libs/puf/i18n/ps-locale_ko.min.js"></script>

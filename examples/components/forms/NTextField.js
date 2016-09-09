@@ -45,9 +45,7 @@ class NTextField extends Component {
 
     render() {
         return (
-            <FormGroup ref={this.props.id} controlId={this.props.id} className={this.state.visible
-                ? 'block'
-                : 'hidden'}>
+            <FormGroup ref={this.props.id} controlId={this.props.id} className={this.state.visible ? 'block' : 'hidden'}>
                 <ControlLabel>{this.props.label}</ControlLabel>
                 <FormControl type="text" name={this.props.id} value={this.state.value} placeholder={this.props.placeholder} onChange={this.handleChange.bind(this)} required={this.props.required}/> {/*<HelpBlock>Validation is based on string length.</HelpBlock> */}
             </FormGroup>

@@ -96,6 +96,7 @@ LayoutAExample.defaultProps = {
     grid: {
         type: "grid",
         id: "deptGrid",
+        title: "부서목록",
         url: "/itg/system/dept/searchDeptOrderList.do",
         // Resource 또는 Columns 정의
         // Resource 로 설정한 경우에는 서버사이드로 요청해서 Resource를 받아온다.
@@ -103,9 +104,6 @@ LayoutAExample.defaultProps = {
         // Columns로 정의된 경우에는 Column 정보를 직접 기술한다.
         paging: false,
         params: {
-            start: 1,
-            page: 1,
-            limit: 20,
             up_cust_id: "1000000"
         },
         onSelectRowEvent: "onSelectRowGrid"

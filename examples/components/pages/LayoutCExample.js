@@ -68,6 +68,8 @@ LayoutCExample.defaultProps = {
     },
     grid: {
         type: "grid",
+        id: "theGrid",
+        title: "Grid",
         url: "/itg/system/dept/searchDeptOrderList.do",
         // Resource 또는 Columns 정의
         // Resource 로 설정한 경우에는 서버사이드로 요청해서 Resource를 받아온다.
@@ -89,15 +91,12 @@ LayoutCExample.defaultProps = {
         ],
         paging: true,
         params: {
-            start: 1,
-            page: 1,
-            limit: 20,
             up_cust_id: "1000000"
         }
     },
     form: {
         type: "form",
-        name: "theForm",
+        id: "theForm",
         title: "Form Title",
         action: "/theForm.do",
         formType: "editor", // 입력 또는 Search Form 또는 Readonly

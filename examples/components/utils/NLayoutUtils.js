@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-import {Grid, Row, Col, Clearfix, ButtonToolbar, Button} from 'react-bootstrap';
 
 import NGrid from '../grid/NGrid';
 import NForm from '../forms/NForm';
@@ -33,10 +32,20 @@ class NLayoutUtils {
                 if(!("visible" in button)){
                     button.visible = true;
                 }
-                if(button.visible)
-                    return <Button key={button.id} onClick={button.onClick}>{button.label}</Button>;
+                if(button.visible){
+                    let className = "btn btn-default btn-md";
+                    switch (button.type) {
+                        case "primary":
+                            className = "btn btn-primary btn-md";
+                            break;
+                        case "info":
+                            className = "btn btn-info btn-md";
+                            break;
+                        default:
+                    }
+                    return <button type="button" key={button.id} className={className} onClick={button.onClick}>{button.label}</button>;
                 }
-            ));
+            }));
         }
         return render;
     }

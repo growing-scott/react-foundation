@@ -35,24 +35,58 @@ class NLayoutC extends Component {
 
         // Bottom Button 생성
         let secondBottomComponent = NLayoutUtils.ButtonRender(secondArea.buttomButtons);
+
+        let firstHrefId = "#"+ firstArea.id;
+        let secondHrefId = "#"+ secondArea.id;
+
         return (
             <div>
-                <Row className="show-grid">
-                    <Col xs={12} md={12}>
-                        <h1>1영역</h1>
-                        {firstTopComponent}
-                        {firstComponent}
-                        {firstBottomComponent}
-                    </Col>
-                </Row>
-                <Row className="show-grid">
-                    <Col xs={12} md={12}>
-                        <h1>2영역</h1>
-                        {secondTopComponent}
-                        {secondComponent}
-                        {secondBottomComponent}
-                    </Col>
-                </Row>
+                <div className="row">
+        			<div className="col-sm-12 col-lg-12">
+                		<div className="panel panel-default">
+                            <div className="panel-heading">
+    							<a data-toggle="collapse" href={firstHrefId}>▶ {firstArea.title}</a>
+    						</div>
+                            <div id={firstArea.id} className="panel-body collapse in">
+    							<div className="row">
+    								<div className="col-sm-12 col-lg-12">
+    									<h3><b>{firstArea.title}</b></h3>
+    									<div className="text-right">
+    										{firstTopComponent}
+    									</div>
+                                        {firstComponent}
+                                        <div className="text-right">
+                                            {firstBottomComponent}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+        			<div className="col-sm-12 col-lg-12">
+                		<div className="panel panel-default">
+                            <div className="panel-heading">
+    							<a data-toggle="collapse" href={secondHrefId}>▶ {secondArea.title}</a>
+    						</div>
+                            <div id={secondArea.id} className="panel-body collapse in">
+    							<div className="row">
+    								<div className="col-sm-12 col-lg-12">
+    									<h3><b>{secondArea.title}</b></h3>
+    									<div className="text-right">
+    										{secondTopComponent}
+    									</div>
+                                        {secondComponent}
+                                        <div className="text-right">
+                                            {secondBottomComponent}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
