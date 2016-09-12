@@ -1,10 +1,10 @@
 ;(function($){
 /**
  * ps-locale_en.js
- * 
+ *
  * version <tt>$ Version: 1.0 $</tt> date:2014/05/25
  * author <a href="mailto:hrahn@nkia.co.kr">Ahn Hyung-Ro</a>
- * 
+ *
  * example:
  * $ps_locale.validators.passwordErrorMsg
 **/
@@ -20,6 +20,7 @@ $.extend($ps_locale,{
 	apply: 'Apply',
 	direct_select: 'direct selection',
 	select: 'select',
+	autoComplete: 'Search a word',
 	sun: 'Sun.',
 	mon: 'Mon.',
 	tue: 'Tue.',
@@ -43,7 +44,6 @@ $.extend($ps_locale,{
     february: 'February',
     march: 'March',
     april: 'April',
-    may: 'May',
     june: 'June',
     july: 'July',
     august: 'August',
@@ -55,7 +55,8 @@ $.extend($ps_locale,{
 		passwordErrorMsg: 'Enter at least 8 characters, numbers',
 		ipErrorMsg: 'No records to view',
 		loadtext: 'Loading...',
-		pgtext : 'Page {0} of {1}'
+		pgtext: 'Page {0} of {1}',
+		rowsPerPage: 'items per page'
 	},
 	grid: {
 		recordtext: 'View {0} - {1} of {2}',

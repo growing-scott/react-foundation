@@ -9,6 +9,8 @@ import NComboBox from './NComboBox';
 import NCheckBox from './NCheckBox';
 import NRadio from './NRadio';
 import NAddOnIconTextField from './NAddOnIconTextField';
+import NMultiSelectBox from './NMultiSelectBox';
+import NAutoCompleteField from './NAutoCompleteField';
 
 class NFieldSet extends Component {
     constructor() {
@@ -56,6 +58,12 @@ class NFieldSet extends Component {
                     break;
                 case "addonicontextfield":
                     component = (<NAddOnIconTextField key={field.id} id={field.id} label={field.label} placeholder={field.placeholder} value={field.value}/>);
+                    break;
+                case "autocompletefield":
+                    component = (<NAutoCompleteField key={field.id} {...field} />);
+                    break;
+                case "multiselectbox":
+                    component = (<NMultiSelectBox key={field.id} {...field} />);
                     break;
                 default:
             }

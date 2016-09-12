@@ -1,10 +1,10 @@
 ;(function($){
 /**
  * ps-locale_en.js
- * 
+ *
  * version <tt>$ Version: 1.0 $</tt> date:2014/05/25
  * author <a href="mailto:hrahn@nkia.co.kr">Ahn Hyung-Ro</a>
- * 
+ *
  * example:
  * $ps_locale.validators.passwordErrorMsg
 **/
@@ -20,6 +20,7 @@ $.extend($ps_locale,{
 	apply: '적용',
 	direct_select: '직접 선택',
 	select: '선택하세요',
+    autoComplete: '검색어를 입력해주세요',
 	sun: '일',
 	mon: '월',
 	tue: '화',
@@ -43,7 +44,6 @@ $.extend($ps_locale,{
     february: '2월',
     march: '3월',
     april: '4월',
-    may: '5월',
     june: '6월',
     july: '7월',
     august: '8월',
@@ -56,10 +56,11 @@ $.extend($ps_locale,{
 		ipErrorMsg: 'ip 형식이 올바르지 않습니다.'
 	},
 	grid: {
-		recordtext: '{0} - {1} / {2}',
+		recordtext: '{0}-{1}/{2}',
 		emptyrecords: '데이터가 존재하지 않습니다.',
 		loadtext: '로딩중...',
-		pgtext : '페이지 {0} of {1}'
+		pgtext: '페이지 {0} of {1}',
+		rowsPerPage: '페이지당 행 개수'
 	},
 	wizard: {
 		current: "현재 단계:",

@@ -72,21 +72,36 @@ LayoutBExample.defaultProps = {
     form: {
         type: "form",
         id: "theForm",
-        name: "theForm",
-        title: "사용자 등록",
-        action: "/theForm.do",
+        title: "Form Title",
         formType: "editor", // 입력 또는 Search Form 또는 Readonly
-        method: "post", // Default Post
-        position: "inline", // Inline 또는 Modal
-        buttomButtons: [
+        topButtons: [
             {
                 id: "new_btn",
                 label: "신규등록",
-                onClick: ""
+                onClickEvent: "handleNewBtn"
             }, {
                 id: "excel_btn",
                 label: "엑셀다운로드",
-                onClick: ""
+                onClickEvent: "handleExcelBtn"
+            }, {
+                id: "hide_btn",
+                label: "필드숨김",
+                onClickEvent: "handleHideBtn"
+            }, {
+                id: "show_btn",
+                label: "필드보기",
+                onClickEvent: "handleShowBtn"
+            }
+        ],
+        buttomButtons: [
+            {
+                id: "save_btn",
+                label: "저장",
+                onClickEvent: "handleSaveBtn"
+            }, {
+                id: "cancel_btn",
+                label: "취소",
+                onClickEvent: "handleCancelBtn"
             }
         ],
         fieldSet: [
@@ -97,31 +112,135 @@ LayoutBExample.defaultProps = {
                     {
                         type: "text",
                         id: "user_nm",
-                        label: "사용자명",
+                        label: NConstraint.MESSAGE('res.label.system.00015'),
                         placeholder: "사용자명을 입력해주세요."
                     }, {
                         type: "text",
                         id: "position",
-                        label: "직위",
+                        label: NConstraint.MESSAGE('res.label.system.00016'),
                         placeholder: "직위를 입력해주세요."
                     }, {
                         type: "text",
                         id: "pass_wd",
-                        label: "패스워드",
+                        label: "패스워드1",
                         placeholder: "패스워드를 입력해주세요.",
-                        value: "패스워드"
+                        value: "패스워드",
+                        visible: false
                     }, {
-                        type: "text",
+                        type: "addonicontextfield",
+                        id: "addon1",
+                        label: "아이콘텍스트",
+                        placeholder: "아이콘텍스트",
+                        value: "아이콘",
+                        readonly: true
+                    }, {
+                        type: "autocompletefield",
+                        id: "search_user_nm",
+                        label: "자동완성(AutoComplete)",
+                        placeholder: "요청명을 입력해주세요.",
+                        url: "/itg/base/searchCodeDataList.do",
+                        data: {
+                            code_grp_id: "REQ_TYPE"
+                        },
+                        parameterMapField: {
+                            searchField: "search_code_text", filtersToJson: true
+                        },
+                        template: '<span class="order-id">[#= CODE_ID #]</span> #= CODE_TEXT #',
+                        dataTextField: 'CODE_TEXT',
+                        help: 'ex) 장애'
+                    }, {
+                        type: "multiselectbox",
+                        id: "multi_user_nm",
+                        label: "멀티선택(콤보)-정적item",
+                        placeholder: "컬러를 선택해주세요",
+                        items: [
+                            { text: 'Black', value: '1' },
+                            { text: 'Orange', value: '2' },
+                            { text: 'Grey', value: '3' }
+                        ],
+                        dataTextField: "text",
+                        dataValueField: "value",
+                    }, {
+                        type: "multiselectbox",
+                        id: "multi_req_type",
+                        label: "멀티선택(콤보) - 공통코드(다중선택)",
+                        placeholder: "요청유형을 선택해주세요.",
+                        url: "/itg/base/searchCodeDataList.do",
+                        data: {
+                           code_grp_id: "REQ_TYPE"
+                       },
+                       dataTextField: "CODE_TEXT",
+                       dataValueField: "CODE_ID",
+                       multiple: true
+                    }, {
+                        type: "multiselectbox",
+                        id: "multi_user_ids",
+                        label: "멀티선택(콤보) - 검색(하나만 선택)",
+                        placeholder: "사용자명을 입력해주세요.",
+                        url: "/itg/system/user/searchUserList.do",
+                        dataTextField: "USER_NM",
+                        dataValueField: "USER_ID",
+                        serverFiltering: true,
+                        serverPaging: true,
+                        minLength: 2,
+                        maxSelectedItems: 1,
+                        itemTemplate: '<span class="order-id">#= USER_ID # -</span> #= USER_NM #',
+                        help: '2자 이상 입력, ex) te'
+                    }, {
+                        type: "multiselectbox",
+                        id: "multi_user_ids2",
+                        label: "멀티선택(콤보) - 검색(멀티)",
+                        placeholder: "사용자명을 입력해주세요.",
+                        url: "/itg/system/user/searchUserList.do",
+                        dataTextField: "USER_NM",
+                        dataValueField: "USER_ID",
+                        serverFiltering: true,
+                        serverPaging: true,
+                        minLength: 1,
+                        multiple: true,
+                        itemTemplate: '<span class="order-id">[#= USER_ID #] -</span> #= USER_NM #',
+                        help: '1자 이상 입력, ex) 김'
+                    }, {
+                        type: "static",
                         id: "pass_wd1",
-                        label: "패스워드",
-                        placeholder: "패스워드를 입력해주세요.",
-                        value: "패스워드"
+                        label: "패스워드 힌트(스태틱 Text)",
+                        value: "패스워드 힌트는 nkia",
+                        visible: false
                     }, {
-                        type: "text",
-                        id: "pass_wd2",
-                        label: "패스워드",
-                        placeholder: "패스워드를 입력해주세요.",
-                        value: "패스워드"
+                        type: "checkbox",
+                        id: "checkbox1",
+                        label: "체크박스(서버사이드)",
+                        code_grp_id: "REQ_TYPE"
+                    }, {
+                        type: "radio",
+                        id: "radio1",
+                        label: "라디오버튼(서버사이드)",
+                        code_grp_id: "REQ_TYPE"
+                    }, {
+                        type: "combo",
+                        id: "combo1",
+                        label: "콤보박스(사용자 정의 데이터)",
+                        placeholder: "콤보박스",
+                        options: [
+                            {
+                                CODE_TEXT: "1",
+                                CODE_ID: "1"
+                            }, {
+                                CODE_TEXT: "2",
+                                CODE_ID: "2"
+                            }
+                        ]
+                    }, {
+                        type: "combo",
+                        id: "combo2",
+                        label: "콤보박스(서버사이드)",
+                        placeholder: "콤보박스",
+                        code_grp_id: "REQ_TYPE"
+                    }, {
+                        type: "textarea",
+                        id: "address",
+                        label: "집주소",
+                        placeholder: "집주소를 입력해주세요."
                     }
                 ]
             }
