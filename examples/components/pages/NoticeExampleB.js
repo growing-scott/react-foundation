@@ -200,16 +200,8 @@ NoticeExampleB.defaultProps = {
         selectable: "row",
         onSelectRowEvent: "onSelectRowGrid",
         topButtons: [
-            {
-                id: "new_btn",
-                label: "신규등록",
-                type: "primary",
-                onClickEvent: "doNew"
-            }, {
-                id: "excel_btn",
-                label: "엑셀다운로드",
-                onClickEvent: "doExcelDownload"
-            }
+            { id: "new_btn", label: "신규등록", type: "primary", onClickEvent: "doNew" },
+            { id: "excel_btn", label: "엑셀다운로드", onClickEvent: "doExcelDownload"}
         ]
     },
     form: {
@@ -218,51 +210,19 @@ NoticeExampleB.defaultProps = {
         title: "Form Title",
         formType: "editor", // 입력 또는 Search Form 또는 Readonly
         modal: true,
-        buttomButtons: [
-            {
-                id: "save_btn",
-                label: "저장",
-                type: "primary",
-                onClickEvent: "doSave"
-            }
-        ],
-        fieldSet: [
-            {
-                id: "editor_fields",
-                columns: 3,
-                fieldList: [
-                    {
-                        type: "hidden",
-                        id: "no_id"
-                    },
-                    /*
-                    {
-                        type: "static",
-                        id: "no_id",
-                        label: "번호"
-                    },
-                    */{
-                        type: "text",
-                        id: "ins_user_nm",
-                        label: "작성자",
-                        required: true,
-                        readonly: true
-                    }, {
-                        type: "text",
-                        id: "title",
-                        label: "제목",
-                        placeholder: "제목을 입력해주세요.",
-                        required: true
-                    }, {
-                        type: "textarea",
-                        id: "content",
-                        label: "내용",
-                        placeholder: "내용을 작성해주세요.",
-                        required: true
-                    }
-                ]
-            }
-        ]
+        buttomButtons: [{
+            id: "save_btn", label: "저장", type: "primary", onClickEvent: "doSave"
+        }],
+        fieldSet: [{
+            id: "editor_fields",
+            columns: 3,
+            fieldList: [
+                { type: "hidden", id: "no_id" },
+                { type: "text", id: "ins_user_nm", label: "작성자", required: true, readonly: true },
+                { type: "text", id: "title", label: "제목", placeholder: "제목을 입력해주세요.", required: true },
+                { type: "textarea", id: "content", label: "내용", placeholder: "내용을 작성해주세요.", required: true }
+            ]
+        }]
     }
 };
 

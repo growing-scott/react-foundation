@@ -86,6 +86,9 @@ Documents
 - Examples 빌드 및 확인
 	- $ gulp examples
 	- examples/index.html 확인(Hello World)
+- Component Examples 기동
+	- $ npm run hot-component-server
+	- http://localhost:4000
 
 참고자료
 -----
