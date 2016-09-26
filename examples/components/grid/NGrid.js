@@ -75,7 +75,7 @@ class NGrid extends Component {
             data={this.props.grid.params}
             pageable={this.props.grid.paging}
             filterable={true}
-            scrollable={this.props.grid.scrollable}
+            scrollable={true}
             listField={NConstraint.GRID_LIST_FIELD}
             totalField={NConstraint.GRID_TOTAL_FIELD}
             selectMode={this.props.grid.selectable}

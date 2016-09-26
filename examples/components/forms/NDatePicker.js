@@ -1,6 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 
-class NTextField extends Component {
+import NConstraint from '../constraints/NConstraint';
+
+class NDatePicker extends Component {
     constructor() {
         super(...arguments);
         this.state = {
@@ -51,16 +53,23 @@ class NTextField extends Component {
         return (
             <div ref={id} className={formGroupClassName}>
 				<label htmlFor={id}>{this.props.label}</label>
-				<input type="text" id={id} name={id} value={this.state.value} placeholder={placeholder} onChange={this.handleChange.bind(this)} required={required} className="form-control" />
+                <div></div>
+                <Puf.DatePicker
+                    id={id}
+                    name={id}
+                    disabled={this.state.disabled}
+                    onChange={this.handleChange.bind(this)}
+                    required={this.props.required}
+                    timePicker={this.props.timePicker}
+                    />
 			</div>
         );
     }
 }
 
-NTextField.propTypes = {
+NDatePicker.propTypes = {
     id: PropTypes.string,
-    label: PropTypes.string,
-    placeholder: PropTypes.string
+    label: PropTypes.string
 };
 
-export default NTextField;
+export default NDatePicker;

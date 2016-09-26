@@ -11,6 +11,7 @@ import NRadio from './NRadio';
 import NAddOnIconTextField from './NAddOnIconTextField';
 import NMultiSelectBox from './NMultiSelectBox';
 import NAutoCompleteField from './NAutoCompleteField';
+import NDatePicker from './NDatePicker';
 
 class NFieldSet extends Component {
     constructor() {
@@ -64,6 +65,9 @@ class NFieldSet extends Component {
                     break;
                 case "multiselectbox":
                     component = (<NMultiSelectBox key={field.id} {...field} />);
+                    break;
+                case "date":
+                    component = (<NDatePicker key={field.id} visible={("visible" in field) ? field.visible : true} {...field} />);
                     break;
                 default:
             }

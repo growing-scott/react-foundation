@@ -4,21 +4,67 @@ import ReactDom from 'react-dom';
 import NLayoutSet from '../layout/NLayoutSet';
 
 import NConstraint from '../constraints/NConstraint';
+import NControlUtils from '../utils/NControlUtils';
 
 class LayoutBExample extends Component {
     constructor() {
         super(...arguments);
-        //this.handleNewBtn = this.handleNewBtn.bind(this);
+        this.state = {
+            updateLayout: false
+        };
+        //this.handleNewBtn = handleNewBtn.bind(this)
+        this.updateLayout = this.updateLayout.bind(this);
+    }
+
+    // Compoent Render 이전 이벤트
+    componentWillMount() {
+        this.eventHandler();
+    }
+
+    // Event Handler Mapping
+    eventHandler() {
+        // 버튼 Event bind
+        NControlUtils.bindButtonEvent(this, this.props.form.topButtons);
+        NControlUtils.bindButtonEvent(this, this.props.form.buttomButtons);
     }
 
     handleNewBtn() {
-        console.info(this);
-        alert("신규등록2");
+        alert("신규등록");
+
+        // 또는 Ref로 접근하여 처리해도 될 듯 합니다.
+        //NControlUtils.bindButtonEvent(this, this.props.form.topButtons);
+        //NControlUtils.bindButtonEvent(this, this.props.form.buttomButtons);
+
+        this.updateLayout();
+    }
+
+    handleHideBtn() {
+        NControlUtils.setVisible(this.props.form.fieldSet[0].fieldList, ["user_nm", "position"], false);
+
+        this.updateLayout();
+    }
+
+    handleShowBtn() {
+        NControlUtils.setVisible(this.props.form.fieldSet[0].fieldList, ["user_nm", "position"], true);
+
+        this.updateLayout();
     }
 
     handleExcelBtn() {
-        console.info(this);
         alert("엑셀다운로드2");
+    }
+
+    handleSaveBtn() {
+        alert("저장");
+    }
+
+    handleCancelBtn() {
+        alert("취소");
+    }
+
+    // Layout Update
+    updateLayout() {
+        this.setState({updateLayout: true});
     }
 
     render() {
@@ -133,6 +179,15 @@ LayoutBExample.defaultProps = {
                         placeholder: "아이콘텍스트",
                         value: "아이콘",
                         readonly: true
+                    }, {
+                        type: "date",
+                        id: "date1",
+                        label: "날짜"
+                    }, {
+                        type: "date",
+                        id: "date2",
+                        label: "날짜+시간",
+                        timePicker: true
                     }, {
                         type: "autocompletefield",
                         id: "search_user_nm",
