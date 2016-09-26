@@ -201,7 +201,7 @@
 							</div>
 							<div id="detail-panel-1" class="panel-body collapse in">
 								<div class="row">
-									<div class="col-sm-6 col-lg-6">
+									<div class="col-sm-12 col-lg-12">
 										<h3><b>기본정보</b></h3>
 										<div class="form-group">
 											<label>요청자</label>
@@ -220,6 +220,10 @@
 											</div>
 										</div>
 										<div class="form-group">
+											<label>요청자 정보</label>
+											<input class="form-control" value="연구4팀(tel:02-1234-1234 - email:ykchoi@nkia.co.kr)" disabled>
+										</div>
+										<div class="form-group">
 											<label>등록자</label>
 											<div class="input-group">
 												<span class="input-group-addon">
@@ -232,20 +236,12 @@
 											</div>
 										</div>
 										<div class="form-group">
-											<label>요청ID</label>
-											<input class="form-control" value="SR160901_12270" disabled>
-										</div>
-									</div>
-									<!-- /.col -->
-									<div class="col-sm-6 col-lg-6">
-										<h3>&nbsp;</h3>
-										<div class="form-group">
-											<label>요청자 정보</label>
-											<input class="form-control" value="연구4팀(tel:02-1234-1234 - email:ykchoi@nkia.co.kr)" disabled>
-										</div>
-										<div class="form-group">
 											<label>요청분류</label>
 											<input class="form-control" value="문제요청" disabled>
+										</div>
+										<div class="form-group">
+											<label>요청ID</label>
+											<input class="form-control" value="SR160901_12270" disabled>
 										</div>
 										<div class="form-group">
 											<label>상위연계요청ID</label>
@@ -579,7 +575,7 @@
 							</div>
 							<div id="detail-panel-2" class="panel-body collapse in">
 								<div class="row">
-									<div class="col-sm-6 col-lg-6">
+									<div class="col-sm-12 col-lg-12">
 										<h3><b>요청등록</b></h3>
 										<div class="form-group">
 											<label>요청일시</label>
@@ -603,6 +599,27 @@
 											</script>
 										</div>
 										<div class="form-group">
+											<label>희망일시</label>
+											<div class="input-group">
+												<span class="input-group-addon">
+													<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+												</span>
+												<span class="input-group-addon">
+													<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+												</span>
+												<input class="form-control" id="hope_dt" type="text" value="2016-09-01" disabled>
+											</div>
+											<p class="help-block">입력형식 : YYYY-MM-DD</p>
+											<script>
+												$(document).ready(function() {
+													$("#hope_dt").datetimepicker({
+														locale: "ko",
+														format: "YYYY-MM-DD"
+													});
+												});
+											</script>
+										</div>
+										<div class="form-group">
 											<label>요청지역</label>
 											<div class="input-group">
 												<span class="input-group-addon">
@@ -613,6 +630,10 @@
 												</span>
 												<input class="form-control" value="연구소" disabled>
 											</div>
+										</div>
+										<div class="form-group">
+											<label>요청경로</label>
+											<input class="form-control" value="ITSM" disabled>
 										</div>
 										<div class="form-group">
 											<label>요청제목</label>
@@ -640,35 +661,6 @@
 										</div>
 									</div>
 									<!-- /.col -->
-									<div class="col-sm-6 col-lg-6">
-										<h3>&nbsp;</h3>
-										<div class="form-group">
-											<label>희망일시</label>
-											<div class="input-group">
-												<span class="input-group-addon">
-													<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-												</span>
-												<span class="input-group-addon">
-													<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
-												</span>
-												<input class="form-control" id="hope_dt" type="text" value="2016-09-01" disabled>
-											</div>
-											<p class="help-block">입력형식 : YYYY-MM-DD</p>
-											<script>
-												$(document).ready(function() {
-													$("#hope_dt").datetimepicker({
-														locale: "ko",
-														format: "YYYY-MM-DD"
-													});
-												});
-											</script>
-										</div>
-										<div class="form-group">
-											<label>요청경로</label>
-											<input class="form-control" value="ITSM" disabled>
-										</div>
-									</div>
-									<!-- /.col -->
 								</div>
 								<!-- /.row (nested) -->
 							</div>
@@ -683,7 +675,7 @@
 							</div>
 							<div id="detail-panel-3" class="panel-body collapse in">
 								<div class="row">
-									<div class="col-sm-6 col-lg-6">
+									<div class="col-sm-12 col-lg-12">
 										<h3><b>접수 및 확인</b></h3>
 										<div class="form-group">
 											<label>완료예정일시</label>
@@ -728,10 +720,6 @@
 										</div>
 									</div>
 									<!-- /.col -->
-									<div class="col-sm-6 col-lg-6">
-									
-									</div>
-									<!-- /.col -->
 								</div>
 								<!-- /.row (nested) -->
 							</div>
@@ -746,7 +734,7 @@
 							</div>
 							<div id="detail-panel-4" class="panel-body collapse in">
 								<div class="row">
-									<div class="col-sm-6 col-lg-6">
+									<div class="col-sm-12 col-lg-12">
 										<h3><b>원인분석 및 해결방안 도출</b></h3>
 										<div class="form-group">
 											<label>문제 원인 유형 코드</label>
@@ -761,6 +749,10 @@
 											</div>
 										</div>
 										<div class="form-group">
+											<label>근본 원인</label>
+											<textarea class="form-control" rows="4" disabled>근본 원인입니다.</textarea>
+										</div>
+										<div class="form-group">
 											<label>문제 해결 유형</label>
 											<div class="input-group">
 												<span class="input-group-addon">
@@ -771,6 +763,10 @@
 												</span>
 												<input class="form-control" value="APP Restart" disabled>
 											</div>
+										</div>
+										<div class="form-group">
+											<label>해결 방안 내용</label>
+											<textarea class="form-control" rows="4" disabled>해결 방안입니다.</textarea>
 										</div>
 										<div class="form-group">
 											<label>관리자</label>
@@ -794,18 +790,6 @@
 										</div>
 									</div>
 									<!-- /.col -->
-									<div class="col-sm-6 col-lg-6">
-										<h3><b>&nbsp;</b></h3>
-										<div class="form-group">
-											<label>근본 원인</label>
-											<textarea class="form-control" rows="4" disabled>근본 원인입니다.</textarea>
-										</div>
-										<div class="form-group">
-											<label>해결 방안 내용</label>
-											<textarea class="form-control" rows="4" disabled>해결 방안입니다.</textarea>
-										</div>
-									</div>
-									<!-- /.col -->
 								</div>
 								<!-- /.row (nested) -->
 							</div>
@@ -820,16 +804,12 @@
 							</div>
 							<div id="detail-panel-5" class="panel-body collapse in">
 								<div class="row">
-									<div class="col-sm-6 col-lg-6">
+									<div class="col-sm-12 col-lg-12">
 										<h3><b>문제해결 대안 검토</b></h3>
 										<div class="form-group">
 											<label>의견</label>
 											<textarea class="form-control" rows="4" disabled>의견입니다.</textarea>
 										</div>
-									</div>
-									<!-- /.col -->
-									<div class="col-sm-6 col-lg-6">
-									
 									</div>
 									<!-- /.col -->
 								</div>
@@ -846,7 +826,7 @@
 							</div>
 							<div id="detail-panel-6" class="panel-body collapse in">
 								<div class="row">
-									<div class="col-sm-6 col-lg-6">
+									<div class="col-sm-12 col-lg-12">
 										<h3><b>문제해결 대안 등록</b></h3>
 										<div class="form-group">
 											<label>작업완료일시</label>
@@ -891,10 +871,6 @@
 										</div>
 									</div>
 									<!-- /.col -->
-									<div class="col-sm-6 col-lg-6">
-									
-									</div>
-									<!-- /.col -->
 								</div>
 								<!-- /.row (nested) -->
 							</div>
@@ -909,16 +885,12 @@
 							</div>
 							<div id="detail-panel-7" class="panel-body collapse in">
 								<div class="row">
-									<div class="col-sm-6 col-lg-6">
+									<div class="col-sm-12 col-lg-12">
 										<h3><b>결과 검토 확인</b></h3>
 										<div class="form-group">
 											<label>의견</label>
 											<textarea class="form-control" rows="4" disabled></textarea>
 										</div>
-									</div>
-									<!-- /.col -->
-									<div class="col-sm-6 col-lg-6">
-										
 									</div>
 									<!-- /.col -->
 								</div>
