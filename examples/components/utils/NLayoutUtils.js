@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 
 import NGrid from '../grid/NGrid';
 import NForm from '../forms/NForm';
+import NFormA from '../forms/NFormA';
 import NTree from '../tree/NTree';
 
 class NLayoutUtils {
@@ -15,7 +16,10 @@ class NLayoutUtils {
                 render = (<NGrid ref={component.id} grid={component}/>);
                 break;
             case "form":
-                render = (<NForm ref={component.id} id={component.id} fieldSets={component.fieldSet}/>);
+                render = (<NForm ref={component.id} id={component.id} fieldSets={component.fieldSet} heaerTitles={component.heaerTitles} rows={component.rows} columns={component.columns} />);
+                break;
+            case "formA":
+                render = (<NFormA ref={component.id} id={component.id} fieldSets={component.fieldSet} heaerTitles={component.heaerTitles} rows={component.rows} columns={component.columns} />);
                 break;
             case "tree":
                 render = (<NTree ref={component.id} tree={component}/>);

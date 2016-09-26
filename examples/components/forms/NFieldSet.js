@@ -12,6 +12,7 @@ import NAddOnIconTextField from './NAddOnIconTextField';
 import NMultiSelectBox from './NMultiSelectBox';
 import NAutoCompleteField from './NAutoCompleteField';
 import NDatePicker from './NDatePicker';
+import NNumberField from './NNumberField';
 
 class NFieldSet extends Component {
     constructor() {
@@ -68,6 +69,9 @@ class NFieldSet extends Component {
                     break;
                 case "date":
                     component = (<NDatePicker key={field.id} visible={("visible" in field) ? field.visible : true} {...field} />);
+                    break;
+                case "number":
+                    component = (<NNumberField key={field.id} visible={("visible" in field) ? field.visible : true} {...field} />);
                     break;
                 default:
             }

@@ -15,6 +15,7 @@ import NoticeExampleA from './pages/NoticeExampleA';
 import NoticeFormExampleA from './pages/NoticeFormExampleA';
 import NoticeExampleB from './pages/NoticeExampleB';
 import TabsExample from './pages/TabsExample';
+import FormExample from './pages/FormExample';
 
 import NConstraint from './constraints/NConstraint';
 
@@ -142,6 +143,9 @@ class App extends Component {
                                                 <div>
                 									<Link to={{ pathname: '/tabs', query: { id: "assetTab", title: "운영자산관리", component: "Asset" } }} onClick={() => $("#close").click()}>Tab 예제(자산)</Link>
                 								</div>
+                                                <div>
+                									<Link to="/forms" onClick={() => $("#close").click()}>폼 예제</Link>
+                								</div>
                 							</div>
                 						</div>
                 					</div>
@@ -204,6 +208,7 @@ ReactDom.render((
             <Route path="/noticeFormExampleA" component={NoticeFormExampleA}/>
             <Route path="/noticeB" component={NoticeExampleB}/>
             <Route path="/tabs" component={TabsExample}/>
+            <Route path="/forms" component={FormExample}/>
         </Route>
     </Router>
 ), document.getElementById('app'));

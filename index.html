@@ -103,10 +103,11 @@
 	<script type="text/javascript" src="/common-libs/js/jquery-migrate.min.js"></script>
 	<script type="text/javascript" src="/common-libs/js/bootstrap.min.js"></script>
 
-
 	<script type="text/javascript" src="/common-libs/puf/libs/kendo.all.min.js"></script>
 	<script type="text/javascript" src="/common-libs/puf/i18n/ps-locale_ko.min.js"></script>
 	<script type="text/javascript" src="/common-libs/puf/scripts/react-puf.min.js"></script>
+
+	<script type="text/javascript" src="/common-libs/js/kendo/cultures/kendo.culture.ko-KR.js"></script>
 	<!--
 	<script type="text/javascript" src="/common-libs/plugins/jquery.i18n.properties.min.js"></script>
 	-->
@@ -131,6 +132,7 @@
 		});
 		localStorage["Test"] = "테스트";
 		*/
+		kendo.culture("ko-KR");
 	</script>
 	<script id="emailTemplate" type="text/x-kendo-template">
         <div class="new-mail">
