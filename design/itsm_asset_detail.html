@@ -1,0 +1,1303 @@
+<html>
+
+<head>
+<script src="libs/jquery/js/jquery-3.1.0.min.js" type="text/javascript"></script>
+ 
+<link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="libs/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
+
+<script src="libs/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="libs/bootstrap/js/moment-with-locales.min.js" type="text/javascript"></script>
+<script src="libs/bootstrap/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+
+<link href="libs/kendo/kendo.common.min.css" rel="stylesheet" type="text/css">
+<link href="libs/kendo/kendo.bootstrap.min.css" rel="stylesheet" type="text/css">
+<script src="libs/kendo/kendo.all.min.js"></script>
+</head>
+
+<style type="text/css">
+	.btn-margin-top {
+	    margin-top: 10px;
+	}
+	.btn-margin-bottom {
+	    margin-bottom: 10px;
+	}
+	.btn-margin-left {
+	    margin-left: 5px;
+	}
+	.btn-margin-right {
+	    margin-right: 5px;
+	}
+</style>
+
+<body style="padding-top: 70px;">
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+
+	<div class="container-fluid">
+	
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="itsm_main.html">POLESTAR ITSM</a>
+		</div>
+		
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#">사이트맵</a>
+						</li>
+					</ul>
+				</li>
+				<!-- /.dropdown -->
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#">개인정보변경</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="index.html">로그아웃</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		
+	</div>
+	
+</nav>
+
+<div class="container-fluid">
+
+	<div class="row">
+	
+		<div class="col-sm-1 col-md-1 col-lg-1">
+		
+			<div class="row">
+			
+				<div class="col-sm-12 col-lg-12">
+					
+					<nav class="navbar navbar-default navbar-static-top" data-spy="affix" data-offset-top="0" style="background-color: rgba(255,255,255,1); border-top: 1px solid #428bca; border-bottom: 1px solid #428bca; border-left: 1px solid #428bca; border-right: 1px solid #428bca; width: 120px; left:20px; position: fixed;">
+						<div class="container-fluid">
+							<ul class="nav">
+								<li class="text-center">
+									<a id="main-menu-control-btn">
+										<h3 style="margin-top: 0px; margin-bottom: 0px;">
+											<span id="main-menu-control-icon" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span>
+										</h3>
+									</a>
+								</li>
+							</ul>
+							<ul id="main-menu-ul" class="nav nav-pills nav-stacked">
+								<li class="text-center">
+									<h1><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span></h1>
+									<div>서비스<br/>데스크</div>
+								</li>
+								<li class="text-center">
+									<a href="#" data-toggle="modal" data-target="#reqModal">
+									<h1><span class="glyphicon glyphicon-retweet" aria-hidden="true"></span></h1>
+									<div>서비스<br/>운영관리</div>
+									</a>
+								</li>
+								<li class="text-center">
+									<a href="#" data-toggle="modal" data-target="#assetModal">
+									<h1><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span></h1>
+									<div>자산 /<br/>구성관리</div>
+									</a>
+								</li>
+								<li class="text-center">
+									<h1><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span></h1>
+									<div>서비스<br/>수준관리</div>
+								</li>
+								<li class="text-center">
+									<h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></h1>
+									<div>시스템<br/>관리</div>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				
+				</div>
+				
+			</div>
+			
+		</div>
+    
+		<div class="col-sm-11 col-md-11 col-lg-11">
+				
+			<div class="row">
+			
+				<div class="col-sm-12 col-lg-12">
+					<ul class="nav nav-tabs">
+						<li><a href="#">자산리스트</a></li>
+						<li class="active"><a href="#">[IT201500029] Unix 서버</a></li>
+					</ul>
+				</div>
+				
+			</div>
+			
+			<div class="row">
+			
+				<div class="col-sm-12 col-lg-12">
+					
+					<nav class="navbar navbar-default navbar-static-top" data-spy="affix" data-offset-top="0" style="background-color: rgba(255,255,255,1); border-top: 1px solid #428bca; border-bottom: 1px solid #428bca; border-left: 1px solid #428bca; border-right: 1px solid #428bca; width: 115px; right:50px; position: fixed;">
+						<div class="container-fluid">
+							<ul class="nav">
+								<li class="text-center">
+									<a id="asset-menu-control-btn">
+										<h3 style="margin-top: 0px; margin-bottom: 0px;">
+											<span id="asset-menu-control-icon" class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span>
+										</h3>
+									</a>
+								</li>
+							</ul>
+							<ul id="asset-menu-ul" class="nav nav-pills nav-stacked">
+								<li id="all-collapse-btn" class="text-center">
+									<p class="navbar-btn">
+										<a href="#" class="btn btn-default btn-margin-bottom btn-margin-top">모두접기</a>
+									</p>
+								</li>
+								<li id="all-expand-btn" class="text-center">
+									<p class="navbar-btn">
+										<a href="#" class="btn btn-default btn-margin-bottom">모두펼침</a>
+									</p>
+								</li>
+								<li class="text-center">
+									<p class="navbar-btn">
+										<a href="javascript:alert('수정 버튼 클릭');" class="btn btn-primary btn-margin-bottom">수　　정</a>
+									</p>
+								</li>
+								<li class="text-center">
+									<p class="navbar-btn">
+										<a href="#" class="btn btn-success btn-margin-bottom" data-toggle="modal" data-target="#assetHistoryModal">수정이력</a>
+									</p>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				
+				</div>
+				
+			</div>
+			
+			<div class="row">
+			
+				<div class="col-sm-12 col-lg-12">
+				
+					<form role="form">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading" onmouseover="" style="cursor: pointer;" data-toggle="collapse" href="#base-panel">  
+								<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+								기본정보
+							</div>
+							<div id="base-panel" class="panel-body collapse in">
+								<div class="row">
+									<div class="col-sm-6 col-lg-6">
+										<h3><b>기본정보</b></h3>
+										
+										<div class="form-group">
+											<label>IT자산번호</label>
+											<input class="form-control" value="IT201500029" disabled>
+											<p class="help-block">수정할 수 없습니다.</p>
+										</div>
+										<div class="form-group">
+											<label>구성자원번호</label>
+											<input class="form-control" value="SV201500029" disabled>
+										</div>
+										<div class="form-group">
+											<label>분류체계</label>
+											<input class="form-control" value="하드웨어 > 서버 > UNIX" disabled>
+										</div>
+										<div class="form-group">
+											<label>자산명</label>
+											<input class="form-control" value="Unix 서버">
+										</div>
+										<div class="form-group">
+											<label>시리얼번호</label>
+											<input class="form-control" value="NKIA123456">
+										</div>
+										<div class="form-group">
+											<label>제조사</label>
+											<div class="input-group">
+												<span class="input-group-addon">
+													<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+												</span>
+												<span class="input-group-addon">
+													<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+												</span>
+												<input class="form-control" value="Sun" data-toggle="modal" data-target="#defaultModal" readOnly style="background-color:transparent;">
+											</div>
+										</div>
+										<div class="form-group">
+											<label>모델</label>
+											<input class="form-control" value="Sun-Fire-480R">
+										</div>
+										<div class="form-group">
+											<label>자산상태</label>
+											<select class="form-control">
+												<option value="INTRO">도입</option>
+												<option value="ACTIVE" selected="selected">운영</option>
+												<option value="INACTIVE">유휴</option>
+												<option value="DISUSE">폐기</option>
+											</select>
+										</div>
+										
+									</div>
+									<!-- /.col -->
+									
+									<div class="col-sm-6 col-lg-6">
+									
+										<h3><b>일반정보</b></h3>
+										
+										<div class="form-group">
+											<label>내용년수</label>
+											<input class="form-control" value="5">
+											<p class="help-block">단위 : 년</p>
+										</div>
+										<div class="form-group">
+											<label>설치위치</label>
+											<select class="form-control">
+												<option value="A">서울) 데이터센터</option>
+												<option value="B" selected="selected">경기) 판교본사</option>
+												<option value="C">광주) 데이터센터</option>
+												<option value="D">대구) 데이터센터</option>
+												<option value="E">부산) 남부지사</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label>설치층</label>
+											<select class="form-control">
+												<option value="B1">지하1층</option>
+												<option value="1F">1층</option>
+												<option value="2F">2층</option>
+												<option value="3F">3층</option>
+												<option value="4F">4층</option>
+												<option value="5F">5층</option>
+												<option value="6F" selected="selected">6층</option>
+												<option value="7F">7층</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label>자산구분</label>
+											<select class="form-control">
+												<option value="A">호스트</option>
+												<option value="B" selected="selected">서버</option>
+												<option value="C">통신</option>
+												<option value="D">단말</option>
+												<option value="E">주변기기</option>
+												<option value="F">PC</option>
+												<option value="G">기타</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label>자산소유구분 (다중선택)</label>
+											<select multiple class="form-control">
+												<option value="A">단독</option>
+												<option value="B">팀 공용</option>
+												<option value="C">전사(영업용)</option>
+												<option value="D">전사(지원용)</option>
+												<option value="E">기타</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label>자산등급</label>
+											<div class="checkbox">
+												<label class="checkbox-inline">
+													<input type="checkbox">1등급
+												</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" checked>2등급
+												</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" checked>3등급
+												</label>
+												<label class="checkbox-inline">
+													<input type="checkbox">4등급
+												</label>
+											</div>
+										</div>
+										<div class="form-group">
+											<label>국산여부</label>
+											<div class="radio">
+												<label>
+													<input type="radio" name="optionsRadios" id="optionsRadios1" value="Y">예
+												</label>
+												<label>
+													<input type="radio" name="optionsRadios" id="optionsRadios2" value="N" checked>아니오
+												</label>
+											</div>
+										</div>
+										<div class="form-group">
+											<label>도입일</label>
+											<div class="input-group">
+												<span class="input-group-addon">
+													<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+												</span>
+												<span class="input-group-addon">
+													<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+												</span>
+												<input class="form-control" id="intro_dt" type="text" value="2012-09-02">
+											</div>
+											<p class="help-block">입력형식 : YYYY-MM-DD</p>
+											<script>
+												$(document).ready(function() {
+													$("#intro_dt").datetimepicker({
+														locale: "ko",
+														format: "YYYY-MM-DD"
+													});
+												});
+											</script>
+										</div>
+										<div class="form-group">
+											<label>도입가</label>
+											<div class="input-group">
+												<span class="input-group-addon">￦</span>
+												<input type="text" class="form-control" value="5,650">
+											</div>
+											<p class="help-block">단위 : 천원</p>
+										</div>
+										
+									</div>
+									<!-- /.col -->
+									
+								</div>
+								<!-- /.row (nested) -->
+								
+							</div>
+							<!-- /.panel-body -->
+							
+						</div>
+						<!-- /.panel -->
+						
+						<div class="panel panel-default">
+							<div class="panel-heading" onmouseover="" style="cursor: pointer;" data-toggle="collapse" href="#more-panel">  
+								<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+								부가정보
+							</div>
+							<div id="more-panel" class="panel-body collapse in">
+								<div class="row">
+									<div class="col-sm-6 col-lg-6">
+										<h3><b>부가정보</b></h3>
+											<div class="form-group">
+												<label>자산일련번호</label>
+												<input class="form-control" value="NKIA-123">
+											</div>
+											<div class="form-group">
+												<label>바코드</label>
+												<input class="form-control" value="BARCODE1111">
+											</div>
+											<div class="form-group">
+												<label>공급계약번호</label>
+												<input class="form-control" value="CONTRACT-0001">
+											</div>
+											<div class="form-group">
+												<label>공급계약내용</label>
+												<textarea class="form-control" rows="3">내용년수 만기에 따른 서버 일괄 재구매</textarea>
+											</div>
+											<div class="form-group">
+												<label>계약서 이미지파일</label>
+												<input type="file">
+											</div>
+									</div>
+									<!-- /.col -->
+									<div class="col-sm-6 col-lg-6">
+										<h3><b>스펙정보</b></h3>
+											<div class="form-group">
+												<label>대표 IP</label>
+												<input class="form-control" value="192.168.255.255">
+											</div>
+											<div class="form-group">
+												<label>맥 어드레스</label>
+												<input class="form-control" value="NK:IA:12:34:56">
+											</div>
+											<div class="form-group">
+												<label>총 CPU 수</label>
+												<input class="form-control" value="8">
+											</div>
+											<div class="form-group">
+												<label>총 CPU Core</label>
+												<input class="form-control" value="24">
+											</div>
+											<div class="form-group">
+												<label>총 메모리 용량</label>
+												<input class="form-control" value="64">
+												<p class="help-block">단위 : GB</p>
+											</div>
+											<div class="form-group">
+												<label>총 디스크 용량</label>
+												<input class="form-control" value="20">
+												<p class="help-block">단위 : TB</p>
+											</div>
+									</div>
+									<!-- /.col -->
+								</div>
+								<!-- /.row (nested) -->
+							</div>
+							<!-- /.panel-body -->
+						</div>
+						<!-- /.panel -->
+						<div class="panel panel-default">
+							<div class="panel-heading" onmouseover="" style="cursor: pointer;" data-toggle="collapse" href="#etc-panel">  
+								<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+								기타정보
+							</div>
+							<div id="etc-panel" class="panel-body collapse in">
+								<div class="row">
+									<div class="col-sm-6 col-lg-6">
+										<h3><b>유지보수정보</b></h3>
+											<div class="form-group">
+												<label>유지보수업체명</label>
+												<input class="form-control" value="(주)엔키아">
+											</div>
+											<div class="form-group">
+												<label>무상 보증기간</label>
+												<input class="form-control" value="12">
+												<p class="help-block">단위 : 개월</p>
+											</div>
+											<div class="form-group">
+												<label>유상 유지보수 시작일</label>
+												<div class="input-group">
+													<span class="input-group-addon">
+														<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+													</span>
+													<span class="input-group-addon">
+														<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+													</span>
+													<input class="form-control" id="imp_start_dt" type="text" value="2017-01-01">
+												</div>
+												<p class="help-block">입력형식 : YYYY-MM-DD</p>
+												<script>
+													$(document).ready(function() {
+														$("#imp_start_dt").datetimepicker({
+															locale: "ko",
+															format: "YYYY-MM-DD"
+														});
+													});
+												</script>
+											</div>
+											<div class="form-group">
+												<label>유상 유지보수 종료일</label>
+												<div class="input-group">
+													<span class="input-group-addon">
+														<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+													</span>
+													<span class="input-group-addon">
+														<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+													</span>
+													<input class="form-control" id="imp_end_dt" type="text" value="2017-12-31">
+												</div>
+												<p class="help-block">입력형식 : YYYY-MM-DD</p>
+												<script>
+													$(document).ready(function() {
+														$("#imp_end_dt").datetimepicker({
+															locale: "ko",
+															format: "YYYY-MM-DD"
+														});
+													});
+												</script>
+											</div>
+									</div>
+									<!-- /.col -->
+									<div class="col-sm-6 col-lg-6">
+										<h3><b>기타정보</b></h3>
+											<div class="form-group">
+												<label>자산 설명</label>
+												<textarea class="form-control" rows="3"></textarea>
+											</div>
+									</div>
+									<!-- /.col -->
+								</div>
+								<!-- /.row (nested) -->
+							</div>
+							<!-- /.panel-body -->
+						</div>
+						<!-- /.panel -->
+						<div class="panel panel-default">
+							<div class="panel-heading" onmouseover="" style="cursor: pointer;" data-toggle="collapse" href="#oper-grid-panel">  
+								<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+								담당자정보
+							</div>
+							<div id="oper-grid-panel" class="panel-body collapse in">
+								<div class="row">
+									<div class="col-sm-12 col-lg-12">
+										<h3><b>담당자정보</b></h3>
+										<div class="text-right">
+											<button type="button" class="btn btn-default" data-toggle="modal" data-target="#defaultModal">
+												<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+												Add
+											</button>
+										</div>
+										<div id="oper-grid"></div>
+										<script>
+											$("#oper-grid").kendoGrid({
+												columns: [{ 
+													field: "CUST_NM",
+													title: "부서",
+													width: "30%",
+													headerAttributes: {
+														style: "text-align: center;font-weight: bold"
+													},
+													attributes:{
+														style:"text-align:left;"
+													}
+												},{ 
+													field: "USER_ID",
+													title: "사번",
+													width: "20%",
+													headerAttributes: {
+														style: "text-align: center;font-weight: bold"
+													},
+													attributes:{
+														style:"text-align:center;"
+													}
+												},{ 
+													field: "USER_NM",
+													title: "담당자명",
+													width: "30%",
+													headerAttributes: {
+														style: "text-align: center;font-weight: bold"
+													},
+													attributes:{
+														style:"text-align:center;"
+													}
+												},{ 
+													field: "IMP_YN",
+													title: "정/부 여부",
+													width: "10%",
+													headerAttributes: {
+														style: "text-align: center;font-weight: bold"
+													},
+													attributes:{
+														style:"text-align:center;"
+													}
+												},{ 
+													command: [{ 
+														name : "destroy",
+													}],
+													title: "삭제",
+													field: "DEL",
+													width: "10%",
+													headerAttributes: {
+														style: "text-align: center;font-weight: bold"
+													},
+													attributes:{
+														style:"text-align:center;",
+													}
+												}],
+												dataSource: [{
+													CUST_NM: "연구 4팀",
+													USER_ID: "123123",
+													USER_NM: "정영태",
+													IMP_YN: "정"
+												},{
+													CUST_NM: "연구 4팀",
+													USER_ID: "456456",
+													USER_NM: "정정윤",
+													IMP_YN: "부"
+												},{
+													CUST_NM: "ITSM 사업팀",
+													USER_ID: "789789",
+													USER_NM: "김다희",
+													IMP_YN: "부"
+												}],
+												editable: {
+													mode: "inline"
+												}
+											});
+										</script>
+									</div>
+									<!-- /.col -->
+								</div>
+								<!-- /.row (nested) -->
+							</div>
+							<!-- /.panel-body -->
+						</div>
+						<!-- /.panel -->
+						
+						<!-- /.panel -->
+						<div class="panel panel-default">
+							<div class="panel-heading" onmouseover="" style="cursor: pointer;" data-toggle="collapse" href="#infra-grid-panel">  
+								<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+								연관장비정보
+							</div>
+							<div id="infra-grid-panel" class="panel-body collapse in">
+								<div class="row">
+									<div class="col-sm-12 col-lg-12">
+										<h3><b>연관장비정보</b></h3>
+										<div class="text-right">
+											<button type="button" class="btn btn-default" data-toggle="modal" data-target="#defaultModal">
+												<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+												Add
+											</button>
+										</div>
+										<div id="infra-grid"></div>
+										<script>
+											$("#infra-grid").kendoGrid({
+												columns: [{ 
+													field: "TYPE",
+													title: "타입",
+													width: "15%",
+													headerAttributes: {
+														style: "text-align: center;font-weight: bold"
+													},
+													attributes:{
+														style:"text-align:center;"
+													}
+												},{ 
+													field: "ASSET_ID",
+													title: "IT자산번호",
+													width: "15%",
+													headerAttributes: {
+														style: "text-align: center;font-weight: bold"
+													},
+													attributes:{
+														style:"text-align:center;"
+													}
+												},{ 
+													field: "CONF_NM",
+													title: "자산명",
+													width: "35%",
+													headerAttributes: {
+														style: "text-align: center;font-weight: bold"
+													},
+													attributes:{
+														style:"text-align:left;"
+													}
+												},{ 
+													field: "ASSET_STATE",
+													title: "자산상태",
+													width: "10%",
+													headerAttributes: {
+														style: "text-align: center;font-weight: bold"
+													},
+													attributes:{
+														style:"text-align:center;",
+													}
+												},{ 
+													field: "SERIAL_NO",
+													title: "시리얼번호",
+													width: "15%",
+													headerAttributes: {
+														style: "text-align: center;font-weight: bold"
+													},
+													attributes:{
+														style:"text-align:left;",
+													}
+												},
+												/** jquery 3.1.0 에서는 동작안함 (1.9.2에서 동작)
+												{ 
+													command: [{ 
+														name : "edit",
+														text: {
+															edit: "수정",
+															cancel: "취소",
+															update: "수정완료"
+														}
+													}]
+												},
+												**/
+												{ 
+													command: [{ 
+														name : "destroy",
+													}],
+													title: "삭제",
+													field: "DEL",
+													width: "10%",
+													headerAttributes: {
+														style: "text-align: center;font-weight: bold"
+													},
+													attributes:{
+														style:"text-align:center;",
+													}
+												}],
+												dataSource: [{
+													TYPE: "네트워크",
+													ASSET_ID: "IT199800311",
+													CONF_NM: "Cisco2950",
+													ASSET_STATE: "운영",
+													SERIAL_NO: "NW-19980123"
+												},{
+													TYPE: "스토리지",
+													ASSET_ID: "IT200200029",
+													CONF_NM: "Hitachi Thunder 9570",
+													ASSET_STATE: "운영",
+													SERIAL_NO: "ST-20021201"
+												},{
+													TYPE: "백업장비",
+													ASSET_ID: "IT201500004",
+													CONF_NM: "Symantec Netbackup Appliance",
+													ASSET_STATE: "유휴",
+													SERIAL_NO: "BK-20150722"
+												},{
+													TYPE: "보안장비",
+													ASSET_ID: "IT199900011",
+													CONF_NM: "SECUREWORKS 3000",
+													ASSET_STATE: "운영",
+													SERIAL_NO: "SC-19991105"
+												}],
+												editable: {
+													mode: "inline"
+												}
+											});
+										</script>
+									</div>
+									<!-- /.col -->
+								</div>
+								<!-- /.row (nested) -->
+							</div>
+							<!-- /.panel-body -->
+						</div>
+						<!-- /.panel -->
+					</form>
+					<!-- /.form -->
+				</div>
+				<!-- /.col-lg-12 -->
+				
+			</div>
+			<!-- /.row -->
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<!-- Modal -->
+<div id="reqModal" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><b>서비스운영관리 메뉴</b></h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-4 col-lg-4">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+								요청관리
+							</div>
+							<div class="panel-body">
+								<div>
+									- 요청 대기함
+								</div>
+								<div>
+									<a href="itsm_req_detail.html" title="요청관리 - 요청진행함" data-toggle="popover" data-trigger="hover" data-content="진행중인 요청을 조회합니다.">
+									- 요청 진행함1
+									</a>
+								</div>
+								<div>
+									<a href="itsm_req_detail_new.html" title="요청관리 - 요청진행함" data-toggle="popover" data-trigger="hover" data-content="진행중인 요청을 조회합니다.">
+									- 요청 진행함2
+									</a>
+								</div>
+								<div>
+									- 요청 완료함
+								</div>
+								<div>
+									- 요청이력관리
+								</div>
+								<div>
+									- 부서 업무목록
+								</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+								요청등록
+							</div>
+							<div class="panel-body">
+								<div>
+									- 서비스요청 (PC요청)
+								</div>
+								<div>
+									- 서비스요청 (NW요청)
+								</div>
+								<div>
+									- 장애요청
+								</div>
+								<div>
+									- 문제요청
+								</div>
+								<div>
+									- 변경요청
+								</div>
+								<div>
+									- 릴리즈요청
+								</div>
+								<div>
+									- 유지보수요청
+								</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-glass" aria-hidden="true"></span>
+								KEDB 관리
+							</div>
+							<div class="panel-body">
+								<div>
+									- KEDB 관리
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					
+					<div class="col-sm-4 col-lg-4">
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+								요청현황
+							</div>
+							<div class="panel-body">
+								<div>
+									- 종합요청현황
+								</div>
+								<div>
+									- 서비스요청현황
+								</div>
+								<div>
+									- 장애요청현황
+								</div>
+								<div>
+									- 문제요청현황
+								</div>
+								<div>
+									- 변경요청현황
+								</div>
+								<div>
+									- 릴리즈요청현황
+								</div>
+								<div>
+									- 유지보수요청현황
+								</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
+								요청통계
+							</div>
+							<div class="panel-body">
+								<div>
+									- 요청주요통계
+								</div>
+								<div>
+									- 서비스요청통계
+								</div>
+								<div>
+									- 장애요청통계
+								</div>
+								<div>
+									- 문제요청통계
+								</div>
+								<div>
+									- 변경요청통계
+								</div>
+								<div>
+									- 릴리즈요청통계
+								</div>
+								<div>
+									- 유지보수요청통계
+								</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+								담당자관리
+							</div>
+							<div class="panel-body">
+								<div>- 담당자관리</div>
+							</div>
+						</div>
+					
+					</div>
+						
+					<div class="col-sm-4 col-lg-4">
+
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-cd" aria-hidden="true"></span>
+								결재라인관리
+							</div>
+							<div class="panel-body">
+								<div>- 결재라인관리</div>
+							</div>
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫 기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="assetModal" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><b>자산/구성관리 메뉴</b></h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-4 col-lg-4">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+								구성자원등록
+							</div>
+							<div class="panel-body">
+								<div>
+									- 단일구성 자원등록
+								</div>
+								<div>
+									- 일괄구성 자원등록
+								</div>
+								<div>
+									- 일괄구성 자원검토
+								</div>
+								<div>
+									- 템플릿 자원등록
+								</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-glass" aria-hidden="true"></span>
+								구성자원관리
+							</div>
+							<div class="panel-body">
+								<div>
+									- 논리자원등록
+								</div>
+								<div>
+									<a href="itsm_asset_detail.html" title="구성자원조회" data-toggle="popover" data-trigger="hover" data-content="구성자원을 조회합니다.">
+									- 구성자원조회
+									</a>
+								</div>
+								<div>
+									- 구성자원수정
+								</div>
+								<div>
+									- EMS 구성점검
+								</div>
+								<div>
+									- 구성속성 일괄수정
+								</div>
+								<div>
+									- 논리서버 매핑
+								</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+								사업정보관리
+							</div>
+							<div class="panel-body">
+								<div>
+									- 사업정보관리
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					
+					<div class="col-sm-4 col-lg-4">
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+								계약관리
+							</div>
+							<div class="panel-body">
+								<div>
+									- 공급계약관리
+								</div>
+								<div>
+									- 유지보수계약관리
+								</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+								기준정보관리
+							</div>
+							<div class="panel-body">
+								<div>- 분류체계관리</div>
+								<div>- 속성관리</div>
+								<div>- 테이블관리</div>
+								<div>- 분류체계별 속성관리</div>
+								<div>- 분류체계 속성 동기화</div>
+								<div>- 분류체계별 권한관리</div>
+								<div>- 서비스관리</div>
+								<div>- 위치관리</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-cd" aria-hidden="true"></span>
+								소프트웨어관리
+							</div>
+							<div class="panel-body">
+								<div>- 소프트웨어 그룹관리</div>
+								<div>- 소프트웨어 옵션관리</div>
+								<div>- AD 수집가능 소프트웨어</div>
+							</div>
+						</div>
+						
+					</div>
+					
+					<div class="col-sm-4 col-lg-4">
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
+								분류체계별 현황
+							</div>
+							<div class="panel-body">
+								<div>- 분류체계별 현황</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+								S/W 현황
+							</div>
+							<div class="panel-body">
+								<div>- S/W 관리현황</div>
+								<div>- AD 설치 및 S/W 현황</div>
+								<div>- S/W 라이선스 현황</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫 기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="defaultModal" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><b>팝업창 템플릿</b></h4>
+			</div>
+			<div class="modal-body">
+				- 팝업 템플릿입니다.
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫 기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="assetHistoryModal" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><b>수정이력 조회</b></h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-4">
+						<table class="table table-sm table-bordered table-hover">
+							<thead class="thead-default">
+								<tr class="active">
+									<th class="text-center">속성명</th>
+									<th class="text-center">수정횟수</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr style="cursor:pointer">
+									<td>자산상태</td>
+									<td class="text-center">4</td>
+								</tr>
+								<tr style="cursor:pointer">
+									<td>설치층</td>
+									<td class="text-center">2</td>
+								</tr>
+								<tr class="active" style="cursor:pointer">
+									<td><b>총 CPU 수</b></td>
+									<td class="text-center"><b>6</b></td>
+								</tr>
+								<tr style="cursor:pointer">
+									<td>총 CPU Core</td>
+									<td class="text-center">6</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="col-sm-8">
+						<table class="table table-sm table-bordered table-hover">
+							<thead class="thead-default">
+								<tr class="active">
+									<th class="text-center">이전 값</th>
+									<th class="text-center">변경 값</th>
+									<th class="text-center">수정일</th>
+									<th class="text-center">수정자</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="text-center"><font color="blue">값 없음</font></td>
+									<td class="text-center">8</td>
+									<td class="text-center">2016-08-20 01:52</td>
+									<td>시스템 자동변경</td>
+								</tr>
+								<tr>
+									<td class="text-center">8</td>
+									<td class="text-center"><font color="blue">값 없음</font></td>
+									<td class="text-center">2016-07-11 01:49</td>
+									<td>시스템 자동변경</td>
+								</tr>
+								<tr>
+									<td class="text-center">4</td>
+									<td class="text-center">8</td>
+									<td class="text-center">2016-05-17 09:34</td>
+									<td>정정윤</td>
+								</tr>
+								<tr>
+									<td class="text-center">8</td>
+									<td class="text-center">4</td>
+									<td class="text-center">2016-04-05 13:42</td>
+									<td>정정윤</td>
+								</tr>
+								<tr>
+									<td class="text-center">6</td>
+									<td class="text-center">8</td>
+									<td class="text-center">2016-02-20 01:56</td>
+									<td>시스템 자동변경</td>
+								</tr>
+								<tr>
+									<td class="text-center"><font color="blue">값 없음</font></td>
+									<td class="text-center">6</td>
+									<td class="text-center">2016-02-11 10:14</td>
+									<td>정정윤</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫 기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+
+$(document).ready(function(){
+	
+    $('[data-toggle="popover"]').popover();
+    
+	$("#main-menu-control-btn").on("click", function() {
+    	
+		var mainMenuUl = $("#main-menu-ul");
+		
+		if(mainMenuUl.hasClass("hide")) {
+			$("#main-menu-control-icon").removeClass("glyphicon-collapse-down").addClass("glyphicon-collapse-up");
+			mainMenuUl.hide().removeClass('hide');
+			mainMenuUl.show();
+		} else {
+			$("#main-menu-control-icon").removeClass("glyphicon-collapse-up").addClass("glyphicon-collapse-down");
+			mainMenuUl.hide().addClass('hide');
+			mainMenuUl.hide();
+		}
+    });
+	
+	$("#asset-menu-control-btn").on("click", function() {
+    	
+		var assetMenuUl = $("#asset-menu-ul");
+		
+		if(assetMenuUl.hasClass("hide")) {
+			$("#asset-menu-control-icon").removeClass("glyphicon-collapse-down").addClass("glyphicon-collapse-up");
+			assetMenuUl.hide().removeClass('hide');
+			assetMenuUl.show();
+		} else {
+			$("#asset-menu-control-icon").removeClass("glyphicon-collapse-up").addClass("glyphicon-collapse-down");
+			assetMenuUl.hide().addClass('hide');
+			assetMenuUl.hide();
+		}
+    });
+    
+    $("#all-collapse-btn").on("click", function() {
+    	$('#base-panel').collapse("hide");
+    	$('#more-panel').collapse("hide");
+    	$('#etc-panel').collapse("hide");
+    	$('#oper-grid-panel').collapse("hide");
+    	$('#infra-grid-panel').collapse("hide");
+    });
+    
+    $("#all-expand-btn").on("click", function() {
+    	$('#base-panel').collapse("show");
+     	$('#more-panel').collapse("show");
+     	$('#etc-panel').collapse("show");
+     	$('#oper-grid-panel').collapse("show");
+    	$('#infra-grid-panel').collapse("show");
+    });
+    
+    
+    
+});
+
+</script>
+
+</body>
+
+</html>
+
+
