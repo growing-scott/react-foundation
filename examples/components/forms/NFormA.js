@@ -86,16 +86,7 @@ class NFormA extends Component {
             lg = lg/columns;
         }
         let colClassName = "col-sm-" + sm + " col-lg-" + lg;
-        console.info(heaerTitles);
-        console.info(columns);
-        console.info(sm);
-        console.info(lg);
 
-        /*
-        let fieldSetRender = function(filedSet, index, row, col){
-
-        };
-        */
         let render = [];
         for(let i = 0; i < rows; i++){
             let panelId = "panel_" + i;
@@ -105,7 +96,6 @@ class NFormA extends Component {
             let fieldSetRender = [];
             let colIdx = i * columns;
             let colLen = ((colIdx + columns) < fieldSets.length) ? (colIdx + columns) : fieldSets.length;
-            console.info(colIdx, colIdx + columns);
             for(let j = colIdx, len = colLen; j < len; j++){
                 let key = "filedSet_" + j;
                 let fieldSet = fieldSets[j];
@@ -115,8 +105,6 @@ class NFormA extends Component {
                         <NFieldSet ref={fieldSet.id} key={fieldSet.id} fieldList={fieldSet.fieldList}/>
                     </div>));
             }
-
-
             render.push((
                 <div key={panelId} className="panel panel-default">
                     <div className="panel-heading">

@@ -16,6 +16,8 @@ import NoticeFormExampleA from './pages/NoticeFormExampleA';
 import NoticeExampleB from './pages/NoticeExampleB';
 import TabsExample from './pages/TabsExample';
 import FormExample from './pages/FormExample';
+import FileUploaderExample from './pages/FileUploaderExample';
+
 
 import NConstraint from './constraints/NConstraint';
 
@@ -146,6 +148,10 @@ class App extends Component {
                                                 <div>
                 									<Link to="/forms" onClick={() => $("#close").click()}>폼 예제</Link>
                 								</div>
+                                                <div>
+                									<Link to="/fileUploader" onClick={() => $("#close").click()}>파일업로드 예제</Link>
+                								</div>
+
                 							</div>
                 						</div>
                 					</div>
@@ -209,6 +215,8 @@ ReactDom.render((
             <Route path="/noticeB" component={NoticeExampleB}/>
             <Route path="/tabs" component={TabsExample}/>
             <Route path="/forms" component={FormExample}/>
+            <Route path="/fileUploader" component={FileUploaderExample}/>
+
         </Route>
     </Router>
 ), document.getElementById('app'));

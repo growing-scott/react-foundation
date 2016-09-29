@@ -3,7 +3,7 @@ import React, {Component, PropTypes} from 'react';
 import NLayoutUtils from '../utils/NLayoutUtils';
 
 /**
- * Layout A
+ * Layout E
  * 1개의 Layer로 구성된 Layout 구조
  */
 class NLayoutE extends Component {
