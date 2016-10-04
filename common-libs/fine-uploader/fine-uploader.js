@@ -2145,6 +2145,7 @@
             },
             _refreshSessionData: function() {
                 var self = this, options = this._options.session;
+
                 if (qq.Session && this._options.session.endpoint != null) {
                     if (!this._session) {
                         qq.extend(options, {
@@ -4641,10 +4642,10 @@
             success = success && isJsonResponseValid(fileItems);
             if (success) {
                 qq.each(fileItems, function(idx, fileItem) {
-                    if (fileItem.uuid == null) {
+                    if (fileItem.uuid === null) {
                         someItemsIgnored = true;
                         options.log(qq.format("Session response item {} did not include a valid UUID - ignoring.", idx), "error");
-                    } else if (fileItem.name == null) {
+                    } else if (fileItem.name === null) {
                         someItemsIgnored = true;
                         options.log(qq.format("Session response item {} did not include a valid name - ignoring.", idx), "error");
                     } else {
