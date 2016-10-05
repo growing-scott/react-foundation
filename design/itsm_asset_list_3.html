@@ -52,7 +52,7 @@
 				&nbsp;>&nbsp;&nbsp;
 				<a class="navbar-link" href="#">구성자원관리</a>                  
 				&nbsp;>&nbsp;&nbsp;
-				구성자원조회2
+				구성자원조회3
 			</p>
 		</div>
 		
@@ -161,11 +161,133 @@
 			<div class="row">
 			
 				<div class="col-sm-12 col-lg-12">
+					
+					<nav class="navbar navbar-default navbar-static-top" data-spy="affix" data-offset-top="0" style="background-color: rgba(255,255,255,1); border-top: 1px solid #428bca; border-bottom: 1px solid #428bca; border-left: 1px solid #428bca; border-right: 1px solid #428bca; width: 250px; right:50px; position: fixed;">
+						<div class="container-fluid">
+							<ul class="nav">
+								<li class="text-left">
+									<a id="asset-menu-control-btn">
+										<h4 style="margin-top: 0px; margin-bottom: 0px;">
+											<span id="asset-menu-control-icon" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span>
+											분류체계
+										</h4>
+									</a>
+								</li>
+							</ul>
+							<ul id="asset-menu-ul" class="nav hide">
+								<li class="text-center">
+									<div class="btn-group">
+										<a id="expand-all-tree-btn" href="#" class="btn btn-primary">모두펼침</a>
+										<a id="collapse-all-tree-btn" href="#" class="btn btn-default">모두접기</a>
+									</div>
+								</li>
+								<div id="classtreeview" style="padding-top: 30px; padding-bottom: 30px; height:500px; overflow-x:auto;"></div>
+								<script>
+									var treeItems = [{ 
+										ClassId: "0", ClassName: "분류체계 전체",
+										items: [{
+											ClassId: "01", ClassName: "하드웨어",
+											items: [{
+												ClassId: "011", ClassName: "서버",
+												items: [{
+													ClassId: "0111", ClassName: "유닉스"
+												},{
+													ClassId: "0112", ClassName: "Windows"
+												},{
+													ClassId: "0113", ClassName: "Linux"
+												},{
+													ClassId: "0114", ClassName: "기타"
+												}]
+											},{
+												ClassId: "012", ClassName: "Network장비",
+												items: [{
+													ClassId: "0121", ClassName: "라우터"
+												},{
+													ClassId: "0122", ClassName: "허브"
+												},{
+													ClassId: "0123", ClassName: "L2스위치"
+												},{
+													ClassId: "0124", ClassName: "L4스위치"
+												}]
+											},{
+												ClassId: "013", ClassName: "스토리지",
+												items: [{
+													ClassId: "0131", ClassName: "저장장치"
+												},{
+													ClassId: "0132", ClassName: "SAN 스위치"
+												},{
+													ClassId: "0133", ClassName: "NAS 스위치"
+												}]
+											},{
+												ClassId: "014", ClassName: "백업장비",
+												items: [{
+													ClassId: "0141", ClassName: "테이프라이브러리"
+												},{
+													ClassId: "0142", ClassName: "VTL"
+												},{
+													ClassId: "0143", ClassName: "기타"
+												}]
+											},{
+												ClassId: "015", ClassName: "보안장비",
+												items: [{
+													ClassId: "0151", ClassName: "방화벽"
+												},{
+													ClassId: "0152", ClassName: "가상사설망"
+												},{
+													ClassId: "0153", ClassName: "접근통제장비"
+												}]
+											},{
+												ClassId: "016", ClassName: "기타(H/W)",
+												items: [{
+													ClassId: "0161", ClassName: "기타(H/W)"
+												}]
+											}]
+										},{
+											ClassId: "02", ClassName: "소프트웨어",
+											items: [{
+												ClassId: "021", ClassName: "소프트웨어",
+												items: [{
+													ClassId: "0211", ClassName: "DBMS"
+												},{
+													ClassId: "0212", ClassName: "미들웨어"
+												},{
+													ClassId: "0213", ClassName: "그래픽툴"
+												},{
+													ClassId: "0214", ClassName: "메일"
+												},{
+													ClassId: "0215", ClassName: "리포팅툴"
+												},{
+													ClassId: "0216", ClassName: "통합보안관제"
+												},{
+													ClassId: "0217", ClassName: "바이러스백신"
+												},{
+													ClassId: "0218", ClassName: "리포팅툴"
+												}]
+											}]
+										}]
+									}];
+									
+									$("#classtreeview").kendoTreeView({
+										dataTextField: "ClassName",
+										dataSource: treeItems
+									});
+								</script>
+							</ul>
+						</div>
+					</nav>
+				
+				</div>
+				
+			</div>
+			
+			<div class="row">
+			
+				<div class="col-sm-12 col-lg-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">  
 							<div class="form-group">
 								<label>현재 적용된 검색조건</label>
-								<input id="search-status" class="form-control" value="# 분류체계: 분류체계 전체　　# 자산상태: ACTIVE" style="font-weight: bold;" disabled>
+								<input id="search-status" class="form-control" value="# 자산상태: ACTIVE" style="font-weight: bold;" readonly>
 							</div>
 						</div>
 					</div>
@@ -489,113 +611,6 @@
 					</script>
 				</div>
 				<!-- /.col-lg-12 -->
-				
-				<div class="col-sm-12 col-lg-12"  style="padding-top: 20px;">
-				
-					<form id="search-form" role="form">
-					
-						<div class="panel panel-default">
-							<div class="panel-heading" onmouseover="" style="cursor: pointer;" data-toggle="collapse" href="#search-panel">  
-								<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-								검색
-							</div>
-							<div id="search-panel" class="panel-body collapse">
-								<div class="row">
-									<div class="col-sm-6 col-lg-6">
-										<div class="form-group">
-											<label>분류체계</label>
-											<div class="input-group">
-												<span class="input-group-addon">
-													<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-												</span>
-												<span class="input-group-addon">
-													<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
-												</span>
-												<input id="class_nm" label="분류체계" class="form-control" value="분류체계 전체" data-toggle="modal" data-target="#classTreeModal" readOnly style="background-color:transparent;">
-											</div>
-										</div>
-										<div class="form-group">
-											<label>IT자산번호</label>
-											<input label="IT자산번호" class="form-control" value="">
-										</div>
-										<div class="form-group">
-											<label>구성자원번호</label>
-											<input label="구성자원번호" class="form-control" value="">
-										</div>
-										<div class="form-group">
-											<label>자산명</label>
-											<input label="자산명" class="form-control" value="">
-										</div>
-										<div class="form-group">
-											<label>시리얼번호</label>
-											<input label="시리얼번호" class="form-control" value="">
-										</div>
-									</div>
-									<!-- /.col -->
-									
-									<div class="col-sm-6 col-lg-6">
-										<div class="form-group">
-											<label>제조사</label>
-											<div class="input-group">
-												<span class="input-group-addon">
-													<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-												</span>
-												<span class="input-group-addon">
-													<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
-												</span>
-												<input label="제조사" class="form-control" value="" data-toggle="modal" data-target="#defaultModal" readOnly style="background-color:transparent;">
-											</div>
-										</div>
-										<div class="form-group">
-											<label>모델</label>
-											<input label="모델" class="form-control" value="">
-										</div>
-										<div class="form-group">
-											<label>자산상태</label>
-											<select label="자산상태" class="form-control">
-												<option value="INTRO">도입</option>
-												<option value="ACTIVE" selected="selected">운영</option>
-												<option value="INACTIVE">유휴</option>
-												<option value="DISUSE">폐기</option>
-											</select>
-										</div>
-										<div class="form-group">
-											<label>도입일</label>
-											<div class="input-group">
-												<span class="input-group-addon">
-													<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-												</span>
-												<span class="input-group-addon">
-													<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
-												</span>
-												<input label="도입일" class="form-control" id="intro_dt" type="text" value="">
-											</div>
-											<p class="help-block">입력형식 : YYYY-MM-DD</p>
-											<script>
-												$(document).ready(function() {
-													$("#intro_dt").datetimepicker({
-														locale: "ko",
-														format: "YYYY-MM-DD"
-													});
-												});
-											</script>
-										</div>
-									</div>
-									<!-- /.col -->
-								</div>
-								<!-- /.row (nested) -->
-								<div class="row">
-									<div class="col-sm-12 col-lg-12">
-										<a id="search-btn" href="#" class="btn btn-primary">검　색</a>
-										<a href="javascript:alert('초기화 버튼 클릭');" class="btn btn-default">초기화</a>
-									</div>
-								</div>
-							</div>
-							<!-- /.panel-body -->
-						</div>
-						<!-- /.panel -->
-					</form>
-				</div>
 			</div>
 			<!-- /.row -->
 		</div>
@@ -980,118 +995,112 @@
 	</div>
 </div>
 
-<div id="classTreeModal" class="modal fade" role="dialog">
-	<div class="modal-dialog modal-sm">
+<div id="assetSearchModal" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title"><b>분류체계</b></h4>
+				<h4 class="modal-title"><b>검색</b></h4>
 			</div>
+			
+			
 			<div class="modal-body">
-				<div class="btn-group">
-					<a id="expand-all-tree-btn" href="#" class="btn btn-primary">모두펼침</a>
-					<a id="collapse-all-tree-btn" href="#" class="btn btn-default">모두접기</a>
-				</div>
-				<div id="classtreeview" style="padding-top: 30px; padding-bottom: 30px; height:400px; overflow-x:auto;"></div>
-				<script>
-					var treeItems = [{ 
-						ClassId: "0", ClassName: "분류체계 전체",
-						items: [{
-							ClassId: "01", ClassName: "하드웨어",
-							items: [{
-								ClassId: "011", ClassName: "서버",
-								items: [{
-									ClassId: "0111", ClassName: "유닉스"
-								},{
-									ClassId: "0112", ClassName: "Windows"
-								},{
-									ClassId: "0113", ClassName: "Linux"
-								},{
-									ClassId: "0114", ClassName: "기타"
-								}]
-							},{
-								ClassId: "012", ClassName: "Network장비",
-								items: [{
-									ClassId: "0121", ClassName: "라우터"
-								},{
-									ClassId: "0122", ClassName: "허브"
-								},{
-									ClassId: "0123", ClassName: "L2스위치"
-								},{
-									ClassId: "0124", ClassName: "L4스위치"
-								}]
-							},{
-								ClassId: "013", ClassName: "스토리지",
-								items: [{
-									ClassId: "0131", ClassName: "저장장치"
-								},{
-									ClassId: "0132", ClassName: "SAN 스위치"
-								},{
-									ClassId: "0133", ClassName: "NAS 스위치"
-								}]
-							},{
-								ClassId: "014", ClassName: "백업장비",
-								items: [{
-									ClassId: "0141", ClassName: "테이프라이브러리"
-								},{
-									ClassId: "0142", ClassName: "VTL"
-								},{
-									ClassId: "0143", ClassName: "기타"
-								}]
-							},{
-								ClassId: "015", ClassName: "보안장비",
-								items: [{
-									ClassId: "0151", ClassName: "방화벽"
-								},{
-									ClassId: "0152", ClassName: "가상사설망"
-								},{
-									ClassId: "0153", ClassName: "접근통제장비"
-								}]
-							},{
-								ClassId: "016", ClassName: "기타(H/W)",
-								items: [{
-									ClassId: "0161", ClassName: "기타(H/W)"
-								}]
-							}]
-						},{
-							ClassId: "02", ClassName: "소프트웨어",
-							items: [{
-								ClassId: "021", ClassName: "소프트웨어",
-								items: [{
-									ClassId: "0211", ClassName: "DBMS"
-								},{
-									ClassId: "0212", ClassName: "미들웨어"
-								},{
-									ClassId: "0213", ClassName: "그래픽툴"
-								},{
-									ClassId: "0214", ClassName: "메일"
-								},{
-									ClassId: "0215", ClassName: "리포팅툴"
-								},{
-									ClassId: "0216", ClassName: "통합보안관제"
-								},{
-									ClassId: "0217", ClassName: "바이러스백신"
-								},{
-									ClassId: "0218", ClassName: "리포팅툴"
-								}]
-							}]
-						}]
-					}];
-					
-					$("#classtreeview").kendoTreeView({
-						dataTextField: "ClassName",
-						dataSource: treeItems
-					});
-				</script>
+				
+				<form id="search-form" role="form">
+				
+					<div class="panel panel-default">
+						<div id="search-panel" class="panel-body">
+							<div class="row">
+								<div class="col-sm-6 col-lg-6">
+									<div class="form-group">
+										<label>IT자산번호</label>
+										<input label="IT자산번호" class="form-control" value="">
+									</div>
+									<div class="form-group">
+										<label>구성자원번호</label>
+										<input label="구성자원번호" class="form-control" value="">
+									</div>
+									<div class="form-group">
+										<label>자산명</label>
+										<input label="자산명" class="form-control" value="">
+									</div>
+									<div class="form-group">
+										<label>시리얼번호</label>
+										<input label="시리얼번호" class="form-control" value="">
+									</div>
+								</div>
+								<!-- /.col -->
+								
+								<div class="col-sm-6 col-lg-6">
+									<div class="form-group">
+										<label>제조사</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+											</span>
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+											</span>
+											<input label="제조사" class="form-control" value="" data-toggle="modal" data-target="#defaultModal" readOnly style="background-color:transparent;">
+										</div>
+									</div>
+									<div class="form-group">
+										<label>모델</label>
+										<input label="모델" class="form-control" value="">
+									</div>
+									<div class="form-group">
+										<label>자산상태</label>
+										<select label="자산상태" class="form-control">
+											<option value="INTRO">도입</option>
+											<option value="ACTIVE" selected="selected">운영</option>
+											<option value="INACTIVE">유휴</option>
+											<option value="DISUSE">폐기</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>도입일</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+											</span>
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+											</span>
+											<input label="도입일" class="form-control" id="intro_dt" type="text" value="">
+										</div>
+										<p class="help-block">입력형식 : YYYY-MM-DD</p>
+										<script>
+											$(document).ready(function() {
+												$("#intro_dt").datetimepicker({
+													locale: "ko",
+													format: "YYYY-MM-DD"
+												});
+											});
+										</script>
+									</div>
+								</div>
+								<!-- /.col -->
+							</div>
+							<!-- /.row (nested) -->
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+				</form>
 			</div>
+			
+			
 			<div class="modal-footer">
-				<button id="class_modal_confirm_btn" type="button" class="btn btn-primary">적 용</button>
+				<button id="search-btn" type="button" class="btn btn-primary">검 색</button>
+				<button type="button" class="btn btn-default">초기화</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">닫 기</button>
 			</div>
 		</div>
 	</div>
 </div>
+
+
 
 
 <script>
@@ -1131,30 +1140,19 @@ $(document).ready(function(){
     });
 	
     	
+	var treeview = $("#classtreeview").data("kendoTreeView");
+	
 	$("#expand-all-tree-btn").click(function() {
-		var treeview = $("#classtreeview").data("kendoTreeView");
 	    treeview.expand(".k-item");
 	});
 	
 	$("#collapse-all-tree-btn").click(function() {
-		var treeview = $("#classtreeview").data("kendoTreeView");
 	    treeview.collapse(".k-item");
 	});
 	
-	$("#class_modal_confirm_btn").click(function() {
-		var treeview = $("#classtreeview").data("kendoTreeView");
-	    var selected = treeview.select();
-	    var selectedItem = treeview.dataItem(selected);
-	    
-	    if(typeof selectedItem == "undefined") {
-	    	alert("선택된 값이 없습니다.");
-	    	return false;
-	    } else {
-	    	var selectedText = selectedItem['ClassName'];
-	    	$("#class_nm").val(selectedText);
-		    $('#classTreeModal').modal('hide');
-	    }
-	});
+	$("#search-status").click(function() {
+		$("#assetSearchModal").modal("show");
+    });
 	
 	$("#search-btn").click(function() {
 		
@@ -1175,10 +1173,8 @@ $(document).ready(function(){
 				}
 			}
 			
-			alert("리스트 로딩이 완료되었습니다. (임시)");
-			
 			searchStatusArea.val(searchStatusVal);
-			$("#search-panel").collapse('hide');
+			$("#assetSearchModal").modal("hide");
 		}
 	});
     
