@@ -33,7 +33,7 @@ class FileUploaderExample extends Component {
     render() {
         return (
             <div>
-                <FineUploader ref="file" host="http://localhost:8090" sessionUrl="/itg/base/selectAjaxAtchFileList.do" uploadUrl="/itg/base/ajaxFileUpload.do" deleteUrl="/itg/base/ajaxRemoveFile.do" onSessionRequestComplete={this.onSessionRequestComplete} />
+                <FineUploader ref="file" host={NConstraint.HOST} sessionUrl="/itg/base/selectAjaxAtchFileList.do" uploadUrl="/itg/base/ajaxFileUpload.do" deleteUrl="/itg/base/ajaxRemoveFile.do" onSessionRequestComplete={this.onSessionRequestComplete} />
                 <button onClick={this.doGetFile}>파일정보 불러오기</button>
             </div>
         );

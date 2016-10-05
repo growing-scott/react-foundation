@@ -13,6 +13,7 @@ import NMultiSelectBox from './NMultiSelectBox';
 import NAutoCompleteField from './NAutoCompleteField';
 import NDatePicker from './NDatePicker';
 import NNumberField from './NNumberField';
+import NFileUpload from './NFileUpload';
 
 class NFieldSet extends Component {
     constructor() {
@@ -72,6 +73,9 @@ class NFieldSet extends Component {
                     break;
                 case "number":
                     component = (<NNumberField key={field.id} visible={("visible" in field) ? field.visible : true} {...field} />);
+                    break;
+                case "file":
+                    component = (<NFileUpload key={field.id} visible={("visible" in field) ? field.visible : true} {...field} />);
                     break;
                 default:
             }
