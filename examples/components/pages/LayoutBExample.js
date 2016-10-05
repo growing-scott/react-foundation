@@ -68,7 +68,6 @@ class LayoutBExample extends Component {
     }
 
     render() {
-        console.info(this);
         return (
             <div>
                 <NLayoutSet layout={this.props.layout} first={this.props.grid} second={this.props.form}/>
@@ -188,6 +187,10 @@ LayoutBExample.defaultProps = {
                         id: "date2",
                         label: "날짜+시간",
                         timePicker: true
+                    }, {
+                        type: "number",
+                        id: "number1",
+                        label: "숫자필드"
                     }, {
                         type: "autocompletefield",
                         id: "search_user_nm",
