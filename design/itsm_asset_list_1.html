@@ -162,7 +162,7 @@
 			
 				<div class="col-sm-12 col-lg-12">
 				
-					<form role="form">
+					<form id="search-form" role="form">
 					
 						<div class="panel panel-default">
 							<div class="panel-heading" onmouseover="" style="cursor: pointer;" data-toggle="collapse" href="#search-panel">  
@@ -181,24 +181,24 @@
 												<span class="input-group-addon">
 													<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
 												</span>
-												<input id="class_nm" class="form-control" value="분류체계 전체" data-toggle="modal" data-target="#classTreeModal" readOnly style="background-color:transparent;">
+												<input id="class_nm" label="분류체계" class="form-control" value="분류체계 전체" data-toggle="modal" data-target="#classTreeModal" readOnly style="background-color:transparent;">
 											</div>
 										</div>
 										<div class="form-group">
 											<label>IT자산번호</label>
-											<input class="form-control" value="">
+											<input label="IT자산번호" class="form-control" value="">
 										</div>
 										<div class="form-group">
 											<label>구성자원번호</label>
-											<input class="form-control" value="">
+											<input label="구성자원번호" class="form-control" value="">
 										</div>
 										<div class="form-group">
 											<label>자산명</label>
-											<input class="form-control" value="">
+											<input label="자산명" class="form-control" value="">
 										</div>
 										<div class="form-group">
 											<label>시리얼번호</label>
-											<input class="form-control" value="">
+											<input label="시리얼번호" class="form-control" value="">
 										</div>
 									</div>
 									<!-- /.col -->
@@ -213,16 +213,16 @@
 												<span class="input-group-addon">
 													<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
 												</span>
-												<input class="form-control" value="" data-toggle="modal" data-target="#defaultModal" readOnly style="background-color:transparent;">
+												<input label="제조사" class="form-control" value="" data-toggle="modal" data-target="#defaultModal" readOnly style="background-color:transparent;">
 											</div>
 										</div>
 										<div class="form-group">
 											<label>모델</label>
-											<input class="form-control" value="">
+											<input label="모델" class="form-control" value="">
 										</div>
 										<div class="form-group">
 											<label>자산상태</label>
-											<select class="form-control">
+											<select label="자산상태" class="form-control">
 												<option value="INTRO">도입</option>
 												<option value="ACTIVE" selected="selected">운영</option>
 												<option value="INACTIVE">유휴</option>
@@ -238,7 +238,7 @@
 												<span class="input-group-addon">
 													<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
 												</span>
-												<input class="form-control" id="intro_dt" type="text" value="">
+												<input label="도입일" class="form-control" id="intro_dt" type="text" value="">
 											</div>
 											<p class="help-block">입력형식 : YYYY-MM-DD</p>
 											<script>
@@ -256,7 +256,7 @@
 								<!-- /.row (nested) -->
 								<div class="row">
 									<div class="col-sm-12 col-lg-12">
-										<a href="javascript:alert('검색 버튼 클릭');" class="btn btn-primary">검　색</a>
+										<a id="search-btn" href="#" class="btn btn-primary">검　색</a>
 										<a href="javascript:alert('초기화 버튼 클릭');" class="btn btn-default">초기화</a>
 									</div>
 								</div>
@@ -265,6 +265,18 @@
 						</div>
 						<!-- /.panel -->
 					</form>
+				</div>
+				
+				<div class="col-sm-12 col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">  
+							<div class="form-group">
+								<label>현재 적용된 검색조건</label>
+								<input id="search-status" class="form-control" value="# 분류체계: 분류체계 전체　　# 자산상태: ACTIVE" style="font-weight: bold;" disabled>
+							</div>
+						</div>
+					</div>
+					<!-- /.panel -->
 				</div>
 						
 				<div class="col-sm-12 col-lg-12">
@@ -833,6 +845,11 @@
 									</a>
 								</div>
 								<div>
+									<a href="itsm_asset_list_3.html" title="구성자원조회" data-toggle="popover" data-trigger="hover" data-content="구성자원을 조회합니다.">
+									- 구성자원조회3
+									</a>
+								</div>
+								<div>
 									<a href="itsm_asset_detail.html" title="구성자원수정" data-toggle="popover" data-trigger="hover" data-content="구성자원을 수정합니다.">
 									- 구성자원수정
 									</a>
@@ -1137,6 +1154,32 @@ $(document).ready(function(){
 	    	$("#class_nm").val(selectedText);
 		    $('#classTreeModal').modal('hide');
 	    }
+	});
+	
+	$("#search-btn").click(function() {
+		
+		var searchForm = $("#search-form");
+		
+		if(searchForm.length > 0) {
+			
+			var searchFormData = searchForm[0];
+			var searchStatusArea = $("#search-status");
+			var searchStatusVal = "";
+			
+			for(var i=0; i<searchFormData.length; i++) {
+				
+				var dataValue = searchFormData[i].value;
+				
+				if(dataValue != null && dataValue != "") {
+					searchStatusVal += ( "# " + searchFormData[i].getAttribute('label') + ": " + dataValue + "　　");
+				}
+			}
+			
+			alert("리스트 로딩이 완료되었습니다. (임시)");
+			
+			searchStatusArea.val(searchStatusVal);
+			$("#search-panel").collapse('hide');
+		}
 	});
     
 });
