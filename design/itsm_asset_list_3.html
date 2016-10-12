@@ -49,35 +49,37 @@
 			</a>
 		</div>
 		
-		<ul class="nav navbar-nav">
-			<li>
-				<a class="navbar-link" href="#" data-toggle="modal" data-target="#assetModal">
-					자산/구성관리
-					<span class="glyphicon glyphicon-comment"></span>
-				</a>
-			</li>
-			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-					구성자원관리
-					<span class="glyphicon glyphicon-triangle-bottom"></span>
-				</a>
-				<ul class="dropdown-menu">
-					<li><a href="#">논리자원등록</a></li>
-					<li><a href="#">구성자원조회1</a></li>
-					<li><a href="#">구성자원조회2</a></li>
-					<li><a href="#">구성자원조회3</a></li>
-					<li><a href="#">구성자원수정</a></li>
-					<li><a href="#">EMS 구성점검</a></li>
-					<li><a href="#">구성속성 일괄수정</a></li>
-					<li><a href="#">논리서버 매핑</a></li>
-				</ul>
-			</li>
-			<li class="active">
-				<a>
-					구성자원조회3
-				</a>
-			</li> 
-		</ul>
+		<div class="hidden-xs">
+			<ul class="nav navbar-nav">
+				<li>
+					<a class="navbar-link" href="#" data-toggle="modal" data-target="#assetModal">
+						자산/구성관리
+						<span class="glyphicon glyphicon-comment"></span>
+					</a>
+				</li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+						구성자원관리
+						<span class="glyphicon glyphicon-triangle-bottom"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="#">논리자원등록</a></li>
+						<li><a href="#">구성자원조회1</a></li>
+						<li><a href="#">구성자원조회2</a></li>
+						<li><a href="#">구성자원조회3</a></li>
+						<li><a href="#">구성자원수정</a></li>
+						<li><a href="#">EMS 구성점검</a></li>
+						<li><a href="#">구성속성 일괄수정</a></li>
+						<li><a href="#">논리서버 매핑</a></li>
+					</ul>
+				</li>
+				<li class="active">
+					<a>
+						구성자원조회3
+					</a>
+				</li> 
+			</ul>
+		</div>
 		
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
@@ -172,26 +174,25 @@
 			
 				<div class="col-sm-12 col-lg-12">
 					
-					<nav class="navbar navbar-default navbar-static-top" data-spy="affix" data-offset-top="0" style="background-color: rgba(255,255,255,1); border-top: 1px solid #428bca; border-bottom: 1px solid #428bca; border-left: 1px solid #428bca; border-right: 1px solid #428bca; width: 250px; right:50px; position: fixed;">
+					<nav class="navbar navbar-static-top" data-spy="affix" data-offset-top="0" style="background-color: rgba(255,255,255,0); width: 250px; right:50px; position: fixed;">
 						<div class="container-fluid">
 							<ul class="nav">
-								<li class="text-left">
-									<a id="asset-menu-control-btn">
-										<h4 style="margin-top: 0px; margin-bottom: 0px;">
-											<span id="asset-menu-control-icon" class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span>
-											분류체계
-										</h4>
-									</a>
+								<li class="text-center">
+									<h2 style="margin-top: 0px; margin-bottom: 0px;">
+										<a id="asset-menu-control-btn">
+											<span id="asset-menu-control-icon" class="glyphicon glyphicon-remove" style="cursor:pointer; " aria-hidden="false"></span>
+										</a>
+									</h2>
 								</li>
 							</ul>
-							<ul id="asset-menu-ul" class="nav hide">
+							<ul id="asset-menu-ul" class="nav" style="background-color: rgba(255,255,255,1); border:1px solid #428bca; padding-top: 20px; margin-top: 20px;">
 								<li class="text-center">
 									<div class="btn-group">
 										<a id="expand-all-tree-btn" href="#" class="btn btn-primary">모두펼침</a>
 										<a id="collapse-all-tree-btn" href="#" class="btn btn-default">모두접기</a>
 									</div>
 								</li>
-								<div id="classtreeview" style="padding-top: 30px; padding-bottom: 30px; height:500px; overflow-x:auto;"></div>
+								<div id="classtreeview" style="background-color: rgba(255,255,255,1); padding-top: 20px; padding-bottom: 30px; height:500px; overflow-x:auto;"></div>
 								<script>
 									var treeItems = [{ 
 										ClassId: "0", ClassName: "분류체계 전체",
@@ -278,9 +279,11 @@
 									}];
 									
 									$("#classtreeview").kendoTreeView({
+										dataValueField: "ClassId",
 										dataTextField: "ClassName",
 										dataSource: treeItems
 									});
+									
 								</script>
 							</ul>
 						</div>
@@ -297,7 +300,8 @@
 						<div class="panel-heading">  
 							<div class="form-group">
 								<label>현재 적용된 검색조건</label>
-								<input id="search-status" class="form-control" value="# 자산상태: ACTIVE" style="font-weight: bold;" readonly>
+								<input id="search-status" class="form-control" value="" style="font-weight: bold;" readonly>
+								<p class="help-block"><span class="glyphicon glyphicon-hand-up"></span> 검색하시려면 상단의 검색조건을 클릭하세요.</p>
 							</div>
 						</div>
 					</div>
@@ -1157,18 +1161,57 @@ $(document).ready(function(){
 		var assetMenuUl = $("#asset-menu-ul");
 		
 		if(assetMenuUl.hasClass("hide")) {
-			$("#asset-menu-control-icon").removeClass("glyphicon-collapse-down").addClass("glyphicon-collapse-up");
+			$("#asset-menu-control-icon").removeClass("glyphicon glyphicon-list-alt").addClass("glyphicon glyphicon-remove");
+			assetMenuUl.fadeIn('fast');
 			assetMenuUl.hide().removeClass('hide');
 			assetMenuUl.show();
 		} else {
-			$("#asset-menu-control-icon").removeClass("glyphicon-collapse-up").addClass("glyphicon-collapse-down");
-			assetMenuUl.hide().addClass('hide');
-			assetMenuUl.hide();
+			$("#asset-menu-control-icon").removeClass("glyphicon glyphicon-remove").addClass("glyphicon glyphicon-list-alt");
+			assetMenuUl.fadeOut('fast', function() {
+				assetMenuUl.hide().addClass('hide');
+				assetMenuUl.hide();
+			});
 		}
     });
 	
-    	
-	var treeview = $("#classtreeview").data("kendoTreeView");
+	function setSearchViewText() {
+		
+		var tv = $("#classtreeview").data("kendoTreeView");
+		
+		var selection = tv.select();
+		
+		if(selection.length < 1) {
+			tv.select(".k-item:first");
+			selection = tv.select();
+		}
+		
+		var item = tv.dataItem(selection);
+		
+		var id = item.ClassId;
+		var value = item.ClassName;
+		
+		var searchText = "# " + value;
+		
+		var searchForm = $("#search-form");
+		
+		if(searchForm.length > 0) {
+			
+			var searchFormData = searchForm[0];
+			var searchStatusArea = $("#search-status");
+			
+			for(var i=0; i<searchFormData.length; i++) {
+				
+				var dataValue = searchFormData[i].value;
+				
+				if(dataValue != null && dataValue != "") {
+					searchText += ( " , # " + searchFormData[i].getAttribute('label') + ": " + dataValue);
+				}
+			}
+			
+			searchStatusArea.val(searchText);
+			$("#assetSearchModal").modal("hide");
+		}
+	}
 	
 	$("#expand-all-tree-btn").click(function() {
 	    treeview.expand(".k-item");
@@ -1182,30 +1225,14 @@ $(document).ready(function(){
 		$("#assetSearchModal").modal("show");
     });
 	
-	$("#search-btn").click(function() {
-		
-		var searchForm = $("#search-form");
-		
-		if(searchForm.length > 0) {
-			
-			var searchFormData = searchForm[0];
-			var searchStatusArea = $("#search-status");
-			var searchStatusVal = "";
-			
-			for(var i=0; i<searchFormData.length; i++) {
-				
-				var dataValue = searchFormData[i].value;
-				
-				if(dataValue != null && dataValue != "") {
-					searchStatusVal += ( "# " + searchFormData[i].getAttribute('label') + ": " + dataValue + "　　");
-				}
-			}
-			
-			searchStatusArea.val(searchStatusVal);
-			$("#assetSearchModal").modal("hide");
-		}
-	});
-    
+	var treeview = $("#classtreeview").data("kendoTreeView");
+	treeview.expand(".k-item");
+	
+	treeview.bind("change", setSearchViewText);
+	$("#search-btn").click(setSearchViewText);
+	
+	setSearchViewText();
+	
 });
 
 </script>
