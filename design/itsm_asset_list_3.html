@@ -1161,12 +1161,12 @@ $(document).ready(function(){
 		var assetMenuUl = $("#asset-menu-ul");
 		
 		if(assetMenuUl.hasClass("hide")) {
-			$("#asset-menu-control-icon").removeClass("glyphicon glyphicon-list-alt").addClass("glyphicon glyphicon-remove");
+			$("#asset-menu-control-icon").removeClass("glyphicon glyphicon-paperclip").addClass("glyphicon glyphicon-remove");
 			assetMenuUl.fadeIn('fast');
 			assetMenuUl.hide().removeClass('hide');
 			assetMenuUl.show();
 		} else {
-			$("#asset-menu-control-icon").removeClass("glyphicon glyphicon-remove").addClass("glyphicon glyphicon-list-alt");
+			$("#asset-menu-control-icon").removeClass("glyphicon glyphicon-remove").addClass("glyphicon glyphicon-paperclip");
 			assetMenuUl.fadeOut('fast', function() {
 				assetMenuUl.hide().addClass('hide');
 				assetMenuUl.hide();
