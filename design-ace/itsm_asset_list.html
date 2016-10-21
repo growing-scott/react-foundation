@@ -1,0 +1,1227 @@
+<html>
+
+<head>
+<script src="libs/jquery/js/jquery-3.1.0.min.js" type="text/javascript"></script>
+ 
+<link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="libs/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
+
+<script src="libs/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="libs/bootstrap/js/moment-with-locales.min.js" type="text/javascript"></script>
+<script src="libs/bootstrap/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+
+<link href="libs/kendo/kendo.common.min.css" rel="stylesheet" type="text/css">
+<link href="libs/kendo/kendo.bootstrap.min.css" rel="stylesheet" type="text/css">
+<script src="libs/kendo/kendo.all.min.js"></script>
+</head>
+
+<style type="text/css">
+	.btn-margin-top {
+	    margin-top: 10px;
+	}
+	.btn-margin-bottom {
+	    margin-bottom: 10px;
+	}
+	.btn-margin-left {
+	    margin-left: 5px;
+	}
+	.btn-margin-right {
+	    margin-right: 5px;
+	}
+</style>
+
+<body style="padding-top: 70px;">
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+
+	<div class="container-fluid">
+	
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="itsm_main.html">
+				POLESTAR ITSM
+			</a>
+		</div>
+		
+		<div class="hidden-xs">
+			<ul class="nav navbar-nav">
+				<li>
+					<a class="navbar-link" href="#" data-toggle="modal" data-target="#assetModal">
+						자산/구성관리
+						<span class="glyphicon glyphicon-comment"></span>
+					</a>
+				</li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+						구성자원관리
+						<span class="glyphicon glyphicon-triangle-bottom"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="#">논리자원등록</a></li>
+						<li><a href="#">구성자원조회</a></li>
+						<li><a href="#">구성자원수정</a></li>
+						<li><a href="#">EMS 구성점검</a></li>
+						<li><a href="#">구성속성 일괄수정</a></li>
+						<li><a href="#">논리서버 매핑</a></li>
+					</ul>
+				</li>
+				<li class="active">
+					<a>
+						구성자원조회
+					</a>
+				</li> 
+			</ul>
+		</div>
+		
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#">사이트맵</a>
+						</li>
+					</ul>
+				</li>
+				<!-- /.dropdown -->
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#">개인정보변경</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="index.html">로그아웃</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		
+	</div>
+	
+</nav>
+
+<div class="container-fluid">
+
+	<div class="row">
+	
+		<div class="hidden-xs hidden-sm col-md-1 col-lg-1">
+		
+			<nav class="navbar" style="position:fixed; height:100%; width:100px;">
+				<ul class="nav nav-pills nav-stacked">
+					<li class="text-center">
+						<a>
+						<h1><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span></h1>
+						<div>서비스<br/>데스크</div>
+						</a>
+					</li>
+					<li class="text-center">
+						<a href="#" data-toggle="modal" data-target="#reqModal">
+						<h1><span class="glyphicon glyphicon-retweet" aria-hidden="true"></span></h1>
+						<div>서비스<br/>운영관리</div>
+						</a>
+					</li>
+					<li class="text-center">
+						<a href="#" data-toggle="modal" data-target="#assetModal">
+						<h1><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span></h1>
+						<div>자산 /<br/>구성관리</div>
+						</a>
+					</li>
+					<li class="text-center">
+						<a>
+						<h1><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span></h1>
+						<div>서비스<br/>수준관리</div>
+						</a>
+					</li>
+					<li class="text-center">
+						<a>
+						<h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></h1>
+						<div>시스템<br/>관리</div>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			
+		</div>
+	
+		<div class="col-xs-12 col-sm-12 col-md-11 col-lg-11">
+		
+			<div class="row">
+			
+				<div class="col-sm-12 col-lg-12">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#">자산리스트</a></li>
+					</ul>
+				</div>
+				
+			</div>
+			
+			<div class="row">
+			
+				<div class="col-sm-12 col-lg-12">
+					
+					<nav class="navbar navbar-static-top" data-spy="affix" data-offset-top="0" style="background-color: rgba(255,255,255,0); width: 250px; right:50px; position: fixed;">
+						<div class="container-fluid">
+							<ul class="nav">
+								<li class="text-center">
+									<h3 style="margin-top: 0px; margin-bottom: 0px;">
+										<a id="asset-menu-control-btn">
+											<span id="asset-menu-control-icon" class="glyphicon glyphicon-remove" style="cursor:pointer; " aria-hidden="false"></span>
+										</a>
+									</h3>
+								</li>
+							</ul>
+							<ul id="asset-menu-ul" class="nav" style="background-color: rgba(255,255,255,1); border:1px solid #428bca; padding-top: 20px; margin-top: 20px;">
+								<li class="text-center">
+									<div class="btn-group">
+										<a id="expand-all-tree-btn" href="#" class="btn btn-primary">모두펼침</a>
+										<a id="collapse-all-tree-btn" href="#" class="btn btn-default">모두접기</a>
+									</div>
+								</li>
+								<div id="classtreeview" style="background-color: rgba(255,255,255,1); padding-top: 20px; padding-bottom: 30px; height:500px; overflow-x:auto;"></div>
+								<script>
+									var treeItems = [{ 
+										ClassId: "0", ClassName: "분류체계 전체",
+										items: [{
+											ClassId: "01", ClassName: "하드웨어",
+											items: [{
+												ClassId: "011", ClassName: "서버",
+												items: [{
+													ClassId: "0111", ClassName: "유닉스"
+												},{
+													ClassId: "0112", ClassName: "Windows"
+												},{
+													ClassId: "0113", ClassName: "Linux"
+												},{
+													ClassId: "0114", ClassName: "기타"
+												}]
+											},{
+												ClassId: "012", ClassName: "Network장비",
+												items: [{
+													ClassId: "0121", ClassName: "라우터"
+												},{
+													ClassId: "0122", ClassName: "허브"
+												},{
+													ClassId: "0123", ClassName: "L2스위치"
+												},{
+													ClassId: "0124", ClassName: "L4스위치"
+												}]
+											},{
+												ClassId: "013", ClassName: "스토리지",
+												items: [{
+													ClassId: "0131", ClassName: "저장장치"
+												},{
+													ClassId: "0132", ClassName: "SAN 스위치"
+												},{
+													ClassId: "0133", ClassName: "NAS 스위치"
+												}]
+											},{
+												ClassId: "014", ClassName: "백업장비",
+												items: [{
+													ClassId: "0141", ClassName: "테이프라이브러리"
+												},{
+													ClassId: "0142", ClassName: "VTL"
+												},{
+													ClassId: "0143", ClassName: "기타"
+												}]
+											},{
+												ClassId: "015", ClassName: "보안장비",
+												items: [{
+													ClassId: "0151", ClassName: "방화벽"
+												},{
+													ClassId: "0152", ClassName: "가상사설망"
+												},{
+													ClassId: "0153", ClassName: "접근통제장비"
+												}]
+											},{
+												ClassId: "016", ClassName: "기타(H/W)",
+												items: [{
+													ClassId: "0161", ClassName: "기타(H/W)"
+												}]
+											}]
+										},{
+											ClassId: "02", ClassName: "소프트웨어",
+											items: [{
+												ClassId: "021", ClassName: "소프트웨어",
+												items: [{
+													ClassId: "0211", ClassName: "DBMS"
+												},{
+													ClassId: "0212", ClassName: "미들웨어"
+												},{
+													ClassId: "0213", ClassName: "그래픽툴"
+												},{
+													ClassId: "0214", ClassName: "메일"
+												},{
+													ClassId: "0215", ClassName: "리포팅툴"
+												},{
+													ClassId: "0216", ClassName: "통합보안관제"
+												},{
+													ClassId: "0217", ClassName: "바이러스백신"
+												},{
+													ClassId: "0218", ClassName: "리포팅툴"
+												}]
+											}]
+										}]
+									}];
+									
+									$("#classtreeview").kendoTreeView({
+										dataValueField: "ClassId",
+										dataTextField: "ClassName",
+										dataSource: treeItems
+									});
+									
+								</script>
+							</ul>
+						</div>
+					</nav>
+				
+				</div>
+				
+			</div>
+			
+			<div class="row">
+			
+				<div class="col-sm-12 col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">  
+							<div class="form-group">
+								<label>현재 적용된 검색조건</label>
+								<input id="search-status" class="form-control" value="" style="font-weight: bold;" readonly>
+								<p class="help-block"><span class="glyphicon glyphicon-hand-up"></span> 검색하시려면 상단의 검색조건을 클릭하세요.</p>
+							</div>
+						</div>
+					</div>
+					<!-- /.panel -->
+				</div>
+						
+				<div class="col-sm-12 col-lg-12">
+					<div id="asset-list-grid"></div>
+					<script>
+						$("#asset-list-grid").kendoGrid({
+							columns: [{ 
+								field: "RNUM",
+								title: "순번",
+								width: "4%",
+								headerAttributes: {
+									style: "text-align: center;font-weight: bold"
+								},
+								attributes:{
+									style:"text-align:center;"
+								}
+							},{ 
+								field: "ASSET_ID",
+								title: "IT자산번호",
+								width: "10%",
+								headerAttributes: {
+									style: "text-align: center;font-weight: bold"
+								},
+								attributes:{
+									style:"text-align:center;"
+								}
+							},{ 
+								field: "CONF_NM",
+								title: "구성명",
+								width: "20%",
+								headerAttributes: {
+									style: "text-align: center;font-weight: bold"
+								},
+								attributes:{
+									style:"text-align:left;"
+								}
+							},{ 
+								field: "CLASS_NM",
+								title: "분류체계",
+								width: "15%",
+								headerAttributes: {
+									style: "text-align: center;font-weight: bold"
+								},
+								attributes:{
+									style:"text-align:left;"
+								}
+							},{ 
+								field: "CUST_NM",
+								title: "제조사",
+								width: "10%",
+								headerAttributes: {
+									style: "text-align: center;font-weight: bold"
+								},
+								attributes:{
+									style:"text-align:left;"
+								}
+							},{ 
+								field: "MODEL_NM",
+								title: "모델명",
+								width: "13%",
+								headerAttributes: {
+									style: "text-align: center;font-weight: bold"
+								},
+								attributes:{
+									style:"text-align:left;"
+								}
+							},{ 
+								field: "SERIAL_NO",
+								title: "시리얼번호",
+								width: "10%",
+								headerAttributes: {
+									style: "text-align: center;font-weight: bold"
+								},
+								attributes:{
+									style:"text-align:left;"
+								}
+							},{ 
+								field: "INTRO_DT",
+								title: "도입일",
+								width: "10%",
+								headerAttributes: {
+									style: "text-align: center;font-weight: bold"
+								},
+								attributes:{
+									style:"text-align:center;"
+								}
+							},{ 
+								field: "ASSET_STATE_NM",
+								title: "자산상태",
+								width: "10%",
+								headerAttributes: {
+									style: "text-align: center;font-weight: bold"
+								},
+								attributes:{
+									style:"text-align:center;"
+								}
+							}],
+							dataSource: [{
+								RNUM : "1",
+								ASSET_ID : "IT201500026",
+								CONF_NM : "[CM] XENTRY",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "ADVENT8000",
+								SERIAL_NO : "V080608DS",
+								INTRO_DT : "2008-06-29",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "2",
+								ASSET_ID : "IT201500027",
+								CONF_NM : "[CM] XEDIT #1",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "ADVENT8000-0/4",
+								SERIAL_NO : "V071228DS",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "3",
+								ASSET_ID : "IT201500028",
+								CONF_NM : "[CM] XEDIT #2",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "ADVENT8000-0/4",
+								SERIAL_NO : "V071229DS",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "4",
+								ASSET_ID : "IT201500029",
+								CONF_NM : "[CM] XEDIT #0",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "ADVENT8000-0/4",
+								SERIAL_NO : "V071230DS",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "5",
+								ASSET_ID : "IT201500030",
+								CONF_NM : "[CM] XEDIT #3",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "ADVENT8000-1/2",
+								SERIAL_NO : "V071227DS",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "6",
+								ASSET_ID : "IT201500031",
+								CONF_NM : "[CM] CM Gateway",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "ADVENT8000-1/2",
+								SERIAL_NO : "V071225DS",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "7",
+								ASSET_ID : "IT201500032",
+								CONF_NM : "[CM] DMB용 XEDIT",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "ADVENT8000-1/2",
+								SERIAL_NO : "V071224DS",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "8",
+								ASSET_ID : "IT201500033",
+								CONF_NM : "[CM] DTV Xmapper",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "ADVENT8000-1/2",
+								SERIAL_NO : "V130312DS",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "9",
+								ASSET_ID : "IT201500034",
+								CONF_NM : "[CM] T-Commerce전송용 CM Agent 서버",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "ADVENT8000-2/4",
+								SERIAL_NO : "V1012100DS",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "10",
+								ASSET_ID : "IT201500035",
+								CONF_NM : "[CM] CM DB #1",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "DL380G5",
+								SERIAL_NO : "SGH801DLXV",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "11",
+								ASSET_ID : "IT201500036",
+								CONF_NM : "[CM] CM DB #2",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "DL380G5",
+								SERIAL_NO : "SGH802DMMX",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "12",
+								ASSET_ID : "IT201500037",
+								CONF_NM : "[CM] T-Commerce용 서버",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "DL380G5",
+								SERIAL_NO : "SGH9172EKV",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "13",
+								ASSET_ID : "IT201500038",
+								CONF_NM : "[CM] CM TM #1",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "DL380G6",
+								SERIAL_NO : "55KDVW1",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "14",
+								ASSET_ID : "IT201500039",
+								CONF_NM : "[CM] CM TM #2",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "DL380G6",
+								SERIAL_NO : "SGH013XS35",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "15",
+								ASSET_ID : "IT201500040",
+								CONF_NM : "[CM] CM MDC #1",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "DL380G7",
+								SERIAL_NO : "SGH107X6DX",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "16",
+								ASSET_ID : "IT201500041",
+								CONF_NM : "[CM] CM MDC #2",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "DL380G7",
+								SERIAL_NO : "SGH105XR2B",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "17",
+								ASSET_ID : "IT201500042",
+								CONF_NM : "[CM] CM V3 APC서버",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "X3550",
+								SERIAL_NO : "99A4982",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "18",
+								ASSET_ID : "IT201500043",
+								CONF_NM : "[CM] KODEX CM소재 수신서버",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "Z800",
+								SERIAL_NO : "CNG139W5B9",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "19",
+								ASSET_ID : "IT201500072",
+								CONF_NM : "[DMB] DMB APM #1",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "ADVENT 8000",
+								SERIAL_NO : "V120205DS",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "20",
+								ASSET_ID : "IT201500073",
+								CONF_NM : "[DMB] DMB APM #2",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "ADVENT 8000",
+								SERIAL_NO : "V120204DS",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							},{
+								RNUM : "21",
+								ASSET_ID : "IT201500083",
+								CONF_NM : "[CM] CM MDC #6",
+								CLASS_NM : "하드웨어>서버>Windows",
+								CUST_NM : "티맥스소프트",
+								MODEL_NM : "DL380G7",
+								SERIAL_NO : "SGH6555R2B",
+								INTRO_DT : "2014-06-30",
+								ASSET_STATE_NM : "사용(보유)"
+							}],
+							editable: {
+								mode: "inline"
+							},
+							pageable: {
+								pageSize: 15,
+								buttonCount: 10
+							}
+						});
+					</script>
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<!-- /.row -->
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<!-- Modal -->
+<div id="reqModal" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><b>서비스운영관리 메뉴</b></h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-4 col-lg-4">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+								요청관리
+							</div>
+							<div class="panel-body">
+								<div>
+									- 요청 대기함
+								</div>
+								<div>
+									<a href="itsm_req_detail.html" title="요청관리 - 요청진행함" data-toggle="popover" data-trigger="hover" data-content="진행중인 요청을 조회합니다.">
+									- 요청 진행함
+									</a>
+								</div>
+								<div>
+									- 요청 완료함
+								</div>
+								<div>
+									- 요청이력관리
+								</div>
+								<div>
+									- 부서 업무목록
+								</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+								요청등록
+							</div>
+							<div class="panel-body">
+								<div>
+									- 서비스요청 (PC요청)
+								</div>
+								<div>
+									- 서비스요청 (NW요청)
+								</div>
+								<div>
+									- 장애요청
+								</div>
+								<div>
+									- 문제요청
+								</div>
+								<div>
+									- 변경요청
+								</div>
+								<div>
+									- 릴리즈요청
+								</div>
+								<div>
+									- 유지보수요청
+								</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-glass" aria-hidden="true"></span>
+								KEDB 관리
+							</div>
+							<div class="panel-body">
+								<div>
+									- KEDB 관리
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					
+					<div class="col-sm-4 col-lg-4">
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+								요청현황
+							</div>
+							<div class="panel-body">
+								<div>
+									- 종합요청현황
+								</div>
+								<div>
+									- 서비스요청현황
+								</div>
+								<div>
+									- 장애요청현황
+								</div>
+								<div>
+									- 문제요청현황
+								</div>
+								<div>
+									- 변경요청현황
+								</div>
+								<div>
+									- 릴리즈요청현황
+								</div>
+								<div>
+									- 유지보수요청현황
+								</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
+								요청통계
+							</div>
+							<div class="panel-body">
+								<div>
+									- 요청주요통계
+								</div>
+								<div>
+									- 서비스요청통계
+								</div>
+								<div>
+									- 장애요청통계
+								</div>
+								<div>
+									- 문제요청통계
+								</div>
+								<div>
+									- 변경요청통계
+								</div>
+								<div>
+									- 릴리즈요청통계
+								</div>
+								<div>
+									- 유지보수요청통계
+								</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+								담당자관리
+							</div>
+							<div class="panel-body">
+								<div>- 담당자관리</div>
+							</div>
+						</div>
+					
+					</div>
+						
+					<div class="col-sm-4 col-lg-4">
+
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-cd" aria-hidden="true"></span>
+								결재라인관리
+							</div>
+							<div class="panel-body">
+								<div>- 결재라인관리</div>
+							</div>
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫 기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="assetModal" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><b>자산/구성관리 메뉴</b></h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-4 col-lg-4">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+								구성자원등록
+							</div>
+							<div class="panel-body">
+								<div>
+									- 단일구성 자원등록
+								</div>
+								<div>
+									- 일괄구성 자원등록
+								</div>
+								<div>
+									- 일괄구성 자원검토
+								</div>
+								<div>
+									- 템플릿 자원등록
+								</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-glass" aria-hidden="true"></span>
+								구성자원관리
+							</div>
+							<div class="panel-body">
+								<div>
+									- 논리자원등록
+								</div>
+								<div>
+									<a href="itsm_asset_list.html" title="구성자원조회" data-toggle="popover" data-trigger="hover" data-content="구성자원을 조회합니다.">
+									- 구성자원조회
+									</a>
+								</div>
+								<div>
+									<a href="itsm_asset_detail.html" title="구성자원수정" data-toggle="popover" data-trigger="hover" data-content="구성자원을 수정합니다.">
+									- 구성자원수정
+									</a>
+								</div>
+								<div>
+									- EMS 구성점검
+								</div>
+								<div>
+									- 구성속성 일괄수정
+								</div>
+								<div>
+									- 논리서버 매핑
+								</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+								사업정보관리
+							</div>
+							<div class="panel-body">
+								<div>
+									- 사업정보관리
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					
+					<div class="col-sm-4 col-lg-4">
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+								계약관리
+							</div>
+							<div class="panel-body">
+								<div>
+									- 공급계약관리
+								</div>
+								<div>
+									- 유지보수계약관리
+								</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+								기준정보관리
+							</div>
+							<div class="panel-body">
+								<div>- 분류체계관리</div>
+								<div>- 속성관리</div>
+								<div>- 테이블관리</div>
+								<div>- 분류체계별 속성관리</div>
+								<div>- 분류체계 속성 동기화</div>
+								<div>- 분류체계별 권한관리</div>
+								<div>- 서비스관리</div>
+								<div>- 위치관리</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-cd" aria-hidden="true"></span>
+								소프트웨어관리
+							</div>
+							<div class="panel-body">
+								<div>- 소프트웨어 그룹관리</div>
+								<div>- 소프트웨어 옵션관리</div>
+								<div>- AD 수집가능 소프트웨어</div>
+							</div>
+						</div>
+						
+					</div>
+					
+					<div class="col-sm-4 col-lg-4">
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
+								분류체계별 현황
+							</div>
+							<div class="panel-body">
+								<div>- 분류체계별 현황</div>
+							</div>
+						</div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+								S/W 현황
+							</div>
+							<div class="panel-body">
+								<div>- S/W 관리현황</div>
+								<div>- AD 설치 및 S/W 현황</div>
+								<div>- S/W 라이선스 현황</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫 기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="assetSearchModal" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><b>검색</b></h4>
+			</div>
+			
+			
+			<div class="modal-body">
+				
+				<form id="search-form" role="form">
+				
+					<div class="panel panel-default">
+						<div id="search-panel" class="panel-body">
+							<div class="row">
+								<div class="col-sm-6 col-lg-6">
+									<div class="form-group">
+										<label>IT자산번호</label>
+										<input label="IT자산번호" class="form-control" value="">
+									</div>
+									<div class="form-group">
+										<label>구성자원번호</label>
+										<input label="구성자원번호" class="form-control" value="">
+									</div>
+									<div class="form-group">
+										<label>자산명</label>
+										<input label="자산명" class="form-control" value="">
+									</div>
+									<div class="form-group">
+										<label>시리얼번호</label>
+										<input label="시리얼번호" class="form-control" value="">
+									</div>
+								</div>
+								<!-- /.col -->
+								
+								<div class="col-sm-6 col-lg-6">
+									<div class="form-group">
+										<label>제조사</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+											</span>
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+											</span>
+											<input label="제조사" class="form-control" value="" data-toggle="modal" data-target="#vendorModal" readOnly style="background-color:transparent;">
+										</div>
+									</div>
+									<div class="form-group">
+										<label>모델</label>
+										<input label="모델" class="form-control" value="">
+									</div>
+									<div class="form-group">
+										<label>자산상태</label>
+										<select label="자산상태" class="form-control">
+											<option value="INTRO">도입</option>
+											<option value="ACTIVE" selected="selected">운영</option>
+											<option value="INACTIVE">유휴</option>
+											<option value="DISUSE">폐기</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>도입일</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+											</span>
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+											</span>
+											<input label="도입일" class="form-control" id="intro_dt" type="text" value="">
+										</div>
+										<p class="help-block">입력형식 : YYYY-MM-DD</p>
+										<script>
+											$(document).ready(function() {
+												$("#intro_dt").datetimepicker({
+													locale: "ko",
+													format: "YYYY-MM-DD"
+												});
+											});
+										</script>
+									</div>
+								</div>
+								<!-- /.col -->
+							</div>
+							<!-- /.row (nested) -->
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+				</form>
+			</div>
+			
+			
+			<div class="modal-footer">
+				<button id="search-btn" type="button" class="btn btn-primary">검 색</button>
+				<button type="button" class="btn btn-default">초기화</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫 기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="defaultModal" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><b>팝업창 템플릿</b></h4>
+			</div>
+			<div class="modal-body">
+				- 팝업 템플릿입니다.
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫 기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="vendorModal" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><b>제조사 선택</b></h4>
+			</div>
+			<div class="modal-body">
+				- 제조사 선택창 템플릿입니다.<br><br><br><br>
+				- 제조사 선택창 템플릿입니다.<br><br><br><br>
+				- 제조사 선택창 템플릿입니다.
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫 기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+
+$(document).ready(function(){
+	
+    $('[data-toggle="popover"]').popover();
+    
+	$("#main-menu-control-btn").on("click", function() {
+    	
+		var mainMenuUl = $("#main-menu-ul");
+		
+		if(mainMenuUl.hasClass("hide")) {
+			$("#main-menu-control-icon").removeClass("glyphicon-collapse-down").addClass("glyphicon-collapse-up");
+			mainMenuUl.hide().removeClass('hide');
+			mainMenuUl.show();
+		} else {
+			$("#main-menu-control-icon").removeClass("glyphicon-collapse-up").addClass("glyphicon-collapse-down");
+			mainMenuUl.hide().addClass('hide');
+			mainMenuUl.hide();
+		}
+    });
+	
+	$("#asset-menu-control-btn").on("click", function() {
+    	
+		var assetMenuUl = $("#asset-menu-ul");
+		
+		if(assetMenuUl.hasClass("hide")) {
+			$("#asset-menu-control-icon").removeClass("glyphicon glyphicon-paperclip").addClass("glyphicon glyphicon-remove");
+			assetMenuUl.fadeIn('fast');
+			assetMenuUl.hide().removeClass('hide');
+			assetMenuUl.show();
+		} else {
+			$("#asset-menu-control-icon").removeClass("glyphicon glyphicon-remove").addClass("glyphicon glyphicon-paperclip");
+			assetMenuUl.fadeOut('fast', function() {
+				assetMenuUl.hide().addClass('hide');
+				assetMenuUl.hide();
+			});
+		}
+    });
+	
+	function setSearchViewText() {
+		
+		var tv = $("#classtreeview").data("kendoTreeView");
+		
+		var selection = tv.select();
+		
+		if(selection.length < 1) {
+			tv.select(".k-item:first");
+			selection = tv.select();
+		}
+		
+		var item = tv.dataItem(selection);
+		
+		var id = item.ClassId;
+		var value = item.ClassName;
+		
+		var searchText = "[ # " + value + " ]";
+		
+		var searchForm = $("#search-form");
+		
+		if(searchForm.length > 0) {
+			
+			var searchFormData = searchForm[0];
+			var searchStatusArea = $("#search-status");
+			
+			for(var i=0; i<searchFormData.length; i++) {
+				
+				var dataValue = searchFormData[i].value;
+				
+				if(dataValue != null && dataValue != "") {
+					searchText += ( " , # " + searchFormData[i].getAttribute('label') + ": " + dataValue);
+				}
+			}
+			
+			searchStatusArea.val(searchText);
+			$("#assetSearchModal").modal("hide");
+		}
+	}
+	
+	$("#expand-all-tree-btn").click(function() {
+	    treeview.expand(".k-item");
+	});
+	
+	$("#collapse-all-tree-btn").click(function() {
+	    treeview.collapse(".k-item");
+	});
+	
+	$("#search-status").click(function() {
+		$("#assetSearchModal").modal("show");
+    });
+	
+	var treeview = $("#classtreeview").data("kendoTreeView");
+	treeview.expand(".k-item");
+	
+	treeview.bind("change", setSearchViewText);
+	$("#search-btn").click(setSearchViewText);
+	
+	setSearchViewText();
+	
+});
+
+</script>
+
+</body>
+
+</html>
+
+
